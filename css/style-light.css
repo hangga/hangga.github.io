@@ -601,6 +601,9 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 768px) {
   .fh5co-project .fh5co-imgs .img-holder-2 {
     position: absolute;
+    left: auto;
+    right: 50px;
+    /*width: 40%;*/
   }
 }
 @media screen and (max-width: 480px) {
@@ -612,8 +615,10 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+    /*
     max-width: 100%;
-    height: 194px;
+    height: 194px;*/
+    width: 40%;
   }
 }
 .fh5co-project.fh5co-reverse .img-holder-1 {
