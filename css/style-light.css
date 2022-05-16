@@ -1044,11 +1044,17 @@ h1, h2, h3, h4, h5, h6 {
   color: #BDBDBD;
   margin-left: 0%;
   margin-top: -100px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   font-family: "Playfair Display", Times, serif;
   font-size: 12.9em;
   font-style: italic;
   text-transform: none !important;
+}
+
+.kanan{
+  margin-right: 20%;
+  margin-bottom: 25px;
+  text-align: right;
 }
 
 @media screen and (max-width: 1200px) {
@@ -1066,6 +1072,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10%;
     margin-bottom: 50px;
     font-size: 5.9em;
+  }
+  .kanan{
+    text-align: left;
+    margin-right: 10%;
   }
 }
 
