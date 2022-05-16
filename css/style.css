@@ -342,7 +342,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #fh5co-header .fh5co-text-wrap {
-  height: 100vh;
+  height: 70vh;
   width: 100vw;
   content: 'viewport-units-buggyfill; height:100vh; width: 100vw';
   display: table-cell;
@@ -430,7 +430,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-next {
   position: absolute;
-  bottom: 2em;
+  bottom: 6em;
   left: 50%;
 }
 @media screen and (max-width: 480px) {
@@ -496,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fh5co-project {
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   content: 'viewport-units-buggyfill; height:100vh; width:100vw';
   display: table;
@@ -1038,6 +1038,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .js .animate-box {
   opacity: 0;
+}
+
+.number{
+  /*
+  font-size: 3.5em;
+  line-height: 100px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  color: #000000;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;*/
+  color: #656565;
+  margin-left: 0%;
+  margin-top: -100px;
+  margin-bottom: 80px;
+  font-family: "Playfair Display", Times, serif;
+  font-size: 12.9em;
+  font-style: italic;
+  text-transform: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */
