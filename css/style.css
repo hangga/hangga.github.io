@@ -1041,26 +1041,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .number{
-  /*
-  font-size: 3.5em;
-  line-height: 100px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-  color: #000000;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;*/
   color: #656565;
   margin-left: 0%;
   margin-top: -100px;
-  margin-bottom: 80px;
+  margin-bottom: 0px;
   font-family: "Playfair Display", Times, serif;
   font-size: 12.9em;
   font-style: italic;
   text-transform: none !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .number {
+    margin-left: -20%;
+    font-size: 12.9em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .number {
+    font-size: 9.9em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .number {
+    position: relative;
+    margin-left: 10%;
+    margin-bottom: 50px;
+    font-size: 5.9em;
+  }
 }
 
 .center {
