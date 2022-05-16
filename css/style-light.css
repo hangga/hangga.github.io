@@ -371,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 5px;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: #000;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
