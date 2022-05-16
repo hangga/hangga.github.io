@@ -1063,4 +1063,10 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none !important;
 }
 
+.center {
+/*border: 5px solid #FFFF00;*/
+
+text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */
