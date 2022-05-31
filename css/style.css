@@ -93,6 +93,36 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.btnfilter {
+  margin: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: #5bc0de;
+  color: #000000;
+  margin-right: 4px;
+  margin-bottom: 0px;
+  font-family: "Work Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid #222222;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 6px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btnfilter.ikih {
+  background: #2E3842;
+  color: #ffffff;
+}
+
 .label {
   padding-left: 6px;
   padding-right: 6px;
@@ -130,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 4px;
   margin-bottom: 4px;
   font-family: "Work Sans", Arial, sans-serif;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   /*text-transform: uppercase;*/
   letter-spacing: 1px;
@@ -161,7 +191,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: #ffab00;
   color: #fff;
-  border: 2px solid #ffab00;
+  border: 1px solid #ffab00;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #ffb31a !important;
@@ -170,7 +200,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary.btn-outline {
   background: transparent;
   color: #ffab00;
-  border: 2px solid #ffab00;
+  border: 1px solid #ffab00;
 }
 .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
   background: #ffab00;
@@ -256,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-light {
   background: #fff;
   color: #fff;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
 }
 .btn-light:hover, .btn-light:focus, .btn-light:active {
   background: #fff;
@@ -265,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-light.btn-outline {
   background: transparent;
   color: #fff;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
 }
 .btn-light.btn-outline:hover, .btn-light.btn-outline:focus, .btn-light.btn-outline:active {
   background: #fff;
@@ -274,8 +304,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline {
   background: none;
-  border: 2px solid gray;
-  font-size: 16px;
+  border: 1px solid gray;
+  font-size: 14px;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
@@ -1037,7 +1067,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .js .animate-box {
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
 .number{
@@ -1089,3 +1119,13 @@ text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.filterDiv {
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}

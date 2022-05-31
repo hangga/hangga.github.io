@@ -44,7 +44,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<!--<link rel="stylesheet" href="css/animate.css">-->
 	<!-- Flexslider -->
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Icomoon Icon Fonts-->
@@ -59,13 +59,14 @@
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Cookie -->
 	<script src="js/jquery.cookie.js"></script>
-	<script>
-	if ( $.cookie('styleCookie') === 'style-light.css') {
-		$('html, body').css('background', '#eeeeee');
-	} else if ($.cookie('styleCookie') === 'style.css') {
-		$('html, body').css('background', '#222222');
-	}
 	
+
+	<script>
+		if ( $.cookie('styleCookie') === 'style-light.css') {
+			$('html, body').css('background', '#eeeeee');
+		} else if ($.cookie('styleCookie') === 'style.css') {
+			$('html, body').css('background', '#222222');
+		}
 	</script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -96,7 +97,7 @@
 
 	</head>
 
-	<body>
+	<body id="body" onload="filterSelection('all')">
 	
 	<!-- Loader -->
 	<div class="fh5co-loader"></div>
@@ -268,13 +269,16 @@
 					<i class="icon-chevron-down"></i>
 				</a>
 				<br/>
-				<div class="center">
-					<span class="label">Desktop</span>
-					<span class="label">Mobile</span>
-					<span class="label">Web</span>	
-					<span class="label">REST API</span>
-					<span class="label">SDK</span>
-					<span class="label">Library</span>
+				<div id="btncontainer" class="center">
+					<button class="btnfilter ikih" onclick="filterSelection('all')">All (30)</button>
+					<button class="btnfilter" onclick="filterSelection('library')">Library (3)</button>
+					<button class="btnfilter" onclick="filterSelection('desktop')">Desktop (13)</button>
+					<button class="btnfilter" onclick="filterSelection('mobile')" >Mobile (10)</button><br/>
+					<button class="btnfilter" onclick="filterSelection('web')">Web (4)</button>	
+					<button class="btnfilter" onclick="filterSelection('game')" >Game (1)</button>
+					<button class="btnfilter" onclick="filterSelection('restapi')">REST API (1)</button>
+					<button class="btnfilter" onclick="filterSelection('sdk')">SDK (1)</button>
+					
 				</div>
 				
 			</div>
@@ -282,7 +286,7 @@
 
 
 		<!-- data-colorbg="#FF6138" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row" >
 					<div class="fh5co-text-wrap animate-box">
@@ -335,7 +339,7 @@
 
 
 		<!-- data-colorbg="#8cc53e"  -->
-		<div class="fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">2</h1>
@@ -375,7 +379,7 @@
 		</div>
 
 		<!-- data-colorbg="#FF6138" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
+		<div class="filterDiv library sdk fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">3</h1>
@@ -409,7 +413,7 @@
 		</div>
 		
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">4</h1>
@@ -448,7 +452,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">5</h1>
@@ -486,7 +490,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">6</h1>
@@ -525,7 +529,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv web fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">7</h1>
@@ -563,7 +567,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv library fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">8</h1>
@@ -601,7 +605,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">9</h1>
@@ -640,7 +644,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile game fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">10</h1>
@@ -675,7 +679,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">11</h1>
@@ -711,7 +715,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">12</h1>
@@ -745,7 +749,7 @@ terpilih sebagai salah satu OTT Nasional.</p>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">13</h1>
@@ -781,7 +785,7 @@ Product Owner : RSU Dharma, Jl. Wonosari Yogyakarta</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">14</h1>
@@ -814,7 +818,7 @@ Product Owner : RSU Dharma, Jl. Wonosari Yogyakarta</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv mobile restapi fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">15</h1>
@@ -859,7 +863,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">16</h1>
@@ -892,7 +896,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">17</h1>
@@ -928,7 +932,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">18</h1>
@@ -962,7 +966,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">19</h1>
@@ -997,7 +1001,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">20</h1>
@@ -1031,7 +1035,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">21</h1>
@@ -1067,7 +1071,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">22</h1>
@@ -1099,7 +1103,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv web fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">23</h1>
@@ -1137,7 +1141,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv web fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">24</h1>
@@ -1176,7 +1180,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv web fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">25</h1>
@@ -1213,7 +1217,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">26</h1>
@@ -1249,7 +1253,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv library fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">27</h1>
@@ -1284,7 +1288,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#7bc74d" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number">28</h1>
@@ -1323,7 +1327,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
+		<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kanan">29</h1>
@@ -1358,7 +1362,7 @@ Product Owner : Kanwil Kemenag DIY</h5>
 
 
 		<!-- data-colorbg="#2d4059" -->
-		<div class="fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
+		<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
 			<div class="container">
 				<div class="fh5co-project-inner row">
 					<h1 class="number kiri">30</h1>
@@ -1420,7 +1424,61 @@ More than 1.8 million + high-quality stock images that you can use for free..</p
 	</div>
 	
 			
-	
+	<script>
+		filterSelection("all")
+		function filterSelection(c) {
+		  var x, i;
+		  x = document.getElementsByClassName("filterDiv");
+		  if (c == "all") c = "";
+		  for (i = 0; i < x.length; i++) {
+		    w3RemoveClass(x[i], "show");
+		    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+		  }
+		}
+
+		function w3AddClass(element, name) {
+		  var i, arr1, arr2;
+		  arr1 = element.className.split(" ");
+		  arr2 = name.split(" ");
+		  for (i = 0; i < arr2.length; i++) {
+		    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+		  }
+		}
+
+		function w3RemoveClass(element, name) {
+		  var i, arr1, arr2;
+		  arr1 = element.className.split(" ");
+		  arr2 = name.split(" ");
+		  for (i = 0; i < arr2.length; i++) {
+		    while (arr1.indexOf(arr2[i]) > -1) {
+		      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+		    }
+		  }
+		  element.className = arr1.join(" ");
+		}
+
+		var btnContainer = document.getElementById("btncontainer");
+		var btns = btnContainer.getElementsByClassName("btnfilter");
+		
+		//var bodyContainer = document.getElementById("body");
+		//var hnumber = document.getElementsByClassName("number");
+		for (var i = 0; i < btns.length; i++) {
+		  btns[i].addEventListener("click", function() {
+		    var current = document.getElementsByClassName("ikih");
+		    current[0].className = current[0].className.replace(" ikih", "");
+		    this.className += " ikih";
+		    /*
+		    for (var j = 0; j < hnumber.length; j++) {
+		    	if (hnumber[j].display === "show"){
+		    		hnumber[j].innerHTML = j + 1;	
+		    	}
+			}*/
+		  });
+		}
+
+		
+		
+	</script>
 
 	</body>
 </html>
