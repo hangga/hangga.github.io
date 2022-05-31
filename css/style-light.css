@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #fh5co-page {
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .btn {
@@ -314,9 +314,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-nav {
   text-align: center;
-  position: absolute;
   width: 100%;
-  z-index: 99;
+  position: sticky;
+  z-index: 9;
+  position:-webkit-sticky; 
+  position:sticky; 
+  top:0;
 }
 #fh5co-nav ul {
   padding: 0;
@@ -355,7 +358,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #fh5co-header {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   position: relative;
   content: 'viewport-units-buggyfill; height:100vh; width: 100vw';
@@ -524,7 +527,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fh5co-project {
-  height: 120vh;
+  height: 100vh;
   width: 100vw;
   content: 'viewport-units-buggyfill; height:100vh; width:100vw';
   display: table;
@@ -916,7 +919,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   z-index: 999;
   top: 25px;
-  right: 15px;
+  right: 5%;
   background: #cccccc;
   width: 40px;
   height: 20px;
@@ -1076,7 +1079,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -100px;
   margin-bottom: 20px;
   font-family: "Playfair Display", Times, serif;
-  font-size: 10.9em;
+  font-size: 12.9em;
   font-style: italic;
   text-transform: none !important;
 }
@@ -1110,9 +1113,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .center {
-/*border: 5px solid #FFFF00;*/
-
-text-align: center;
+  z-index: 9;
+  position:-webkit-sticky; 
+  position:sticky; 
+  top:0;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style-light.css.map */
