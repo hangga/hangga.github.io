@@ -1076,7 +1076,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -100px;
   margin-bottom: 20px;
   font-family: "Playfair Display", Times, serif;
-  font-size: 12.9em;
+  font-size: 10.9em;
   font-style: italic;
   text-transform: none !important;
 }
@@ -1089,7 +1089,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media screen and (max-width: 1200px) {
   .number {
-    font-size: 12.9em;
+    font-size: 10.9em;
   }
 }
 @media screen and (max-width: 768px) {
