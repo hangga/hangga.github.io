@@ -50,7 +50,9 @@ body {
 }
 
 .btnfilter {
-  margin: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 0px;
@@ -60,11 +62,11 @@ body {
   margin-right: 4px;
   margin-bottom: 0px;
   font-family: "Work Sans", Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
-  border: 1px solid #FFFFFF;
+  border: 0.5px solid #FFFFFF;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
@@ -1079,25 +1081,26 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -100px;
   margin-bottom: 20px;
   font-family: "Playfair Display", Times, serif;
-  font-size: 12.9em;
+  font-size: 5.9em;
   font-style: italic;
   text-transform: none !important;
 }
 
+/*
 .kanan{
   margin-right: 20%;
   margin-bottom: 25px;
   text-align: right;
 }
-
+*/
 @media screen and (max-width: 1200px) {
   .number {
-    font-size: 10.9em;
+    font-size: 5.9em;
   }
 }
 @media screen and (max-width: 768px) {
   .number {
-    font-size: 9.9em;
+    font-size: 5.9em;
   }
 }
 @media screen and (max-width: 480px) {

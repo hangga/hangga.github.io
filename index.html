@@ -46,7 +46,7 @@
 	<!-- Animate.css -->
 	<!--<link rel="stylesheet" href="css/animate.css">-->
 	<!-- Flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<!--<link rel="stylesheet" href="css/flexslider.css">-->
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Bootstrap  -->
@@ -139,20 +139,53 @@
 
 		</header>
 		<div id="scrolltop" onscroll="myScroll()"></div>
-		<div id="btncontainer" class="center" style="margin-left: 10%; margin-right: 10%;">
-			<div >
-				
-				<button class="btnfilter ikih" onclick="filterSelection('all')">All(30)</button>
-					<button class="btnfilter" onclick="filterSelection('library')">Library(3)</button>
-					<button class="btnfilter" onclick="filterSelection('desktop')">Desktop App(13)</button>
-					<button class="btnfilter" onclick="filterSelection('mobile')" >Mobile App(10)</button><br/>
-					<button class="btnfilter" onclick="filterSelection('web')">Web(4)</button>	
-					<button class="btnfilter" onclick="filterSelection('game')" >Game(1)</button>
-					<button class="btnfilter" onclick="filterSelection('restapi')">REST API(1)</button>
-					<button class="btnfilter" onclick="filterSelection('sdk')">SDK(1)</button>
-			</div>
+		<div id="btncontainer" class="center animated" style="margin-left: 10%; margin-right: 10%;">
+			<button id="btnall" class="btnfilter ikih" onclick="filterSelection('all')"></button>
+			<button id="btndesktop" class="btnfilter" onclick="filterSelection('desktop')"></button>
+			<button id="btnweb" class="btnfilter" onclick="filterSelection('web')"></button>
+			<button id="btnmobile" class="btnfilter" onclick="filterSelection('mobile')" ></button>
+			<button id="btngame" class="btnfilter" onclick="filterSelection('game')" ></button>
+			<button id="btnrestapi" class="btnfilter" onclick="filterSelection('restapi')"></button>
+			<button id="btnlibrary" class="btnfilter" onclick="filterSelection('library')"></button>
+			<button id="btnsdk" class="btnfilter" onclick="filterSelection('sdk')"></button>
+			
 		</div>
 		<br/>
+
+		<!-- data-colorbg="#8cc53e"  -->
+			<div class="filterDiv library fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
+				<div class="container">
+					<div class="fh5co-project-inner row">
+						<!--<h1 class="number kanan"></h1>-->
+						<div class="fh5co-imgs col-md-8 animate-box">
+
+							<div class="img-holder-1 animate-box">
+								<img width="600px" src="images/about/picker.png" >
+							</div>
+							
+							<div class="img-holder-2 animate-box">
+								<img width="350px" src="images/about/picker-small.png">
+							</div>
+							
+						</div>
+						<div class="fh5co-text col-md-4 animate-box">
+							<p class="date">2022, Mei</p>
+							
+							<h2>Picker</h2>
+							<h5>Product Owner: PT. Kredibel Teknologi Indonesia.</h5>
+							<span class="label">Library</span><span class="label label-role">Sr.Mobile Engineer</span><br/>
+							<!-- tech stack -->
+							<span class="tech">Android SDK</span>
+							<span class="tech">Maven</span>
+							<p>Simplify the way to handling the gallery or camera intent without rambling 😄. Previously used for internal development purposes then currently published for free.</p>
+							<p>
+								<a target="_blank" href="https://github.com/kredibel-id/Picker" class="btn btn-light btn-outline transition">Source Code</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		
 
 		<!-- data-colorbg="#FF6138" -->
@@ -162,7 +195,7 @@
 					<div class="fh5co-project-inner row" >
 						<div class="fh5co-text-wrap animate-box">
 						</div>
-						<h1 class="number kiri">1</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/kredibel.gif" >
@@ -213,7 +246,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-bgcolor="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">2</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 
 							<div class="img-holder-1 animate-box">
@@ -253,7 +286,7 @@
 			<div class="filterDiv library sdk fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">3</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="550px" src="images/about/ocr.png" >
@@ -287,7 +320,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">4</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/sebangsa-wide.png" >
@@ -326,7 +359,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">5</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="550px" src="images/about/arena-lp.png" >
@@ -364,7 +397,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">6</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/project-q-wide.png" >
@@ -403,7 +436,7 @@
 			<div class="filterDiv web fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">7</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="650px" src="images/about/jumat.png" >
@@ -441,7 +474,7 @@
 			<div class="filterDiv library fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">8</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/kwidget.png" >
@@ -479,7 +512,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">9</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="550px" src="images/about/zaki-lp.png" >
@@ -518,7 +551,7 @@
 			<div class="filterDiv mobile game fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">10</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="650px" src="images/about/mosquito.png" >
@@ -553,7 +586,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">11</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="500px" src="images/about/cih.jpg" >
@@ -589,7 +622,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">12</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="500px" src="images/about/silat-grafik.png" >
@@ -623,7 +656,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">13</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/darma.png" >
@@ -659,7 +692,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">14</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="500px" src="images/about/cpns-app.png" >
@@ -692,7 +725,7 @@
 			<div class="filterDiv mobile restapi fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">15</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="200px" style="margin-right: 50%;"src="images/about/tpg-right.png" >
@@ -737,7 +770,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">16</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/toefl-app.png" >
@@ -770,7 +803,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">17</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/toefl-2.png" >
@@ -806,7 +839,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">18</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/pilih-mapel.png" >
@@ -840,7 +873,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">19</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/situng.png" >
@@ -875,7 +908,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">20</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/snmptn.png" >
@@ -909,7 +942,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">21</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="550px" height="300px" src="images/about/simkah-report.jpg" >
@@ -945,7 +978,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">22</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/smart-co.png" >
@@ -977,7 +1010,7 @@
 			<div class="filterDiv web fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">23</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/no-image.png" >
@@ -1015,7 +1048,7 @@
 			<div class="filterDiv web fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">24</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/no-image.png" >
@@ -1054,7 +1087,7 @@
 			<div class="filterDiv web fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">25</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/no-image.png" >
@@ -1091,7 +1124,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">26</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="600px" src="images/about/atqiya.png" >
@@ -1127,7 +1160,7 @@
 			<div class="filterDiv library fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">27</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="650px" src="images/about/gampil.png" >
@@ -1162,7 +1195,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number">28</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="200px" style="margin-right: 50%;"src="images/about/poniyem-kanan.jpg" >
@@ -1201,7 +1234,7 @@
 			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kanan">29</h1>
+						<!--<h1 class="number kanan"></h1>-->
 						<div class="fh5co-imgs col-md-8 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="650px" src="https://hangga.web.id/wp-content/uploads/2012/04/2012-04-10_100645-1024x545.png" >
@@ -1236,7 +1269,7 @@
 			<div class="filterDiv mobile fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="" data-next="yes">
 				<div class="container">
 					<div class="fh5co-project-inner row">
-						<h1 class="number kiri">30</h1>
+						<!--<h1 class="number"></h1>-->
 						<div class="fh5co-imgs col-md-8 col-md-push-4 animate-box">
 							<div class="img-holder-1 animate-box">
 								<img width="200px" src="images/about/subuh-left.png" >
@@ -1298,7 +1331,6 @@
 	
 			
 	<script>
-		//filterSelection("all")
 		filterNoScroll("all")
 		function filterNoScroll(c) {
 		  var x, i;
@@ -1308,6 +1340,27 @@
 		    w3RemoveClass(x[i], "show");
 		    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
 		  }
+		  renderButton();
+		}
+
+		function renderButton(){
+			all = document.getElementsByClassName("filterDiv");
+			mobile = document.getElementsByClassName("filterDiv mobile");
+			desktop = document.getElementsByClassName("filterDiv desktop");
+			web = document.getElementsByClassName("filterDiv web");
+			restapi = document.getElementsByClassName("filterDiv restapi");
+			library = document.getElementsByClassName("filterDiv library");
+			sdk = document.getElementsByClassName("filterDiv sdk");
+			game = document.getElementsByClassName("filterDiv game");
+
+			document.getElementById("btnall").textContent = "All ("+all.length+")";
+			document.getElementById("btnmobile").textContent = "Mobile App ("+mobile.length+")";
+			document.getElementById("btndesktop").textContent = "Desktop App ("+desktop.length+")";
+			document.getElementById("btnweb").textContent = "Web App ("+web.length+")";
+			document.getElementById("btnrestapi").textContent = "REST API ("+restapi.length+")";
+			document.getElementById("btnlibrary").textContent = "Library ("+library.length+")";
+			document.getElementById("btnsdk").textContent = "SDK ("+sdk.length+")";
+			document.getElementById("btngame").textContent = "Game ("+game.length+")";
 		}
 
 		function filterSelection(c) {
@@ -1353,17 +1406,16 @@
 		    var current = document.getElementsByClassName("ikih");
 		    current[0].className = current[0].className.replace(" ikih", "");
 		    this.className += " ikih";
-		    //alert(document.getElementsByClassName("number")[5].innerHTML);
-		    //document.getElementsByClassName("number")[0].textContent = "embuh";
 		    
+		    /*numbering*/
+		    /*
 		    var index = 0;
 			for (var j = 0; j < filterDiv.length; j++){
-				//alert(j);
 				if (isVisible(filterDiv[j])){
 					index = index + 1;
-					document.getElementsByClassName("number")[j].textContent = index;
+					document.getElementsByClassName("number")[j].textContent = index+").";
 				}
-			}
+			}*/
 
 		  });
 		}
@@ -1383,23 +1435,6 @@
 		    style.visibility!== 'hidden';
 		}*/
 		
-		function myScroll() {
-		  const element = document.getElementById("scrolltop");
-		  //const element = document.getElementsByClassName("center");
-
-		  let x = element.scrollLeft;
-		  let y = element.scrollTop;
-
-		  if (y > 10){
-		  	alert("Hello! I am an alert box!");
-		  	/*
-		  	document.getElementsByClassName("center").className.replace("center", "center isscroll")*/	
-		  } else {
-		  	/*
-		  	document.getElementsByClassName("center").className.replace("center isscroll", "center")*/
-		  }
-		  
-		}
 		
 	</script>
 
