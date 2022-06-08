@@ -25,6 +25,13 @@ body {
   color: #222;
 }
 
+.po {
+  color: #5CC0DE;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "Work Sans", Arial, sans-serif;
+}
+
 .tech {
   padding-left: 6px;
   padding-right: 6px;
