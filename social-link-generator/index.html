@@ -28,7 +28,9 @@
       <input type="text" id="furl" name="furl">
 
       <button id="btngenerate" onclick="generate()">Generate</button>
-      <button onclick="refresh()">Refresh</button>
+      <!--
+      <button onclick="refresh()">Refresh</button>-->
+      <button onclick="CopyToClipboard('kode')">Copy</button>
     </form>
 
     <div id="kode" style="visibility: hidden; overflow:scroll; height:100px; width: 700px; border: 1px solid #000;">
@@ -65,6 +67,21 @@
 
     }
 
+
+    function CopyToClipboard(containerid) {
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        alert("Text has been copied, now paste in the text-area")
+      }
+    }
 
 </script>
 </html>

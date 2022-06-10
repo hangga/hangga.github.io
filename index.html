@@ -27,16 +27,7 @@
 	//////////////////////////////////////////////////////
 	 -->
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -48,7 +39,10 @@
 	<!-- Flexslider -->
 	<!--<link rel="stylesheet" href="css/flexslider.css">-->
 	<!-- Icomoon Icon Fonts-->
+<!--
 	<link rel="stylesheet" href="css/icomoon.css">
+-->
+
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 
@@ -78,18 +72,24 @@
 	<script src="js/jquery.flexslider-min.js"></script>
 
 	<!-- Viewport Units Buggyfill -->
+	<!--
 	<script src="js/viewport-units-buggyfill.js"></script>
+-->
 
 	<!-- Googgle Map -->
+	<!--
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>
+	-->
 
 	
 	<!-- Main JS  -->
 	<script src="js/main.js"></script>
 
 	<!-- Modernizr JS -->
+	<!--
 	<script src="js/modernizr-2.6.2.min.js"></script>
+-->
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -139,15 +139,16 @@
 
 		</header>
 		<div id="scrolltop" onscroll="myScroll()"></div>
-		<div id="btncontainer" class="center animated" style="margin-left: 10%; margin-right: 10%;">
+		<div id="btncontainer" class="center animated" style="margin-left: 10%; margin-right: 10%; margin-top:-100px;">
 			<button id="btnall" class="btnfilter ikih" onclick="filterSelection('all')"></button>
 			<button id="btndesktop" class="btnfilter" onclick="filterSelection('desktop')"></button>
 			<button id="btnweb" class="btnfilter" onclick="filterSelection('web')"></button>
 			<button id="btnmobile" class="btnfilter" onclick="filterSelection('mobile')" ></button>
-			<button id="btngame" class="btnfilter" onclick="filterSelection('game')" ></button>
+			<button id="btngame" class="btnfilter" onclick="filterSelection('game')" ></button><br/>
 			<button id="btnrestapi" class="btnfilter" onclick="filterSelection('restapi')"></button>
 			<button id="btnlibrary" class="btnfilter" onclick="filterSelection('library')"></button>
 			<button id="btnsdk" class="btnfilter" onclick="filterSelection('sdk')"></button>
+			<button id="btnresearch" class="btnfilter" onclick="filterSelection('research')"></button>
 			
 		</div>
 		<br/>
@@ -586,7 +587,7 @@
 
 
 			<!-- data-colorbg="#7bc74d" -->
-			<div class="filterDiv desktop fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
+			<div class="filterDiv desktop research fh5co-project js-fh5co-waypoint fh5co-reverse" data-colorbg="">
 				<div class="container">
 					<div class="fh5co-project-inner row">
 						<!--<h1 class="number"></h1>-->
@@ -1407,11 +1408,20 @@
 		-->
 
 
-			<footer id="fh5co-footer" class="js-fh5co-waypoint">
+			<footer id="fh5co-footer" class="js-fh5co-waypoint center">
 				<div class="container">
 					<div class="row">
+						
+
+
+						
 						<div class="col-md-12 text-center">
-							<p><small>&copy; 2016 Hold. All Rights Reserved. <br> Ngoprek dari <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a> </small> </p>
+							<p><small>&copy; 2022 <a target="_blank" href="https://hangga.web.id/">Hangga Aji Sayekti</a>. All Rights Reserved. <br> Template ini hasil <i>ngoprek</i> dari <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> </small> </p>
+
+							<br/><br/>
+							<a target="_blank" href="https://twitter.com/intent/tweet?text=Hangga Aji Sayekti&url=https://hangga.web.id/portfolio/"> <img width="30" src="https://camo.githubusercontent.com/35b0b8bfbd8840f35607fb56ad0a139047fd5d6e09ceb060c5c6f0a5abd1044c/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f747769747465722e737667" /></a><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://hangga.web.id/portfolio/"> <img width="30" src="https://camo.githubusercontent.com/8f245234577766478eaf3ee72b0615e99bb9ef3eaa56e1c37f75692811181d5c/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f66616365626f6f6b2e737667" /></a><a target="_blank" href="https://plus.google.com/share?url=https://hangga.web.id/portfolio/"> <img width="30" src="https://camo.githubusercontent.com/15fdf0cbd71e1ca3db22839bf80a55d246e4a19e4a019021fdf121e2cc193488/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f676f6f676c655f706c75732e737667" /></a><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https://hangga.web.id/portfolio/&title=Hangga Aji Sayekti&summary=Portfolio&source=https://hangga.web.id/portfolio/"> <img width="30" src="https://camo.githubusercontent.com/c8a9c5b414cd812ad6a97a46c29af67239ddaeae08c41724ff7d945fb4c047e5/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f6c696e6b6564696e2e737667" /></a><a target="_blank" href="https://pinterest.com/pin/create/button/?url=https://hangga.web.id/portfolio/&description=Portfolio"> <img width="30" src="https://camo.githubusercontent.com/ef99a09dfa010e68c26ec4414631a47bbc1086677227bd97538d051b8b93ae21/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f70696e7465726573742e737667" /></a><a target="_blank" href="http://www.tumblr.com/share/link?url=https://hangga.web.id/portfolio/&description=Portfolio"> <img width="30" src="https://camo.githubusercontent.com/f47b844e7015760d6fd9c1fb86834af2cf82d215fc9c20c24edc8173c85059a1/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f74756d626c722e737667" /></a>
+							<br/><br/>
+							<!--
 							<ul class="fh5co-social">
 								<li>
 									<a href="#"><i class="icon-twitter"></i></a>
@@ -1426,7 +1436,9 @@
 									<a href="#"><i class="icon-dribbble"></i></a>
 								</li>
 							</ul>
+						-->
 						</div>
+						
 					</div>
 				</div>
 			</footer>
@@ -1458,7 +1470,9 @@
 			library = document.getElementsByClassName("filterDiv library");
 			sdk = document.getElementsByClassName("filterDiv sdk");
 			game = document.getElementsByClassName("filterDiv game");
+			rsch = document.getElementsByClassName("filterDiv sdk");
 
+			//scientific research
 			document.getElementById("btnall").textContent = "All ("+all.length+")";
 			document.getElementById("btnmobile").textContent = "Mobile App ("+mobile.length+")";
 			document.getElementById("btndesktop").textContent = "Desktop App ("+desktop.length+")";
@@ -1467,6 +1481,7 @@
 			document.getElementById("btnlibrary").textContent = "Library ("+library.length+")";
 			document.getElementById("btnsdk").textContent = "SDK ("+sdk.length+")";
 			document.getElementById("btngame").textContent = "Game ("+game.length+")";
+			document.getElementById("btnresearch").textContent = "Scientific Researc ("+rsch.length+")";
 		}
 
 		function filterSelection(c) {

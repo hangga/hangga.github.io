@@ -12,14 +12,14 @@
 *
 * ======================================================= */
 html {
-  background: #222222;
+  background: #2C2C3C;
 }
 
 body {
   font-family: "Work Sans", Arial, sans-serif;
   font-size: 18px;
   line-height: 34px;
-  background: #222222;
+  background: #2C2C3C;
   font-weight: 300;
   opacity: 0;
   color: #222;
@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
-  border: 1px solid #222222;
+  border: 0.5px solid #5bc0de;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btnfilter.ikih {
-  background: #2E3842;
+  background: #222222;
   color: #ffffff;
 }
 
@@ -200,7 +200,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: #ffab00;
   color: #fff;
-  border: 1px solid #ffab00;
+  border: 0.5px solid #ffab00;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #ffb31a !important;
@@ -209,7 +209,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary.btn-outline {
   background: transparent;
   color: #ffab00;
-  border: 1px solid #ffab00;
+  border: 0.5px solid #ffab00;
 }
 .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
   background: #ffab00;
@@ -238,7 +238,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-info {
   background: #5bc0de;
   color: #fff;
-  border: 2px solid #5bc0de;
+  border: 1px solid #5bc0de;
 }
 .btn-info:hover, .btn-info:focus, .btn-info:active {
   background: #46b8da !important;
@@ -247,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-info.btn-outline {
   background: transparent;
   color: #5bc0de;
-  border: 2px solid #5bc0de;
+  border: 1px solid #5bc0de;
 }
 .btn-info.btn-outline:hover, .btn-info.btn-outline:focus, .btn-info.btn-outline:active {
   background: #5bc0de;
@@ -257,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-warning {
   background: #f0ad4e;
   color: #fff;
-  border: 2px solid #f0ad4e;
+  border: 1px solid #f0ad4e;
 }
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active {
   background: #eea236 !important;
@@ -266,7 +266,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-warning.btn-outline {
   background: transparent;
   color: #f0ad4e;
-  border: 2px solid #f0ad4e;
+  border: 1px solid #f0ad4e;
 }
 .btn-warning.btn-outline:hover, .btn-warning.btn-outline:focus, .btn-warning.btn-outline:active {
   background: #f0ad4e;
@@ -295,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-light {
   background: #fff;
   color: #fff;
-  border: 1px solid #fff;
+  border: 0.51px solid #fff;
 }
 .btn-light:hover, .btn-light:focus, .btn-light:active {
   background: #fff;
@@ -304,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-light.btn-outline {
   background: transparent;
   color: #fff;
-  border: 1px solid #fff;
+  border: 0.5px solid #fff;
 }
 .btn-light.btn-outline:hover, .btn-light.btn-outline:focus, .btn-light.btn-outline:active {
   background: #fff;
@@ -376,6 +376,13 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   content: 'viewport-units-buggyfill; height:100vh; width: 100vw';
   display: table;
+/*
+  -webkit-transform: skewY(-7deg);
+  -moz-transform: skewY(-7deg);
+  -ms-transform: skewY(-7deg);
+  -o-transform: skewY(-7deg);
+  transform: skewY(-7deg);
+  */
 }
 @media screen and (max-width: 768px) {
   #fh5co-header {
@@ -540,11 +547,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fh5co-project {
+  padding-top: 50px;
   height: 100vh;
   width: 100vw;
   content: 'viewport-units-buggyfill; height:100vh; width:100vw';
   display: table;
   position: relative;
+}
+.fh5co-project.left {
+  height: 100vh;
+  width: 100vw;
+  content: 'viewport-units-buggyfill; height:100vh; width:100vw';
+  display: table;
+  position: relative;
+  background: rgba(255, 255, 255, 0.09);
 }
 .fh5co-project:before {
   content: "";
@@ -552,9 +568,11 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   right: 0;
   left: 0;
-  height: 2px;
+  height: 1.5px;
+  
+  
   background: rgba(255, 255, 255, 0.03);
-  width: 101%;
+  width: 100%;
   -webkit-transform: skewY(-7deg);
   -moz-transform: skewY(-7deg);
   -ms-transform: skewY(-7deg);
@@ -578,7 +596,7 @@ h1, h2, h3, h4, h5, h6 {
   vertical-align: middle;
   height: 100vh;
   width: 100vw;
-  content: 'viewport-units-buggyfill; height:100vh; width:100vw';
+  /*content: 'viewport-units-buggyfill; height:100vh; width:100vw';*/
   position: relative;
 }
 @media screen and (max-width: 768px) {
@@ -744,7 +762,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
-  width: 101%;
+  width: 100%;
   -webkit-transform: skewY(-7deg);
   -moz-transform: skewY(-7deg);
   -ms-transform: skewY(-7deg);
@@ -1133,6 +1151,7 @@ h1, h2, h3, h4, h5, h6 {
   position:sticky; 
   top:0;
   text-align: center;
+
 }
 
 .center.isscroll{

@@ -529,11 +529,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fh5co-project {
+  padding-top: 50px;
   height: 100vh;
   width: 100vw;
   content: 'viewport-units-buggyfill; height:100vh; width:100vw';
   display: table;
   position: relative;
+  /*background: rgba(200, 54, 54, 0.05);*/
 }
 .fh5co-project:before {
   content: "";
@@ -541,9 +543,10 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   right: 0;
   left: 0;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.03);
-  width: 101%;
+  height: 1px;
+  
+  background: rgba(0, 0, 0, 0.08);
+  width: 100%;
   -webkit-transform: skewY(-7deg);
   -moz-transform: skewY(-7deg);
   -ms-transform: skewY(-7deg);
@@ -735,13 +738,14 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   left: 0;
   height: 1px;
+  /*
   background: rgba(0, 0, 0, 0.1);
-  width: 101%;
+  width: 100%;
   -webkit-transform: skewY(-7deg);
   -moz-transform: skewY(-7deg);
   -ms-transform: skewY(-7deg);
   -o-transform: skewY(-7deg);
-  transform: skewY(-7deg);
+  transform: skewY(-7deg);*/
 }
 
 .fh5co-project-detail {
