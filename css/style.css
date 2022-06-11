@@ -11,9 +11,11 @@
 *	Edit this section
 *
 * ======================================================= */
+/*
 html {
   background: #2C2C3C;
 }
+*/
 
 body {
   font-family: "Work Sans", Arial, sans-serif;
@@ -21,7 +23,7 @@ body {
   line-height: 34px;
   background: #2C2C3C;
   font-weight: 300;
-  opacity: 0;
+  /*opacity: 0;*/
   color: #222;
 }
 
@@ -1151,7 +1153,6 @@ h1, h2, h3, h4, h5, h6 {
   position:sticky; 
   top:0;
   text-align: center;
-
 }
 
 .center.isscroll{
@@ -1179,4 +1180,13 @@ h1, h2, h3, h4, h5, h6 {
 /* The "show" class is added to the filtered elements */
 .show {
   display: block;
+}
+
+.isoverlay{
+  /*background-image:linear-gradient(black, transparent);*/
+  background: linear-gradient(to bottom, #5F5F6B, rgba(0, 0, 0, 0));
+}
+
+.istransparent{
+  background: transparent;
 }

@@ -11,9 +11,10 @@
 *	Edit this section
 *
 * ======================================================= */
+/*
 html {
   background-color: #ffffff;
-}
+}*/
 
 body {
   font-family: "Work Sans", Arial, sans-serif;
@@ -1136,5 +1137,14 @@ h1, h2, h3, h4, h5, h6 {
 /* The "show" class is added to the filtered elements */
 .show {
   display: block;
+}
+
+.isoverlay{
+  /*background-image:linear-gradient(black, transparent);*/
+  background: linear-gradient(to bottom, #18182F, rgba(0, 0, 0, 0));
+}
+
+.istransparent{
+  background: transparent;
 }
 

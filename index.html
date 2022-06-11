@@ -54,14 +54,15 @@
 	<!-- jQuery Cookie -->
 	<script src="js/jquery.cookie.js"></script>
 	
-
+<!--
 	<script>
 		if ( $.cookie('styleCookie') === 'style-light.css') {
-			$('html, body').css('background', '#eeeeee');
+			$('html, body').css('background', '#ffffff');
 		} else if ($.cookie('styleCookie') === 'style.css') {
-			$('html, body').css('background', '#222222');
+			$('html, body').css('background', '#2C2C3C');
 		}
 	</script>
+-->
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
@@ -104,9 +105,9 @@
 	
 	<div id="fh5co-page" >
 		
-		<nav id="fh5co-nav" role="navigation">
+		<nav id="fh5co-nav" role="navigation" >
 			
-			<a class="style-toggle js-style-toggle" data-style="default" href="#">
+			<a class="style-toggle js-style-toggle" style="margin-top:110px;" data-style="default" href="#">
 				<span class="fh5co-circle"></span>
 			</a>
 		</nav>
@@ -141,7 +142,7 @@
 
 		</header>
 		<div id="scrolltop" onscroll="myScroll()"></div>
-		<div id="btncontainer" class="center animated" style="margin-left: 10%; margin-right: 10%; margin-top:-100px;">
+		<div id="btncontainer" class="center animated" style="padding-top: 10px; padding-bottom: 30px; margin-top:-100px; text-align: center;">
 			<button id="btnall" class="btnfilter ikih" onclick="filterSelection('all')"></button>
 			<button id="btndesktop" class="btnfilter" onclick="filterSelection('desktop')"></button>
 			<button id="btnweb" class="btnfilter" onclick="filterSelection('web')"></button>
@@ -1451,6 +1452,24 @@
 	
 			
 	<script>
+		window.addEventListener("scroll", function() {
+		  var elementTarget = document.getElementById("btncontainer");
+
+		  if (elementTarget.getBoundingClientRect().top == 0){
+		  	//elementTarget.style.backgroundColor = 'black';
+		  	w3AddClass(elementTarget, "isoverlay");
+		  	w3RemoveClass(elementTarget, "istransparent");
+		  } else {
+		  	w3RemoveClass(elementTarget, "isoverlay");
+		  	w3AddClass(elementTarget, "istransparent");
+		  	//elementTarget.style.backgroundColor = 'transparent';
+		  }
+		  
+		  //alert("Yak"+ elementTarget.getBoundingClientRect().top);
+		  //if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+		  //    alert("You've scrolled past the second div");
+		  //}
+		});
 		filterNoScroll("all")
 		function filterNoScroll(c) {
 		  var x, i;
