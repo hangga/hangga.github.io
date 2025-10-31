@@ -337,8 +337,15 @@ body {
 }
 
 .experience-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
+    color: var(--slate-lightest);
+    margin-bottom: 0.5rem;
+}
+
+.experience-location {
+    font-size: 0.9rem;
+    font-weight: 300;
     color: var(--slate-lightest);
     margin-bottom: 0.5rem;
 }
