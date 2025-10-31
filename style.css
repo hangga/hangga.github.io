@@ -4,55 +4,33 @@
     box-sizing: border-box;
 }
 
-/* :root {
-    --navy: #0a192f;
-    --navy-light: #112240;
-    --navy-lightest: #233554;
-    --slate: #8892b0;
-    --slate-light: #a8b2d1;
-    --slate-lightest: #ccd6f6;
-    --white: #e6f1ff;
-    --teal: #5eead4;
-    --background: #0f1729;
-}
-
-[data-theme="light"] {
-    --background: #f8fafc;
-    --slate: #475569;
-    --slate-light: #334155;
-    --slate-lightest: #0f172a;
-    --navy: #e2e8f0;
-    --navy-light: #cbd5e1;
-    --navy-lightest: #94a3b8;
-    --teal: #0891b2;
-} */
-
-/* :root {
-    --background: #1a1625;
-    --navy: #241f33;
-    --navy-light: #302947;
-    --navy-lightest: #3e3460;
-    --slate: #9d93b8;
-    --slate-light: #c2b8d9;
-    --slate-lightest: #e8e0f5;
-    --white: #f8f7fa;
-    --teal: #f59e0b;
-    --accent: #ec4899;
-}
-
-[data-theme="light"] {
-    --background: #fef7ed;
-    --navy: #fed7aa;
-    --navy-light: #fdba74;
-    --navy-lightest: #fb923c;
-    --slate: #78716c;
-    --slate-light: #57534e;
-    --slate-lightest: #292524;
-    --teal: #d97706;
-    --accent: #db2777;
-} */
-
+/* Cyberpunk Neon Theme */
 :root {
+    --background: #0a0a12;
+    --navy: #15152b;
+    --navy-light: #1e1e3f;
+    --navy-lightest: #2a2a55;
+    --slate: #8b8ba9;
+    --slate-light: #a9a9c9;
+    --slate-lightest: #d0d0f0;
+    --white: #f0f0ff;
+    --teal: #00f5d4;
+    --accent: #ff2a6d;
+}
+
+[data-theme="light"] {
+    --background: #f5f5ff;
+    --navy: #e0e0f5;
+    --navy-light: #d0d0ea;
+    --navy-lightest: #b8b8d8;
+    --slate: #666687;
+    --slate-light: #444465;
+    --slate-lightest: #2a2a45;
+    --teal: #008c7a;
+    --accent: #d10047;
+}
+
+/* :root {
     --background: #1a1625;
     --navy: #241f33;
     --navy-light: #302947;
@@ -75,7 +53,32 @@
     --slate-lightest: #292524;
     --teal: #d97706;
     --accent: #db2777;
+} */
+
+/* :root {
+    --background: #1a1625;
+    --navy: #241f33;
+    --navy-light: #302947;
+    --navy-lightest: #3e3460;
+    --slate: #9d93b8;
+    --slate-light: #c2b8d9;
+    --slate-lightest: #e8e0f5;
+    --white: #f8f7fa;
+    --teal: #f59e0b;
+    --accent: #ec4899;
 }
+
+[data-theme="light"] {
+    --background: #fef7ed;
+    --navy: #fed7aa;
+    --navy-light: #fdba74;
+    --navy-lightest: #fb923c;
+    --slate: #78716c;
+    --slate-light: #57534e;
+    --slate-lightest: #292524;
+    --teal: #d97706;
+    --accent: #db2777;
+} */
 
 html {
     scroll-behavior: smooth;
@@ -106,7 +109,7 @@ body {
     margin: 0 auto;
     display: flex;
     gap: 2rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
 }
 
 /* Sidebar */
@@ -116,7 +119,7 @@ body {
     width: 50%;
     max-width: 600px;
     height: 100vh;
-    padding: 6rem 3rem 6rem 0;
+    padding: 4rem 3rem 6rem 0;
     display: flex;
     flex-direction: column;
 }
@@ -160,7 +163,7 @@ body {
 .nav {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0rem;
 }
 
 .nav-link {
@@ -204,6 +207,7 @@ body {
 
 /* Theme Toggle */
 .theme-toggle {
+    /* position: absolute; */
     background: none;
     border: none;
     cursor: pointer;
@@ -398,19 +402,34 @@ body {
 }
 
 /* Resume Link */
+
+.label-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--slate-lightest);
+    font-weight: 300;
+    text-decoration: none;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    transition: all 0.2s ease;
+}
+
 .resume-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     color: var(--slate-lightest);
-    font-weight: 600;
+    font-weight: 300;
     text-decoration: none;
     margin-top: 2rem;
+    margin-right: 1rem;
     transition: all 0.2s ease;
 }
 
 .resume-link:hover {
     color: var(--teal);
+    font-weight: 600;
 }
 
 .resume-link:hover .link-arrow {
@@ -700,4 +719,153 @@ a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--teal);
     outline-offset: 4px;
+}
+
+/* teaching */
+.teaching-list {
+    list-style: none;
+}
+
+.teaching-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.teaching-item:hover {
+    background-color: rgba(94, 234, 212, 0.05);
+    box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+}
+
+.teaching-timeline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 0.25rem;
+}
+
+.teaching-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--slate-lightest);
+    margin-bottom: 0.5rem;
+}
+
+.teaching-location {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--slate-lightest);
+    margin-bottom: 0.5rem;
+}
+
+.teaching-link {
+    text-decoration: none;
+    color: var(--slate-lightest);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.teaching-link:hover {
+    color: var(--teal);
+}
+
+.teaching-link:hover .link-arrow {
+    transform: translate(4px, -4px);
+}
+
+/* .link-arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.2s ease;
+} */
+
+.teaching-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--slate);
+}
+
+/* certificating Section */
+.certificating-list {
+    list-style: none;
+}
+
+.certificating-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.certificating-item:hover {
+    background-color: rgba(94, 234, 212, 0.05);
+    box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+}
+
+.certificating-item:hover .certificating-image {
+    border-color: var(--teal);
+    transform: translate(-4px, -4px);
+}
+
+.certificating-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.certificating-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid rgba(94, 234, 212, 0.2);
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.certificating-year {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.certificating-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--slate-lightest);
+}
+
+.certificating-link {
+    text-decoration: none;
+    color: var(--slate-lightest);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.certificating-link:hover {
+    color: var(--teal);
+}
+
+.certificating-link:hover .link-arrow {
+    transform: translate(4px, -4px);
 }
