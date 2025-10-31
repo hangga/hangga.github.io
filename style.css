@@ -790,8 +790,9 @@ button:focus-visible {
 }
 
 .teaching-location {
-    font-size: 0.9rem;
-    font-weight: 300;
+    font-size: 0.85rem;
+    font-weight: 200;
+    opacity: 0.5;
     color: var(--slate-lightest);
     margin-bottom: 0.5rem;
 }
