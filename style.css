@@ -156,7 +156,7 @@ body {
     font-size: 1rem;
     color: var(--slate);
     max-width: 320px;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 /* Navigation */
@@ -904,4 +904,189 @@ button:focus-visible {
 
 .certificating-link:hover .link-arrow {
     transform: translate(4px, -4px);
+}
+
+/* Button Styles - Compact Cyberpunk Theme */
+.submit-btn {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--accent) 100%);
+    border: none;
+    border-radius: 6px;
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    box-shadow: 
+        0 2px 8px rgba(0, 245, 212, 0.25),
+        0 0 0 1px rgba(0, 245, 212, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    margin-bottom: 10px;
+    margin-top: 36px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 12px rgba(0, 245, 212, 0.35),
+        0 0 0 1px rgba(0, 245, 212, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #00ffdd 0%, #ff3a7c 100%);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 1px 4px rgba(0, 245, 212, 0.2),
+        0 0 0 1px rgba(0, 245, 212, 0.15);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Loading State */
+.submit-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--navy);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success State */
+.submit-btn.success {
+    background: linear-gradient(135deg, #00f5d4 0%, #00a88b 100%);
+    box-shadow: 0 2px 8px rgba(0, 245, 212, 0.3);
+}
+
+/* Error State */
+.submit-btn.error {
+    background: linear-gradient(135deg, var(--accent) 0%, #cc0052 100%);
+    box-shadow: 0 2px 8px rgba(255, 42, 109, 0.3);
+}
+
+/* Disabled State */
+.submit-btn:disabled {
+    background: var(--slate);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+/* Focus State for Accessibility */
+.submit-btn:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 1px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .submit-btn {
+        width: 100%;
+        padding: 0.675rem 1.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Alternative Button Style - Outline Version */
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    box-shadow: 0 0 6px rgba(0, 245, 212, 0.2);
+}
+
+.btn-outline:hover {
+    background: var(--teal);
+    color: var(--navy);
+    box-shadow: 0 0 12px rgba(0, 245, 212, 0.4);
+}
+
+/* Small Button Variant */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+/* Large Button Variant */
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+/* Icon Button */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Style khusus untuk link yang berperilaku seperti button */
+a.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+/* Untuk link yang perlu full width */
+a.submit-btn.full-width {
+    width: 100%;
+    display: flex;
+}
+
+/* Link dengan icon */
+a.submit-btn.btn-icon {
+    gap: 0.5rem;
+}
+
+a.submit-btn.btn-icon svg {
+    width: 16px;
+    height: 16px;
 }
