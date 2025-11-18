@@ -108,8 +108,8 @@ body {
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
-    gap: 2rem;
-    padding: 0 1rem;
+    gap: 1rem;
+    padding: 0 0rem;
 }
 
 /* Sidebar */
@@ -415,7 +415,7 @@ body {
 }
 
 .experience-description ul {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 /* Tech Tags */
@@ -477,7 +477,8 @@ body {
 
 .project-item {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    /* grid-template-columns: 150px 1fr; */
+    grid-template-columns: 150px 1fr;
     gap: 1rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -551,7 +552,7 @@ body {
 
 .writing-item {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 150px 1fr;
     gap: 1rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -710,7 +711,8 @@ body {
     .experience-item,
     .project-item,
     .writing-item {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
+        grid-template-columns: 150px 1fr;
         padding: 1rem;
     }
 
@@ -779,6 +781,7 @@ button:focus-visible {
 
 .teaching-item {
     display: grid;
+    /* grid-template-columns: 150px 1fr; */
     grid-template-columns: 150px 1fr;
     gap: 1rem;
     padding: 1.5rem;
@@ -856,7 +859,7 @@ button:focus-visible {
 }
 
 .teaching-description ul {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 /* certificating Section */
@@ -866,7 +869,7 @@ button:focus-visible {
 
 .certificating-item {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 150px 1fr;
     gap: 1rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
