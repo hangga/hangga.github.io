@@ -606,11 +606,12 @@ body {
 }
 
 .writing-year {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 600;
     color: var(--slate);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-top: 0.2rem;
     margin-bottom: 0.5rem;
 }
 
@@ -618,6 +619,13 @@ body {
     font-size: 1rem;
     font-weight: 500;
     color: var(--slate-lightest);
+}
+
+.writing-blogname {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--slate-lightest);
+    margin-top: 0.5rem;
 }
 
 .writing-link {
