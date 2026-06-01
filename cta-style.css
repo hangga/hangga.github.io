@@ -6,34 +6,25 @@
    ========================================== */
 
 :root {
-    /* --bg: #0d1117;
-    --surface: #161b22;
-    --surface-2: #21262d;
-    --border: #30363d;
-    --border-light: #3b434b;
-    --text: #c9d1d9;
-    --muted: #8b949e;
-    --accent: #2f81f7;
-    --accent-light: #1f6feb;
-    --accent-glow: rgba(47, 129, 247, 0.25);
-    --max-width: 1280px;
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --transition: all 0.2s ease; */
-    --bg: #0a0c10;
-    --surface: #11151c;
-    --surface-2: #181e2a;
-    --border: #232832;
-    --border-light: #2a313c;
-    --text: #f5f7fc;
-    --muted: #8f9bb3;
-    --accent: #10b981;
-    --accent-light: #064e3b;
-    --accent-glow: rgba(16, 185, 129, 0.15);
+    --bg: #090d16;                 /* Biru dongker gelap yang lebih hidup/rich */
+    --surface: #121826;            /* Permukaan kartu yang kontras dan bersih */
+    --surface-2: #1b2336;          /* Lapisan kedua untuk form/box */
+    --border: #242f47;             /* Garis tepi yang tegas tapi lembut */
+    --border-light: #2e3c5a;       /* Garis tepi sorotan ringan */
+    --text: #f8fafc;               /* Teks utama putih cerah (Slate 50) */
+    --muted: #94a3b8;              /* Teks sekunder abu-abu terang (Slate 400) */
+    --accent: #6366f1;             /* Warna utama: Indigo khas startup modern */
+    --accent-light: #4f46e5;       /* Warna hover: Indigo yang lebih pekat */
+    --accent-glow: rgba(99, 102, 241, 0.15); /* Efek pendaran/shadow Indigo */
     --max-width: 1280px;
     --radius-sm: 12px;
     --radius-md: 20px;
     --transition: all 0.25s ease;
+}
+
+p{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 * {
@@ -190,7 +181,7 @@ a {
 
 .btn-secondary:hover {
     border-color: var(--accent);
-    background: rgba(47, 129, 247, 0.1);
+    background: rgba(99, 102, 241, 0.1);
     transform: translateY(-1px);
 }
 
@@ -280,7 +271,7 @@ nav {
 }
 
 /* Floating illustration image in hero (like about section) */
-.hero::after {
+/* .hero::after {
     content: "";
     position: absolute;
     bottom: 30%;
@@ -292,9 +283,9 @@ nav {
     opacity: 0.4;
     pointer-events: none;
     z-index: 0;
-    /* animation: float 6s ease-in-out infinite; */
+    animation: float 6s ease-in-out infinite;
     filter: grayscale(0.3) brightness(0.9);
-}
+} */
 
 .hero.no-bg::after {
     display: none;
@@ -460,10 +451,11 @@ nav {
     max-width: 70%;
     height: auto;
     border-radius: 10px;
-    background: linear-gradient(145deg, var(--surface-2), var(--surface));
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    opacity: 0.9;
+    /* background: linear-gradient(145deg, var(--surface-2), var(--surface));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); */
     /* animation: float 5s ease-in-out infinite; */
-    border: 1px solid var(--border);
+    /* border: 1px solid var(--border); */
     transition: transform 0.3s ease;
 }
 
@@ -544,7 +536,7 @@ nav {
     display: inline-block;
     font-weight: 600;
     color: var(--accent);
-    width: 100px;
+    width: 160px;
 }
 
 .desc {
@@ -556,7 +548,7 @@ nav {
     background: var(--surface);
     border-left: 4px solid var(--accent);
     padding: 28px 32px;
-    border-radius: var(--radius-md);
+    /* border-radius: var(--radius-md); */
     margin-top: 28px;
     position: relative;
     overflow: hidden;
@@ -695,7 +687,7 @@ nav {
 
 /* Work section – improved with brand logos */
 .work-card {
-    background: linear-gradient(120deg, #0c0f16 10%, #5b0896 60%, #077344 100%);
+    background: linear-gradient(135deg, #121826 40%, #2e1065 80%, #022c22 100%);
 }
 
 .work-card .work-header {
