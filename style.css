@@ -70,7 +70,7 @@ body::before {
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 48px 48px;
-    opacity: 0.06;
+    opacity: 0.2;
 }
 
 body::after {
@@ -260,7 +260,7 @@ nav {
 
 /* Hero section with floating image (like about) */
 .hero {
-    padding-top: 120px;
+    /* padding-top: 120px; */
     padding-bottom: 70px;
     position: relative;
     overflow: hidden;
@@ -270,10 +270,10 @@ nav {
 .hero::before {
     content: "";
     position: absolute;
-    top: 20%;
+    top: -20%;
     left: -10%;
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(47,129,247,0.1) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
@@ -294,6 +294,10 @@ nav {
     z-index: 0;
     /* animation: float 6s ease-in-out infinite; */
     filter: grayscale(0.3) brightness(0.9);
+}
+
+.hero.no-bg::after {
+    display: none;
 }
 
 /* 
@@ -400,9 +404,10 @@ nav {
 
 /* About section – with card glow and floating image effect */
 .about-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    /* background: var(--surface); */
+    background: linear-gradient(120deg, #11151c 10%, #141177 40%, #EC4899 100%);
+    /* border: 1px solid var(--border);
+    border-radius: var(--radius-md); */
     padding: 40px;
     transition: var(--transition);
     position: relative;
@@ -413,7 +418,7 @@ nav {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: var(--radius-md);
+    /* border-radius: var(--radius-md); */
     padding: 1px;
     background: linear-gradient(145deg, var(--accent), transparent);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -626,7 +631,7 @@ nav {
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    /* border-radius: var(--radius-md); */
     padding: 28px;
     transition: var(--transition);
     position: relative;
@@ -639,15 +644,33 @@ nav {
     box-shadow: 0 12px 28px -8px rgba(0,0,0,0.5);
 }
 
+.service-card{
+    display: flex;
+    flex-direction: column;
+}
+
 .service-card .card-icon {
     font-size: 2rem;
-    margin-bottom: 16px;
-    display: inline-block;
-    background: var(--bg);
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    transition: var(--transition);
+    margin-bottom: 12px;
+    width: 200px;
+    /* height: 200px; */
+    /* display: inline-block; */
+    /* background: var(--bg); */
+    /* padding: 4px; */
+    /* border-radius: 12px; */
+    /* border: 1px solid var(--border); */
+    /* transition: var(--transition); */
+}
+
+.service-card .card-image {
+    width: 80px;
+    margin: auto;
+    /* display: inline-block; */
+    /* background: var(--bg); */
+    /* padding: 4px; */
+    /* border-radius: 12px; */
+    /* border: 1px solid var(--border); */
+    /* transition: var(--transition); */
 }
 
 .service-card:hover .card-icon {
@@ -671,6 +694,10 @@ nav {
 }
 
 /* Work section – improved with brand logos */
+.work-card {
+    background: linear-gradient(120deg, #0c0f16 10%, #5b0896 60%, #077344 100%);
+}
+
 .work-card .work-header {
     align-items: center;
     gap: 2px;
@@ -1047,12 +1074,14 @@ iframe {
 
 /* Price tags in services */
 .service-price {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    margin-top: auto;
+    padding-top: 24px;
     font-weight: 700;
     color: var(--accent);
     font-size: 1.1rem;
     border-top: 1px solid var(--border);
-    padding-top: 16px;
+    /* padding-top: 16px; */
 }
 
 /* FAQ list */
@@ -1068,4 +1097,56 @@ iframe {
     margin-top: 20px;
     font-size: 1.2rem;
     color: var(--accent);
+}
+
+.engagement-process{
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.process-flow{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.process-item{
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+}
+
+.process-item h3{
+    margin-bottom: 8px;
+}
+
+.process-number{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+}
+
+.process-arrow{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--accent);
+    padding: 16px 0;
+}
+
+.process-item a{
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.process-item a:hover{
+    text-decoration: underline;
 }
