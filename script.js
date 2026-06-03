@@ -1,18 +1,18 @@
 // Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
+// const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
 // Check for saved theme preference or default to 'dark'
 const currentTheme = localStorage.getItem('theme') || 'dark';
 htmlElement.setAttribute('data-theme', currentTheme);
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+// themeToggle.addEventListener('click', () => {
+//     const currentTheme = htmlElement.getAttribute('data-theme');
+//     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
+//     htmlElement.setAttribute('data-theme', newTheme);
+//     localStorage.setItem('theme', newTheme);
+// });
 
 // Spotlight effect that follows the cursor
 const spotlight = document.querySelector('.spotlight');
