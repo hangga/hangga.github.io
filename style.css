@@ -4,6 +4,164 @@
     box-sizing: border-box;
 }
 
+/* Dark Rose Gold */
+/* :root {
+    --background: #120f12;
+    --navy: #1f1a20;
+    --navy-light: #2d2630;
+    --navy-lightest: #453949;
+
+    --slate: #b5a9b9;
+    --slate-light: #e5dce8;
+    --slate-lightest: #faf7fb;
+
+    --white: #ffffff;
+
+    --teal: #f59e0b;
+    --accent: #f472b6;
+}
+
+[data-theme="light"] {
+    --background: #fff9fb;
+    --navy: #fde7f3;
+    --navy-light: #fbcfe8;
+    --navy-lightest: #f9a8d4;
+
+    --slate: #6b6570;
+    --slate-light: #433f46;
+    --slate-lightest: #17141a;
+
+    --teal: #d97706;
+    --accent: #db2777;
+} */
+
+
+/* Luxury Black Gold */
+/* :root {
+    --background: #0c0c0c;
+    --navy: #171717;
+    --navy-light: #262626;
+    --navy-lightest: #404040;
+
+    --slate: #a3a3a3;
+    --slate-light: #d4d4d4;
+    --slate-lightest: #fafafa;
+
+    --white: #ffffff;
+
+    --teal: #f59e0b;
+    --accent: #fbbf24;
+}
+
+[data-theme="light"] {
+    --background: #fffdf7;
+    --navy: #fef3c7;
+    --navy-light: #fde68a;
+    --navy-lightest: #fcd34d;
+
+    --slate: #57534e;
+    --slate-light: #44403c;
+    --slate-lightest: #1c1917;
+
+    --teal: #d97706;
+    --accent: #ca8a04;
+} */
+
+
+/* Apple Minimal */
+/* :root {
+    --background: #0f0f10;
+    --navy: #1c1c1e;
+    --navy-light: #2c2c2e;
+    --navy-lightest: #3a3a3c;
+
+    --slate: #8e8e93;
+    --slate-light: #d1d1d6;
+    --slate-lightest: #f2f2f7;
+
+    --white: #ffffff;
+
+    --teal: #0a84ff;
+    --accent: #5e5ce6;
+}
+
+[data-theme="light"] {
+    --background: #ffffff;
+    --navy: #f2f2f7;
+    --navy-light: #e5e5ea;
+    --navy-lightest: #d1d1d6;
+
+    --slate: #6e6e73;
+    --slate-light: #3a3a3c;
+    --slate-lightest: #1d1d1f;
+
+    --teal: #0071e3;
+    --accent: #5856d6;
+} */
+
+
+/* Neo Cyber Purple */
+/* :root {
+    --background: #09090b;
+    --navy: #18181b;
+    --navy-light: #27272a;
+    --navy-lightest: #3f3f46;
+
+    --slate: #a1a1aa;
+    --slate-light: #d4d4d8;
+    --slate-lightest: #fafafa;
+
+    --white: #ffffff;
+
+    --teal: #22d3ee;
+    --accent: #ec4899;
+}
+
+[data-theme="light"] {
+    --background: #fafafa;
+    --navy: #f4f4f5;
+    --navy-light: #e4e4e7;
+    --navy-lightest: #d4d4d8;
+
+    --slate: #71717a;
+    --slate-light: #3f3f46;
+    --slate-lightest: #18181b;
+
+    --teal: #0891b2;
+    --accent: #db2777;
+} */
+
+/* Indigo */
+/* :root {
+    --background: #0f172a;
+    --navy: #1e293b;
+    --navy-light: #334155;
+    --navy-lightest: #475569;
+
+    --slate: #94a3b8;
+    --slate-light: #cbd5e1;
+    --slate-lightest: #f1f5f9;
+
+    --white: #ffffff;
+
+    --teal: #06b6d4;
+    --accent: #8b5cf6;
+}
+
+[data-theme="light"] {
+    --background: #ffffff;
+    --navy: #f8fafc;
+    --navy-light: #e2e8f0;
+    --navy-lightest: #cbd5e1;
+
+    --slate: #64748b;
+    --slate-light: #334155;
+    --slate-lightest: #0f172a;
+
+    --teal: #0891b2;
+    --accent: #7c3aed;
+} */
+
 /* Cyberpunk Neon Theme */
 :root {
     --background: #0a0a12;
@@ -54,8 +212,8 @@
     --teal: #d97706;
     --accent: #db2777;
 } */
-
-/* :root {
+/* 
+:root {
     --background: #1a1625;
     --navy: #241f33;
     --navy-light: #302947;
