@@ -374,7 +374,7 @@ body::after {
 }
 
 .title {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--slate-lightest);
     margin-bottom: 1rem;
@@ -536,6 +536,10 @@ body::after {
 
 .link:hover {
     color: var(--teal);
+}
+
+.about{
+    padding-left: 1.5rem;
 }
 
 /* Experience */
