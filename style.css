@@ -688,9 +688,9 @@ body::after {
     color: var(--slate-lightest);
     font-weight: 300;
     text-decoration: none;
-    margin-top: 2rem;
+    /* margin-top: 1rem; */
     margin-right: 1rem;
-    margin-left: 2rem;
+    margin-left: 1.7rem;
     transition: all 0.2s ease;
 }
 
@@ -859,6 +859,7 @@ body::after {
     font-weight: 300;
     color: var(--slate-lightest);
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .writing-link {
