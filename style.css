@@ -409,21 +409,37 @@ body::after {
 }
 
 .nav-indicator {
-    width: 2rem;
+    width: 4rem;
     height: 1px;
-    background-color: var(--slate);
+    /* background-color: var(--slate); */
     transition: all 0.2s ease;
+    /* flex: 1;
+    height: 1.5px; */
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--slate)
+    );
 }
 
 .nav-link:hover .nav-indicator,
 .nav-link.active .nav-indicator {
-    width: 5rem;
-    background-color: var(--slate-lightest);
+    width: 6rem;
+    /* background-color: var(--slate-lightest);
+
+    flex: 1; */
+    height: 1.5px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--teal)
+    );
 }
 
 .nav-link:hover .nav-text,
 .nav-link.active .nav-text {
-    color: var(--slate-lightest);
+    /* color: var(--slate-lightest); */
+    color: var(--teal);
 }
 
 /* Sidebar Footer */
@@ -540,7 +556,7 @@ body::after {
 }
 
 .about{
-    padding-left: 1.5rem;
+    /* padding-left: 1.5rem; */
 }
 
 /* Experience */
@@ -860,9 +876,18 @@ body::after {
 .writing-blogname {
     font-size: 0.8rem;
     font-weight: 300;
-    color: var(--slate-lightest);
+    /* color: var(--slate-lightest); */
     margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.writing-blogname span {
+    position: absolute;
+    margin: 4px 0 0 10px;
+}
+
+.writing-blogname p {
+    color: var(--slate);
 }
 
 .writing-link {
@@ -1397,19 +1422,28 @@ a.submit-btn.btn-icon svg {
     margin-bottom: 50px;
 }
 
-.linetitle {
-    flex: 1;              /* ambil seluruh sisa ruang */
+/* .linetitle {
+    flex: 1;              
     height: 1px;
-    /* margin-left: 20px; */
     width: 60%;
     height: 0.04px;
     background-color: var(--slate);
     transition: all 0.2s ease;
     opacity: 0.5;
+} */
+
+.linetitle {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--slate)
+    );
 }
 
 .title-next {
-    margin-left: 12px;
+    margin-left: 6px;
     flex-shrink: 0;       /* jangan ikut mengecil */
 }
 
