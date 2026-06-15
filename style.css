@@ -524,6 +524,7 @@ body::after {
     margin-bottom: 1rem;
     font-size: 1rem;
     line-height: 1.75;
+    margin: 0 20px 20px 24px;
 }
 
 .link {
@@ -592,14 +593,16 @@ body::after {
 }
 
 .experience-title {
-    font-size: 1.15rem;
-    font-weight: 1000;
+    /* font-size: 1.5rem; */
+    font-weight: 400;
     color: var(--slate-lightest);
     margin-bottom: 0.5rem;
 }
 
 .experience-jobtitle {
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
+    /* font-weight: 400; */
+    font-size: 0.95rem;
     font-weight: 400;
     /* opacity: 0.7; */
     color: var(--slate-lightest);
@@ -1052,8 +1055,7 @@ button:focus-visible {
 }
 
 .teaching-title {
-    font-size: 1.15rem;
-    font-weight: 1000;
+    font-weight: 400;
     color: var(--slate-lightest);
     margin-bottom: 0.5rem;
 }
@@ -1378,4 +1380,42 @@ a.submit-btn.btn-icon {
 a.submit-btn.btn-icon svg {
     width: 16px;
     height: 16px;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--slate);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease;
+    padding: 0.75rem 30px 0px 20px;
+    margin-bottom: 50px;
+}
+
+.linetitle {
+    flex: 1;              /* ambil seluruh sisa ruang */
+    height: 1px;
+    /* margin-left: 20px; */
+    width: 60%;
+    height: 0.04px;
+    background-color: var(--slate);
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.title-next {
+    margin-left: 12px;
+    flex-shrink: 0;       /* jangan ikut mengecil */
+}
+
+.title-next h3 {
+    /* text-transform: none; */
+    font-weight: 200;
+    font-size: 1rem;
+    margin: 0;
 }
