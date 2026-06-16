@@ -74,6 +74,8 @@ navLinks.forEach(link => {
 const experienceItems = document.querySelectorAll('.experience-item');
 const projectItems = document.querySelectorAll('.project-item');
 const writingItems = document.querySelectorAll('.writing-item');
+const certificationItems = document.querySelectorAll('.certificating-item');
+
 
 function addHoverEffect(items) {
     items.forEach(item => {
@@ -98,6 +100,16 @@ addHoverEffect(projectItems);
 addHoverEffect(writingItems);
 
 // Make experience, project, and writing items clickable
+
+certificationItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const link = item.querySelector('.certificating-link');
+        if (link) {
+            window.open(link.href, '_blank');
+        }
+    });
+});
+
 experienceItems.forEach(item => {
     item.addEventListener('click', () => {
         const link = item.querySelector('.experience-link');
