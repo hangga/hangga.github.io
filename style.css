@@ -1453,3 +1453,14 @@ a.submit-btn.btn-icon svg {
     font-size: 1rem;
     margin: 0;
 }
+
+.ayah {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--slate-lightest);
+    margin: 50px 0 20px 40px;
+}
+
+.ayah-content {
+    text-align: right;
+}
