@@ -422,12 +422,9 @@ body::after {
     );
 }
 
-.nav-link:hover .nav-indicator,
+/* .nav-link:hover .nav-indicator,
 .nav-link.active .nav-indicator {
     width: 6rem;
-    /* background-color: var(--slate-lightest);
-
-    flex: 1; */
     height: 1.5px;
     background: linear-gradient(
         to right,
@@ -438,8 +435,38 @@ body::after {
 
 .nav-link:hover .nav-text,
 .nav-link.active .nav-text {
-    /* color: var(--slate-lightest); */
     color: var(--teal);
+} */
+
+/* Active */
+.nav-link.active .nav-indicator {
+    width: 6rem;
+    height: 1.5px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--teal)
+    );
+}
+
+.nav-link.active .nav-text {
+    color: var(--teal);
+}
+
+
+/* Hover */
+.nav-link:hover .nav-indicator {
+    width: 6rem;
+    height: 1.5px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #ffffff
+    );
+}
+
+.nav-link:hover .nav-text {
+    color: #ffffff;
 }
 
 /* Sidebar Footer */
