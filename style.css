@@ -548,11 +548,11 @@ body::after {
 /* Main Content */
 .main-content {
     width: 78%;
-    padding: 6rem 0 6rem 3rem;
+    padding: 1.8rem 0 6rem 3rem;
 }
 
 .section {
-    padding-top: 50px;
+    padding-top: 60px;
     margin-bottom: 8rem;
     /* scroll-margin-top: 6rem; */
 }
