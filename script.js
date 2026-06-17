@@ -55,18 +55,52 @@ window.addEventListener('scroll', updateActiveNav);
 window.addEventListener('load', updateActiveNav);
 
 // Smooth scroll for navigation links
+// navLinks.forEach(link => {
+//     link.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         const targetId = link.getAttribute('href');
+//         const targetSection = document.querySelector(targetId);
+
+//         if (targetSection) {
+//             targetSection.scrollIntoView({
+//                 behavior: 'smooth',
+//                 block: 'start'
+//             });
+//         }
+//     });
+// });
+
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
 
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+        const targetSection = document.querySelector(link.getAttribute('href'));
+
+        if (!targetSection) return;
+
+        const start = window.pageYOffset;
+        const end = targetSection.offsetTop;
+        const duration = 200;
+        const startTime = performance.now();
+
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
         }
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            const eased = easeOutCubic(progress);
+
+            window.scrollTo(0, start + (end - start) * eased);
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
     });
 });
 
@@ -82,7 +116,7 @@ function addHoverEffect(items) {
         item.addEventListener('mouseenter', () => {
             items.forEach(otherItem => {
                 if (otherItem !== item) {
-                    otherItem.style.opacity = '0.5';
+                    otherItem.style.opacity = '0.4';
                 }
             });
         });
