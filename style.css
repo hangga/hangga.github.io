@@ -894,7 +894,8 @@ body::after {
 }
 
 .cert-image {
-    width: 70%;
+    width: 50%;
+    margin: 6px 0 0 50px;
     /* height: 50%; */
     object-fit: cover;
     /* border: 2px solid rgba(94, 234, 212, 0.2); */
