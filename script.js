@@ -109,6 +109,8 @@ const experienceItems = document.querySelectorAll('.experience-item');
 const projectItems = document.querySelectorAll('.project-item');
 const writingItems = document.querySelectorAll('.writing-item');
 const certificationItems = document.querySelectorAll('.certificating-item');
+const teachingItems = document.querySelectorAll('.teaching-item');
+
 
 
 function addHoverEffect(items) {
@@ -132,6 +134,8 @@ function addHoverEffect(items) {
 addHoverEffect(experienceItems);
 addHoverEffect(projectItems);
 addHoverEffect(writingItems);
+addHoverEffect(certificationItems)
+addHoverEffect(teachingItems)
 
 // Make experience, project, and writing items clickable
 
@@ -165,6 +169,15 @@ projectItems.forEach(item => {
 writingItems.forEach(item => {
     item.addEventListener('click', () => {
         const link = item.querySelector('.writing-link');
+        if (link) {
+            window.open(link.href, '_blank');
+        }
+    });
+});
+
+teachingItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const link = item.querySelector('.teaching-link');
         if (link) {
             window.open(link.href, '_blank');
         }
