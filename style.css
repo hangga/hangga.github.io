@@ -918,21 +918,46 @@ body::after {
     color: var(--slate-lightest);
 }
 
+
 .writing-blogname {
-    font-size: 0.8rem;
-    font-weight: 300;
-    /* color: var(--slate-lightest); */
+    color: var(--slate);
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
     margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
 }
 
-.writing-blogname span {
+
+/* .writing-blogname span {
     position: absolute;
     margin: 4px 0 0 10px;
-}
+} */
 
 .writing-blogname p {
-    color: var(--slate);
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+.writing-blogname img {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 1.5px solid var(--navy-lightest);
+    object-fit: contain;
+    padding: 2px;
+}
+
+.writing-blogname svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    object-fit: contain;
 }
 
 .writing-link {
