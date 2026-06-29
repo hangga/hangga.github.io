@@ -1,0 +1,323 @@
+        // ============================================================
+        // DATA
+        // ============================================================
+        const extensions = [
+            "log", "txt", "conf", "cnf", "ini", "env",
+            "yaml", "yml", "json", "xml",
+            "sql", "db", "sqlite",
+            "bak", "backup", "old", "orig",
+            "zip", "tar", "gz", "7z", "rar",
+            "swp", "git", "svn",
+            "htaccess", "htpasswd",
+            "pem", "key", "crt", "csr", "p12", "pfx", "sh"
+        ];
+
+        const presets = {
+            Secrets: ["env", "pem", "key", "p12", "pfx", "crt", "csr"],
+            Backup: ["bak", "backup", "old", "orig", "zip", "gz", "tar", "7z", "rar"],
+            Config: ["conf", "cnf", "ini", "yaml", "yml", "json", "xml", "htaccess", "htpasswd"],
+            Database: ["sql", "db", "sqlite"]
+        };
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let selected = new Set(extensions); // all active by default
+        let lastQuery = '';
+
+        // ============================================================
+        // DOM REFS
+        // ============================================================
+        const container = document.getElementById('extensions');
+        const domainInput = document.getElementById('domain');
+        const keywordInput = document.getElementById('keyword');
+        const queryPlaceholder = document.getElementById('queryPlaceholder');
+        const queryText = document.getElementById('queryText');
+        const copyBtn = document.getElementById('copyBtn');
+        const domainDot = document.getElementById('domainDot');
+        const domainHint = document.getElementById('domainHint');
+        const selectedCount = document.getElementById('selectedCount');
+        const totalExts = document.getElementById('totalExts');
+
+        // ============================================================
+        // RENDER CHIPS
+        // ============================================================
+        function render() {
+            container.innerHTML = '';
+            extensions.forEach(ext => {
+                const active = selected.has(ext);
+                const chip = document.createElement('button');
+                chip.className = 'chip' + (active ? ' active' : '');
+                chip.textContent = '.' + ext;
+                chip.addEventListener('click', () => toggle(ext));
+                container.appendChild(chip);
+            });
+            updateCounts();
+        }
+
+        function toggle(ext) {
+            if (selected.has(ext)) selected.delete(ext);
+            else selected.add(ext);
+            render();
+            buildQuery();
+        }
+
+        // ============================================================
+        // PRESETS
+        // ============================================================
+        function applyPreset(list) {
+            selected.clear();
+            list.forEach(ext => { if (extensions.includes(ext)) selected.add(ext); });
+            render();
+            buildQuery();
+            toast('Preset: ' + list.length + ' extensions', 'info');
+        }
+
+        function presetSecrets() { applyPreset(presets.Secrets); }
+
+        function presetBackup() { applyPreset(presets.Backup); }
+
+        function presetConfig() { applyPreset(presets.Config); }
+
+        function presetDatabase() { applyPreset(presets.Database); }
+
+        function selectAll() {
+            extensions.forEach(ext => selected.add(ext));
+            render();
+            buildQuery();
+            toast('All selected', 'info');
+        }
+
+        function clearAll() {
+            selected.clear();
+            render();
+            buildQuery();
+            toast('All cleared', 'info');
+        }
+
+        // ============================================================
+        // COUNTS
+        // ============================================================
+        function updateCounts() {
+            const total = extensions.length;
+            const active = selected.size;
+            selectedCount.textContent = active + ' selected';
+            totalExts.textContent = total + ' exts';
+        }
+
+        // ============================================================
+        // DOMAIN VALIDATION
+        // ============================================================
+        function validateDomain() {
+            const raw = domainInput.value.trim();
+            if (!raw) {
+                domainDot.className = 'dot';
+                domainHint.textContent = 'Enter a valid domain';
+                return false;
+            }
+            const clean = raw.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+            const ok = /^[a-z0-9]([a-z0-9\-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9\-]*[a-z0-9])?)*\.[a-z]{2,}$/i.test(clean);
+            if (ok) {
+                domainDot.className = 'dot valid';
+                domainHint.textContent = '✓ ' + clean;
+            } else {
+                domainDot.className = 'dot invalid';
+                domainHint.textContent = '⚠️ invalid format';
+            }
+            return ok;
+        }
+
+        function getDomain() {
+            const raw = domainInput.value.trim();
+            if (!raw) return null;
+            return raw.replace(/^https?:\/\//, '').replace(/\/.*$/, '') || null;
+        }
+
+        // ============================================================
+        // BUILD QUERY
+        // ============================================================
+        function buildQuery() {
+            const domain = getDomain();
+            const keyword = keywordInput.value.trim();
+            const extList = [...selected];
+
+            if (!domain || extList.length === 0) {
+                queryText.style.display = 'none';
+                queryPlaceholder.style.display = 'inline';
+                copyBtn.style.display = 'none';
+                lastQuery = '';
+                return null;
+            }
+
+            const parts = extList.map(e => 'ext:' + e);
+            let q = 'site:' + domain + ' ' + parts.join(' | ');
+            if (keyword) q += ' "' + keyword + '"';
+
+            queryText.textContent = q;
+            queryText.style.display = 'inline';
+            queryPlaceholder.style.display = 'none';
+            copyBtn.style.display = 'inline-block';
+            copyBtn.classList.remove('copied');
+            lastQuery = q;
+            return q;
+        }
+
+        // ============================================================
+        // ACTIONS
+        // ============================================================
+        function googleSearch() {
+            if (!validateDomain()) {
+                toast('Enter a valid domain', 'error');
+                domainInput.focus();
+                return;
+            }
+            const q = buildQuery();
+            if (!q) {
+                toast('Select at least one extension', 'error');
+                return;
+            }
+            window.open('https://www.google.com/search?q=' + encodeURIComponent(q) + '&start=30', '_blank');
+            toast('Searching Google…', 'success');
+        }
+
+        function copyQuery() {
+            const text = queryText.textContent;
+            if (!text) return;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    copyBtn.textContent = '✓ Copied!';
+                    copyBtn.classList.add('copied');
+                    toast('Copied!', 'success');
+                    setTimeout(() => { copyBtn.textContent = '📋 Copy';
+                        copyBtn.classList.remove('copied'); }, 1800);
+                }).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy');
+                toast('Copied!', 'success'); } catch (e) { toast('Copy failed', 'error'); }
+            document.body.removeChild(ta);
+        }
+
+        // ============================================================
+        // SHORTCUTS
+        // ============================================================
+        function openCDX() {
+            const d = getDomain();
+            if (!d) { toast('Enter domain first', 'error'); return; }
+            window.open('https://web.archive.org/cdx/search/cdx?url=*.' + d + '/*&collapse=urlkey&output=text&fl=original',
+                '_blank');
+            toast('CDX opened', 'info');
+        }
+
+        function openCalendar() {
+            const d = getDomain();
+            if (!d) { toast('Enter domain first', 'error'); return; }
+            window.open('https://web.archive.org/web/*/https://' + d + '/*', '_blank');
+            toast('Calendar opened', 'info');
+        }
+
+        function openCRT() {
+            const d = getDomain();
+            if (!d) { toast('Enter domain first', 'error'); return; }
+            window.open('https://crt.sh/?q=%25.' + d, '_blank');
+            toast('crt.sh opened', 'info');
+        }
+
+        function openURLScan() {
+            const d = getDomain();
+            if (!d) { toast('Enter domain first', 'error'); return; }
+            window.open('https://urlscan.io/search/#domain:' + d, '_blank');
+            toast('URLScan opened', 'info');
+        }
+
+        function openGithub() {
+            window.open('https://github.com/search?q=path:**/.env%20MAIL_HOST=smtp.gmail.com&type=code', '_blank');
+            toast('GitHub secrets search', 'info');
+        }
+
+        function openAll() {
+            const d = getDomain();
+            if (!d) { toast('Enter domain first', 'error'); return; }
+            googleSearch();
+            setTimeout(openCDX, 300);
+            setTimeout(openCalendar, 600);
+            setTimeout(openCRT, 900);
+            setTimeout(openURLScan, 1200);
+            setTimeout(openGithub, 1500);
+            toast('Opening all…', 'success');
+        }
+
+        // ============================================================
+        // TOAST (ringan)
+        // ============================================================
+        function toast(msg, type) {
+            type = type || 'info';
+            const container = document.getElementById('toastContainer');
+            const el = document.createElement('div');
+            const icons = { success: '✅', error: '❌', info: '💬' };
+            el.className = 'toast ' + type;
+            el.innerHTML = '<span>' + (icons[type] || '💬') + '</span> ' + msg;
+            container.appendChild(el);
+            setTimeout(() => {
+                el.classList.add('out');
+                setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 250);
+            }, 2500);
+            el.addEventListener('click', () => {
+                el.classList.add('out');
+                setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 250);
+            });
+        }
+
+        // ============================================================
+        // KEYBOARD SHORTCUTS
+        // ============================================================
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.shiftKey) {
+                e.preventDefault();
+                googleSearch();
+                return;
+            }
+            if (e.ctrlKey && e.shiftKey) {
+                const map = {
+                    '1': openCDX,
+                    '2': openCalendar,
+                    '3': openCRT,
+                    '4': openURLScan,
+                    '5': openGithub,
+                    '6': openAll,
+                };
+                const fn = map[e.key];
+                if (fn) { e.preventDefault();
+                    fn(); }
+            }
+        });
+
+        // ============================================================
+        // AUTO BUILD
+        // ============================================================
+        domainInput.addEventListener('input', () => { validateDomain();
+            buildQuery(); });
+        keywordInput.addEventListener('input', buildQuery);
+
+        // Enter on domain/keyword triggers search
+        domainInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault();
+                googleSearch(); } });
+        keywordInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.shiftKey) { e.preventDefault();
+                googleSearch(); } });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        render();
+        validateDomain();
+        buildQuery();
+        if (!domainInput.value.trim()) setTimeout(() => domainInput.focus(), 100);
+        console.log('⚡ GDR · Google Dork Recon loaded');

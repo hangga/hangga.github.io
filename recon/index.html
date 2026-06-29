@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GDR · Google Dork Recon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <h1>◈ <span class="accent">GDR</span></h1>
+                <span class="header-badge">Google Dork Recon</span>
+            </div>
+            <div class="stats">
+                <span id="selectedCount">0</span>
+                <span id="totalExts">0</span>
+            </div>
+        </header>
+
+        <!-- GRID -->
+        <div class="grid-2">
+
+            <!-- LEFT -->
+            <div>
+
+                <!-- TARGET -->
+                <div class="card">
+                    <div class="card-title">🎯 Target</div>
+                    <div class="input-group">
+                        <!-- <label for="domain">Domain</label> -->
+                        <input id="domain" placeholder="example.com" spellcheck="false" autofocus />
+                        <div class="input-hint">
+                            <span class="dot" id="domainDot"></span>
+                            <span id="domainHint">Enter a valid domain</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DORK BUILDER -->
+                <div class="card">
+                    <div class="card-title">🔍 Dork Builder</div>
+
+                    <!-- Chips -->
+                    <div class="chips" id="extensions"></div>
+
+                    <!-- Presets -->
+                    <div class="preset-row">
+                        <button class="preset-btn cyan" onclick="presetSecrets()">Secrets</button>
+                        <button class="preset-btn amber" onclick="presetBackup()">Backup</button>
+                        <button class="preset-btn purple" onclick="presetConfig()">Config</button>
+                        <button class="preset-btn green" onclick="presetDatabase()">Database</button>
+                        <button class="preset-btn" onclick="selectAll()">Select All</button>
+                        <button class="preset-btn" onclick="clearAll()">Clear</button>
+                    </div>
+
+                    <!-- Keyword -->
+                    <div class="input-group">
+                        <label for="keyword">Keyword (optional)</label>
+                        <input id="keyword" placeholder="password, admin, secret…" spellcheck="false" />
+                    </div>
+
+                    <!-- Query -->
+                    <div class="query-box" id="queryBox">
+                        <span class="query-text">
+                            <span class="placeholder" id="queryPlaceholder">Select extensions to build a query…</span>
+                            <span id="queryText" style="display:none;"></span>
+                        </span>
+                        <button class="copy-btn" id="copyBtn" style="display:none;" onclick="copyQuery()">📋 Copy</button>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-row">
+                        <button class="btn btn-primary" onclick="googleSearch()">🚀 Open</button>
+                        <!-- <button class="btn btn-secondary" onclick="buildQuery()">↻ Refresh</button> -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div>
+
+                <!-- SHORTCUTS -->
+                <div class="card">
+                    <div class="card-title">⚡ Shortcuts</div>
+                    <div class="shortcut-grid">
+                        <button class="shortcut-btn" onclick="openCDX()">
+                            <span class="icon">📦</span> CDX
+                            <span class="label">⇧+1</span>
+                        </button>
+                        <button class="shortcut-btn" onclick="openCalendar()">
+                            <span class="icon">📅</span> Calendar
+                            <span class="label">⇧+2</span>
+                        </button>
+                        <!-- <button class="shortcut-btn" onclick="openCRT()">
+                            <span class="icon">🔐</span> crt.sh
+                            <span class="label">⇧+3</span>
+                        </button> -->
+                        <button class="shortcut-btn" onclick="openURLScan()">
+                            <span class="icon">🔎</span> URLScan
+                            <span class="label">⇧+4</span>
+                        </button>
+                        <button class="shortcut-btn" onclick="openGithub()">
+                            <span class="icon">🐙</span> GitHub
+                            <span class="label">⇧+5</span>
+                        </button>
+                        <button class="shortcut-btn full" onclick="openAll()">
+                            <span class="icon">🚀</span> Open All
+                            <span class="label">⇧+6</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TIPS -->
+                <div class="card" style="margin-top:0;">
+                    <div class="card-title">💡 Tips</div>
+                    <ul class="tips">
+                        <li><kbd>Shift+Enter</kbd> search</li>
+                        <li><kbd>Ctrl+Shift+1-6</kbd> shortcuts</li>
+                        <li>Presets auto‑select extensions</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer"><strong>GDR</strong> · Google Dork Recon · lightweight</div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
