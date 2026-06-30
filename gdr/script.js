@@ -1,4 +1,4 @@
-        // ============================================================
+// ============================================================
         // DATA
         // ============================================================
         const extensions = [
@@ -9,20 +9,22 @@
             "zip", "tar", "gz", "7z", "rar",
             "swp", "git", "svn",
             "htaccess", "htpasswd",
-            "pem", "key", "crt", "csr", "p12", "pfx", "sh"
+            "pem", "key", "crt", "csr", "p12", "pfx", "sh",
+            "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"
         ];
 
         const presets = {
             Secrets: ["env", "pem", "key", "p12", "pfx", "crt", "csr"],
             Backup: ["bak", "backup", "old", "orig", "zip", "gz", "tar", "7z", "rar"],
             Config: ["conf", "cnf", "ini", "yaml", "yml", "json", "xml", "htaccess", "htpasswd"],
-            Database: ["sql", "db", "sqlite"]
+            Database: ["sql", "db", "sqlite"],
+            Admin: ["php", "asp", "aspx", "jsp", "do", "action"] // admin panel indicators
         };
 
         // ============================================================
         // STATE
         // ============================================================
-        let selected = new Set(extensions); // all active by default
+        let selected = new Set(extensions);
         let lastQuery = '';
 
         // ============================================================
@@ -31,6 +33,16 @@
         const container = document.getElementById('extensions');
         const domainInput = document.getElementById('domain');
         const keywordInput = document.getElementById('keyword');
+        const inurlInput = document.getElementById('inurl');
+        const intitleInput = document.getElementById('intitle');
+        const intextInput = document.getElementById('intext');
+        const allinurlInput = document.getElementById('allinurl');
+        const allintitleInput = document.getElementById('allintitle');
+        const cacheInput = document.getElementById('cache');
+        const relatedInput = document.getElementById('related');
+        const linkInput = document.getElementById('link');
+        const infoInput = document.getElementById('info');
+        const daterangeInput = document.getElementById('daterange');
         const queryPlaceholder = document.getElementById('queryPlaceholder');
         const queryText = document.getElementById('queryText');
         const copyBtn = document.getElementById('copyBtn');
@@ -80,6 +92,15 @@
         function presetConfig() { applyPreset(presets.Config); }
 
         function presetDatabase() { applyPreset(presets.Database); }
+
+        function presetAdmin() {
+            // Admin panel dork: intitle:admin OR inurl:admin OR inurl:login
+            applyPreset(presets.Admin);
+            document.getElementById('intitle').value = 'admin';
+            document.getElementById('inurl').value = 'admin OR login';
+            buildQuery();
+            toast('Admin panel dork loaded', 'info');
+        }
 
         function selectAll() {
             extensions.forEach(ext => selected.add(ext));
@@ -134,14 +155,25 @@
         }
 
         // ============================================================
-        // BUILD QUERY
+        // BUILD QUERY (lengkap dengan semua operator)
         // ============================================================
         function buildQuery() {
             const domain = getDomain();
             const keyword = keywordInput.value.trim();
+            const inurl = inurlInput.value.trim();
+            const intitle = intitleInput.value.trim();
+            const intext = intextInput.value.trim();
+            const allinurl = allinurlInput.value.trim();
+            const allintitle = allintitleInput.value.trim();
+            const cache = cacheInput.value.trim();
+            const related = relatedInput.value.trim();
+            const link = linkInput.value.trim();
+            const info = infoInput.value.trim();
+            const daterange = daterangeInput.value.trim();
             const extList = [...selected];
 
-            if (!domain || extList.length === 0) {
+            // Kalo ga ada domain, tampilin placeholder
+            if (!domain) {
                 queryText.style.display = 'none';
                 queryPlaceholder.style.display = 'inline';
                 copyBtn.style.display = 'none';
@@ -149,10 +181,59 @@
                 return null;
             }
 
-            const parts = extList.map(e => 'ext:' + e);
-            let q = 'site:' + domain + ' ' + parts.join(' | ');
-            if (keyword) q += ' "' + keyword + '"';
+            let parts = [];
 
+            // 1. site: (wajib)
+            parts.push('site:' + domain);
+
+            // 2. filetype / ext (dari chips)
+            if (extList.length > 0) {
+                // Gunakan filetype: untuk 1 ekstensi, ext: untuk multiple dengan OR
+                if (extList.length === 1) {
+                    parts.push('filetype:' + extList[0]);
+                } else {
+                    const extParts = extList.map(e => 'ext:' + e);
+                    parts.push('(' + extParts.join(' OR ') + ')');
+                }
+            }
+
+            // 3. inurl:
+            if (inurl) parts.push('inurl:' + inurl);
+
+            // 4. intitle:
+            if (intitle) parts.push('intitle:' + intitle);
+
+            // 5. intext:
+            if (intext) parts.push('intext:' + intext);
+
+            // 6. allinurl:
+            if (allinurl) parts.push('allinurl:' + allinurl);
+
+            // 7. allintitle:
+            if (allintitle) parts.push('allintitle:' + allintitle);
+
+            // 8. cache:
+            if (cache) parts.push('cache:' + cache);
+
+            // 9. related:
+            if (related) parts.push('related:' + related);
+
+            // 10. link:
+            if (link) parts.push('link:' + link);
+
+            // 11. info:
+            if (info) parts.push('info:' + info);
+
+            // 12. daterange:
+            if (daterange) parts.push('daterange:' + daterange);
+
+            // 13. keyword (free text)
+            if (keyword) parts.push('"' + keyword + '"');
+
+            // Gabungin
+            let q = parts.join(' ');
+
+            // Tampilin
             queryText.textContent = q;
             queryText.style.display = 'inline';
             queryPlaceholder.style.display = 'none';
@@ -173,7 +254,7 @@
             }
             const q = buildQuery();
             if (!q) {
-                toast('Select at least one extension', 'error');
+                toast('Select at least one extension or fill an operator', 'error');
                 return;
             }
             window.open('https://www.google.com/search?q=' + encodeURIComponent(q) + '&start=30', '_blank');
@@ -207,7 +288,7 @@
         }
 
         // ============================================================
-        // SHORTCUTS
+        // SHORTCUTS (recon tools)
         // ============================================================
         function openCDX() {
             const d = getDomain();
@@ -256,7 +337,7 @@
         }
 
         // ============================================================
-        // TOAST (ringan)
+        // TOAST
         // ============================================================
         function toast(msg, type) {
             type = type || 'info';
@@ -303,15 +384,22 @@
         // ============================================================
         // AUTO BUILD
         // ============================================================
-        domainInput.addEventListener('input', () => { validateDomain();
-            buildQuery(); });
-        keywordInput.addEventListener('input', buildQuery);
+        const allInputs = [domainInput, keywordInput, inurlInput, intitleInput, intextInput,
+            allinurlInput, allintitleInput, cacheInput, relatedInput, linkInput, infoInput, daterangeInput
+        ];
 
-        // Enter on domain/keyword triggers search
-        domainInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault();
-                googleSearch(); } });
-        keywordInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.shiftKey) { e.preventDefault();
-                googleSearch(); } });
+        allInputs.forEach(inp => {
+            inp.addEventListener('input', () => {
+                if (inp === domainInput) validateDomain();
+                buildQuery();
+            });
+            inp.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    googleSearch();
+                }
+            });
+        });
 
         // ============================================================
         // INIT
@@ -320,4 +408,6 @@
         validateDomain();
         buildQuery();
         if (!domainInput.value.trim()) setTimeout(() => domainInput.focus(), 100);
-        console.log('⚡ GDR · Google Dork Recon loaded');
+        console.log('⚡ GDR · Google Dork Recon v3 — 9 operators loaded');
+        console.log('📖 Operators: site, filetype/ext, inurl, intitle, intext, allinurl, allintitle, cache, related, link, info, daterange');
+    

@@ -1,4 +1,4 @@
- /* ————— RESET ————— */
+/* ————— RESET ————— */
         * {
             margin: 0;
             padding: 0;
@@ -35,15 +35,24 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             color: #b0d4ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header h1 .accent {
+            color: #60a5fa;
         }
 
         .header-badge {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             background: #1e2a3a;
             padding: 2px 12px;
             border-radius: 12px;
             color: #8ab4f8;
             border: 1px solid #2a3a4a;
+            font-weight: 500;
+            letter-spacing: 0.03em;
         }
 
         .stats {
@@ -89,29 +98,55 @@
             color: #6a7a9a;
             margin-bottom: 14px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .card-title .badge {
+            font-size: 0.55rem;
+            background: #1a2a4a;
+            padding: 1px 10px;
+            border-radius: 10px;
+            color: #7abfff;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         /* ————— INPUTS ————— */
         .input-group {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .input-group label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 500;
             color: #8a9ab8;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
+            letter-spacing: 0.02em;
+        }
+
+        .input-group label .op {
+            color: #6a8aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            background: #1a1a2e;
+            padding: 0 6px;
+            border-radius: 4px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 8px 12px;
+            padding: 7px 12px;
             border-radius: 8px;
             border: 1px solid #2a2a40;
             background: #0e0e1a;
             color: #e8edf5;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-family: inherit;
             outline: none;
             transition: border 0.15s;
@@ -119,6 +154,11 @@
 
         .input-group input:focus {
             border-color: #4a8af4;
+        }
+
+        .input-group input::placeholder {
+            color: #3a4a5a;
+            font-size: 0.8rem;
         }
 
         .input-hint {
@@ -144,18 +184,37 @@
             background: #f87171;
         }
 
+        .input-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .input-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .input-row-2,
+            .input-row-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ————— CHIPS ————— */
         .chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
             margin-bottom: 10px;
         }
 
         .chip {
-            padding: 4px 12px;
+            padding: 3px 11px;
             border-radius: 20px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 500;
             background: #1e1e32;
             color: #8a9ab8;
@@ -177,18 +236,18 @@
             color: #b0d4ff;
         }
 
-        /* ————— PRESET BUTTONS ————— */
+        /* ————— PRESET DORKS ————— */
         .preset-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
             margin-bottom: 10px;
         }
 
         .preset-btn {
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 20px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 600;
             background: #1a1a2e;
             border: 1px solid #2a2a42;
@@ -233,6 +292,13 @@
         .preset-btn.green:hover {
             background: #1a3a2a;
         }
+        .preset-btn.rose {
+            color: #f87171;
+            border-color: #5a2a2a;
+        }
+        .preset-btn.rose:hover {
+            background: #4a1a1a;
+        }
 
         /* ————— QUERY BOX ————— */
         .query-box {
@@ -240,7 +306,7 @@
             border: 1px solid #2a2a40;
             border-radius: 8px;
             padding: 10px 14px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-family: 'Courier New', monospace;
             color: #b0c8e8;
             min-height: 44px;
@@ -265,7 +331,7 @@
             background: transparent;
             border: none;
             color: #6a8aaa;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             cursor: pointer;
             padding: 4px 8px;
             border-radius: 4px;
@@ -365,10 +431,10 @@
         }
 
         .shortcut-btn .label {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .shortcut-btn.full {
@@ -386,7 +452,7 @@
             border-color: #3a6a9a;
         }
 
-        /* ————— TOAST (ringan) ————— */
+        /* ————— TOAST ————— */
         .toast-container {
             position: fixed;
             bottom: 20px;
@@ -470,6 +536,12 @@
             border: 1px solid #2a2a42;
         }
 
+        .tips .op {
+            color: #7abfff;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+        }
+
         /* ————— FOOTER ————— */
         .footer {
             margin-top: 40px;
@@ -478,7 +550,12 @@
             color: #4a5a7a;
             border-top: 1px solid #1a1a2e;
             padding-top: 20px;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.04em;
+        }
+
+        .footer strong {
+            color: #6a8aaa;
+            font-weight: 500;
         }
 
         /* ————— RESPONSIVE ————— */

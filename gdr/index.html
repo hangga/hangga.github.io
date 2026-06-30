@@ -11,7 +11,7 @@
 
         <!-- HEADER -->
         <header class="header">
-            <div style="display:flex;align-items:center;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                 <h1>◈ <span class="accent">GDR</span></h1>
                 <span class="header-badge">Google Dork Recon</span>
             </div>
@@ -29,7 +29,7 @@
 
                 <!-- TARGET -->
                 <div class="card">
-                    <div class="card-title">🎯 Target</div>
+                    <div class="card-title">🎯 Target <span class="badge">site:</span></div>
                     <div class="input-group">
                         <!-- <label for="domain">Domain</label> -->
                         <input id="domain" placeholder="example.com" spellcheck="false" autofocus />
@@ -42,31 +42,88 @@
 
                 <!-- DORK BUILDER -->
                 <div class="card">
-                    <div class="card-title">🔍 Dork Builder</div>
+                    <div class="card-title">🔍 Dork Builder <span class="badge">9 operators</span></div>
 
-                    <!-- Chips -->
-                    <div class="chips" id="extensions"></div>
+                    <!-- Extensions chips -->
+                    <div style="margin-bottom:4px;">
+                        <label style="font-size:0.65rem;color:#6a7a9a;font-weight:500;display:block;margin-bottom:4px;">File extensions <span style="color:#4a5a7a;">(filetype: / ext:)</span></label>
+                        <div class="chips" id="extensions"></div>
+                    </div>
 
-                    <!-- Presets -->
+                    <!-- Preset Dorks -->
                     <div class="preset-row">
-                        <button class="preset-btn cyan" onclick="presetSecrets()">Secrets</button>
-                        <button class="preset-btn amber" onclick="presetBackup()">Backup</button>
-                        <button class="preset-btn purple" onclick="presetConfig()">Config</button>
-                        <button class="preset-btn green" onclick="presetDatabase()">Database</button>
+                        <button class="preset-btn cyan" onclick="presetSecrets()">🔑 Secrets</button>
+                        <button class="preset-btn amber" onclick="presetBackup()">💾 Backup</button>
+                        <button class="preset-btn purple" onclick="presetConfig()">⚙️ Config</button>
+                        <button class="preset-btn green" onclick="presetDatabase()">🗄️ DB</button>
+                        <button class="preset-btn rose" onclick="presetAdmin()">👑 Admin</button>
                         <button class="preset-btn" onclick="selectAll()">Select All</button>
                         <button class="preset-btn" onclick="clearAll()">Clear</button>
                     </div>
 
-                    <!-- Keyword -->
-                    <div class="input-group">
-                        <label for="keyword">Keyword (optional)</label>
-                        <input id="keyword" placeholder="password, admin, secret…" spellcheck="false" />
+                    <!-- Operator inputs -->
+                    <div class="input-row-3">
+                        <div class="input-group">
+                            <label><span class="op">inurl:</span> In URL</label>
+                            <input id="inurl" placeholder="admin, login, .env…" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">intitle:</span> In Title</label>
+                            <input id="intitle" placeholder="index of, dashboard…" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">intext:</span> In Text</label>
+                            <input id="intext" placeholder="password, confidential…" spellcheck="false" />
+                        </div>
+                    </div>
+
+                    <div class="input-row-3">
+                        <div class="input-group">
+                            <label><span class="op">allinurl:</span> All in URL</label>
+                            <input id="allinurl" placeholder="admin login" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">allintitle:</span> All in Title</label>
+                            <input id="allintitle" placeholder="admin user" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">cache:</span> Cache</label>
+                            <input id="cache" placeholder="example.com/page" spellcheck="false" />
+                        </div>
+                    </div>
+
+                    <div class="input-row-2">
+                        <div class="input-group">
+                            <label><span class="op">related:</span> Related</label>
+                            <input id="related" placeholder="example.com" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">link:</span> Link to</label>
+                            <input id="link" placeholder="example.com" spellcheck="false" />
+                        </div>
+                    </div>
+
+                    <div class="input-row-2">
+                        <div class="input-group">
+                            <label><span class="op">info:</span> Info</label>
+                            <input id="info" placeholder="example.com" spellcheck="false" />
+                        </div>
+                        <div class="input-group">
+                            <label><span class="op">daterange:</span> Date Range (Julian)</label>
+                            <input id="daterange" placeholder="2459340-2459634" spellcheck="false" />
+                        </div>
+                    </div>
+
+                    <!-- Keyword (fallback) -->
+                    <div class="input-group" style="margin-top:4px;">
+                        <label>Keyword <span style="color:#4a5a7a;font-weight:400;">(free text)</span></label>
+                        <input id="keyword" placeholder="password, admin, confidential…" spellcheck="false" />
                     </div>
 
                     <!-- Query -->
                     <div class="query-box" id="queryBox">
                         <span class="query-text">
-                            <span class="placeholder" id="queryPlaceholder">Select extensions to build a query…</span>
+                            <span class="placeholder" id="queryPlaceholder">Select extensions &amp; fill operators to build a dork…</span>
                             <span id="queryText" style="display:none;"></span>
                         </span>
                         <button class="copy-btn" id="copyBtn" style="display:none;" onclick="copyQuery()">📋 Copy</button>
@@ -74,7 +131,7 @@
 
                     <!-- Actions -->
                     <div class="action-row">
-                        <button class="btn btn-primary" onclick="googleSearch()">🚀 Open</button>
+                        <!-- <button class="btn btn-primary" onclick="googleSearch()">🔎 Google Search</button> -->
                         <!-- <button class="btn btn-secondary" onclick="buildQuery()">↻ Refresh</button> -->
                     </div>
                 </div>
@@ -117,23 +174,38 @@
 
                 <!-- TIPS -->
                 <div class="card" style="margin-top:0;">
-                    <div class="card-title">💡 Tips</div>
+                    <div class="card-title">💡 Dork Operators</div>
                     <ul class="tips">
-                        <li><kbd>Shift+Enter</kbd> search</li>
-                        <li><kbd>Ctrl+Shift+1-6</kbd> shortcuts</li>
-                        <li>Presets auto‑select extensions</li>
+                        <li><span class="op">site:</span> target domain</li>
+                        <li><span class="op">filetype:</span> / <span class="op">ext:</span> file extension</li>
+                        <li><span class="op">inurl:</span> / <span class="op">allinurl:</span> in URL</li>
+                        <li><span class="op">intitle:</span> / <span class="op">allintitle:</span> in title</li>
+                        <li><span class="op">intext:</span> / <span class="op">allintext:</span> in body</li>
+                        <li><span class="op">cache:</span> cached version</li>
+                        <li><span class="op">related:</span> similar sites</li>
+                        <li><span class="op">link:</span> pages linking to</li>
+                        <li><span class="op">info:</span> Google's info</li>
+                        <li><span class="op">daterange:</span> Julian date range</li>
                     </ul>
+                    <div style="margin-top:8px;font-size:0.65rem;color:#4a5a7a;">
+                        <kbd style="background:#1a1a2e;padding:0 6px;border-radius:4px;border:1px solid #2a2a42;">Shift+Enter</kbd> search &bull; <kbd style="background:#1a1a2e;padding:0 6px;border-radius:4px;border:1px solid #2a2a42;">Ctrl+Shift+1-6</kbd> shortcuts
+                        
+                    </div>
+                    <div class="action-row" style="margin-top: 8px;">
+                        <button class="btn btn-primary" style="width: 100%;" onclick="googleSearch()">🔎 Google Search</button>
+                        <!-- <button class="btn btn-secondary" onclick="buildQuery()">↻ Refresh</button> -->
+                    </div>
                 </div>
 
             </div>
         </div>
 
-        <div class="footer"><strong>GDR</strong> · Google Dork Recon · lightweight</div>
+        <div class="footer"><strong>GDR</strong> · Google Dork Recon · v3 with 9 operators</div>
     </div>
 
     <!-- TOAST CONTAINER -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <script src="script.js"></script>
+     <script src="script.js"></script>
 </body>
 </html>
