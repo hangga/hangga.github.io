@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrutuSuite — DevTools Security Extension</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-card: #16161f;
+            --bg-card-hover: #1c1c2a;
+            --border-color: #2a2a3a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent: #6c5ce7;
+            --accent-glow: rgba(108, 92, 231, 0.15);
+            --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --green: #3ddc84;
+            --orange: #ff9f4a;
+            --red: #ff5e7a;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        a:hover {
+            color: #a29bfe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* ===== UTILITY ===== */
+        .badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            background: var(--accent-gradient);
+            color: #fff;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-title .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(16px) saturate(1.2);
+            border-bottom: 1px solid rgba(42, 42, 58, 0.4);
+            transition: var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .nav-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: var(--accent-gradient);
+            color: #fff !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(108, 92, 231, 0.3);
+            color: #fff !important;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(162, 155, 254, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content .badge {
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(108, 92, 231, 0.35);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            border-color: var(--border-color);
+            background: transparent;
+        }
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-github {
+            background: #1c1c2a;
+            border-color: #2a2a3a;
+            color: var(--text-primary);
+        }
+        .btn-github:hover {
+            background: #252540;
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual img {
+            max-width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .hero-visual img:hover {
+            border-color: rgba(108, 92, 231, 0.3);
+            transform: scale(1.01);
+        }
+
+        /* floating badges */
+        .floating-badge {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .floating-badge .icon {
+            font-size: 1rem;
+        }
+        .floating-badge.pos-1 {
+            top: 10%;
+            right: -8%;
+        }
+        .floating-badge.pos-2 {
+            bottom: 18%;
+            left: -10%;
+            animation-delay: 2s;
+        }
+        .floating-badge.pos-3 {
+            top: 55%;
+            right: -12%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 80px 0 100px;
+            background: var(--bg-secondary);
+        }
+
+        .features .section-label {
+            text-align: center;
+            display: block;
+        }
+        .features .section-title {
+            text-align: center;
+        }
+        .features .section-sub {
+            text-align: center;
+            margin: 0 auto 48px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(108, 92, 231, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card .icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(108, 92, 231, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-card .tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--accent);
+            background: rgba(108, 92, 231, 0.08);
+            padding: 2px 12px;
+            border-radius: 50px;
+        }
+
+        /* ===== INSTALLATION ===== */
+        .install {
+            padding: 80px 0;
+        }
+
+        .install .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .install-content .section-sub {
+            margin-bottom: 28px;
+        }
+
+        .install-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        .step-content h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .step-content code {
+            background: var(--bg-card);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            border: 1px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .install-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .install-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: var(--shadow);
+        }
+
+        .install-card .ext-icon {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+        .install-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+        .install-card .sub {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .install-card .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-bottom: 16px;
+        }
+
+        .install-card .code-block .cmd {
+            color: var(--green);
+        }
+
+        .install-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== ARCHITECTURE ===== */
+        .architecture {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .architecture .section-label {
+            text-align: center;
+            display: block;
+        }
+        .architecture .section-title {
+            text-align: center;
+        }
+        .architecture .section-sub {
+            text-align: center;
+            margin: 0 auto 48px;
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .arch-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .arch-item:hover {
+            border-color: rgba(108, 92, 231, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .arch-item .emoji {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        .arch-item h4 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .arch-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .arch-item .file {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 6px;
+            display: block;
+        }
+
+        .arch-flow {
+            margin-top: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px 20px;
+        }
+
+        .arch-flow .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .arch-flow .flow-item .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .arch-flow .flow-arrow {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* ===== CONTRIBUTE ===== */
+        .contribute {
+            padding: 80px 0;
+        }
+
+        .contribute .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contribute-content .section-sub {
+            margin-bottom: 24px;
+        }
+
+        .contrib-steps {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contrib-steps li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .contrib-steps li .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .contrib-cta {
+            margin-top: 28px;
+        }
+
+        .contrib-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .contrib-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contrib-card .big-icon {
+            font-size: 3.2rem;
+            margin-bottom: 8px;
+        }
+        .contrib-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+        .contrib-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+        }
+
+        .contrib-card .license-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            background: rgba(61, 220, 132, 0.08);
+            border: 1px solid rgba(61, 220, 132, 0.15);
+            color: var(--green);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px 0 32px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-primary);
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer .copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .footer .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer .fun-fact {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
+            max-width: 300px;
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            padding: 40px 0 80px;
+            background: var(--bg-secondary);
+        }
+
+        .video-section .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-section video {
+            max-width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-visual img {
+                max-width: 100%;
+            }
+            .floating-badge {
+                display: none;
+            }
+
+            .install .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .install-content .section-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .install-steps {
+                align-items: center;
+            }
+            .step {
+                text-align: left;
+                max-width: 480px;
+                width: 100%;
+            }
+
+            .contribute .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .contrib-steps {
+                align-items: center;
+            }
+            .contrib-steps li {
+                text-align: left;
+                max-width: 400px;
+                width: 100%;
+            }
+            .contrib-cta {
+                display: flex;
+                justify-content: center;
+            }
+            .contrib-visual {
+                order: -1;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--bg-secondary);
+                padding: 20px 24px;
+                border-radius: var(--radius);
+                border: 1px solid var(--border-color);
+                position: absolute;
+                top: 64px;
+                right: 16px;
+                width: 200px;
+                gap: 14px;
+                box-shadow: var(--shadow);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .arch-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .arch-flow {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .arch-flow .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer .fun-fact {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .arch-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <img src="images/logo-light.png" alt="BrutuSuite" />
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#contribute">Contribute</a></li>
+                <li><a href="#contribute" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">🔒 v1.0 · DevTools Extension</div>
+                <h1>
+                    Intercept · Inspect ·<br />
+                    <span class="highlight">Replay</span> with precision
+                </h1>
+                <p>
+                    BrutuSuite is a powerful Chrome DevTools extension that gives you
+                    deep visibility and control over HTTP/HTTPS traffic — right from
+                    your browser.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-github">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="#features" class="btn btn-primary">Learn more →</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="images/skrinsut-1.png" alt="BrutuSuite screenshot" />
+                <div class="floating-badge pos-1"><span class="icon">🔍</span> Inspect headers</div>
+                <div class="floating-badge pos-2"><span class="icon">✎</span> Modify &amp; replay</div>
+                <div class="floating-badge pos-3"><span class="icon">🔐</span> OAuth 2.0 ready</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO DEMO ===== -->
+    <section class="video-section" id="demo">
+        <div class="container">
+            <video controls>
+                <source src="https://github.com/user-attachments/assets/f1d04663-022e-4385-9243-9cd3e7988e11" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <span class="section-label">⚡ Capabilities</span>
+            <h2 class="section-title">Built for <span class="highlight">developers &amp; testers</span></h2>
+            <p class="section-sub">
+                From quick debugging to security auditing — BrutuSuite puts the full
+                request lifecycle at your fingertips.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-wrap">📡</div>
+                    <h3>Intercept all requests</h3>
+                    <p>Automatically captures XHR &amp; Fetch requests from the current tab with full headers and body.</p>
+                    <span class="tag">real-time</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔧</div>
+                    <h3>Edit &amp; Replay</h3>
+                    <p>Modify URL, method, headers, body, query params, and auth — then resend instantly.</p>
+                    <span class="tag">flexible</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔐</div>
+                    <h3>Auth made easy</h3>
+                    <p>Built-in support for Basic Auth, Bearer Token, and OAuth 2.0 (Client Credentials &amp; Password).</p>
+                    <span class="tag">secure</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">📋</div>
+                    <h3>Copy as cURL</h3>
+                    <p>Export any request as a <code>curl</code> command with cookies preserved via <code>-b</code>.</p>
+                    <span class="tag">portable</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INSTALLATION ===== -->
+    <section class="install" id="install">
+        <div class="container">
+            <div class="install-content">
+                <span class="section-label">⬇ Get started</span>
+                <h2 class="section-title">Install in <span class="highlight">2 minutes</span></h2>
+                <p class="section-sub">
+                    BrutuSuite is open‑source and runs directly from source. No store
+                    required — just clone and load.
+                </p>
+                <div class="install-steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <div class="step-content">
+                            <h4>Clone the repo</h4>
+                            <p><code>git clone https://github.com/hangga/brutusuite.git</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <div class="step-content">
+                            <h4>Open Chrome Extensions</h4>
+                            <p>Navigate to <code>chrome://extensions/</code> and enable <strong>Developer mode</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <div class="step-content">
+                            <h4>Load unpacked</h4>
+                            <p>Click <strong>Load unpacked</strong> and select the folder containing <code>manifest.json</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="install-visual">
+                <div class="install-card">
+                    <!-- <div class="ext-icon">🧩</div> -->
+                    <h3>BrutuSuite v1.0</h3>
+                    <p class="sub">DevTools extension · open source</p>
+                    <div class="code-block">
+                        <span class="cmd">$</span> git clone https://github.com/hangga/brutusuite.git
+                        <span class="cmd">$</span> cd brutusuite
+                        <span class="cmd">$</span> # load unpacked in chrome://extensions/
+                    </div>
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" style="margin-right:6px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <span class="section-label">🧱 Under the hood</span>
+            <h2 class="section-title">Simple, <span class="highlight">modular architecture</span></h2>
+            <p class="section-sub">
+                Three components work together to give you seamless network visibility
+                inside Chrome DevTools.
+            </p>
+            <div class="arch-grid">
+                <div class="arch-item">
+                    <div class="emoji">⚙️</div>
+                    <h4>Background Service</h4>
+                    <p>Uses the Chrome debugger API to capture network events and store logs.</p>
+                    <span class="file">background.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🖥️</div>
+                    <h4>DevTools Panel</h4>
+                    <p>Displays requests, details, and the edit/replay interface. Communicates with the background script.</p>
+                    <span class="file">panel.html · panel.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🔌</div>
+                    <h4>DevTools Entry</h4>
+                    <p>Registers the BrutuSuite panel inside Chrome DevTools.</p>
+                    <span class="file">devtools.js</span>
+                </div>
+            </div>
+            <div class="arch-flow">
+                <span class="flow-item"><span class="dot"></span> Tab</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#7c5cfc;"></span> Debugger API</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff9f4a;"></span> storage.local</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#3ddc84;"></span> Panel UI</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff5e7a;"></span> fetch() replay</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTRIBUTE ===== -->
+    <section class="contribute" id="contribute">
+        <div class="container">
+            <div class="contribute-content">
+                <span class="section-label">🤝 Join the project</span>
+                <h2 class="section-title">Contributions <span class="highlight">welcome</span></h2>
+                <p class="section-sub">
+                    Found a bug? Have a feature idea? We'd love your help making BrutuSuite
+                    better for everyone.
+                </p>
+                <ul class="contrib-steps">
+                    <li><span class="num">1</span> Fork the repository</li>
+                    <li><span class="num">2</span> Create a feature branch: <code>feature/amazing-feature</code></li>
+                    <li><span class="num">3</span> Commit your changes with clear messages</li>
+                    <li><span class="num">4</span> Push and open a Pull Request</li>
+                </ul>
+                <div class="contrib-cta">
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-primary">
+                        Open a Pull Request →
+                    </a>
+                </div>
+            </div>
+            <div class="contrib-visual">
+                <div class="contrib-card">
+                    <div class="big-icon">📄</div>
+                    <h3>MIT License</h3>
+                    <p>BrutuSuite is open source and free to use, modify, and distribute.</p>
+                    <span class="license-badge">✓ Open Source</span>
+                    <div style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
+                        <span>⭐ Star us on GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copy">
+                © 2026 BrutuSuite · MIT License
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/hangga/brutusuite" target="_blank">GitHub</a>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+            </div>
+            <div class="fun-fact">
+                💡 “Brutu” is Javanese for chicken tail — unexpectedly delicious. 😆
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JS ===== -->
+    <script>
+        // Hamburger toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Navbar shadow on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth anchor scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
