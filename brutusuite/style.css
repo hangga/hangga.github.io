@@ -518,6 +518,7 @@
 
         .install-card {
             background: var(--bg-card);
+            /* height: 500px; */
         }
 
         .install-card .ext-icon {
@@ -537,12 +538,13 @@
         .install-card .code-block {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 8px;
-            padding: 14px 18px;
+            padding: 14px 18px 60px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             color: var(--text-secondary);
             border: 1px solid var(--border-color);
-            margin-bottom: 16px;
+            /* margin-bottom: 16px; */
+            /* height: 360px; */
         }
 
         .install-card .code-block .cmd {
@@ -598,6 +600,7 @@
         }
 
         .hero-terminal {
+            margin-top: 20px;
             background: var(--bg-card);
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
