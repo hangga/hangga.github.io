@@ -594,9 +594,9 @@
             background: var(--bg-card);
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
-            padding: 20px 24px 24px;
+            padding: 10px 14px 14px 14px;
             width: 100%;
-            max-width: 520px;
+            max-width: 600px;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
@@ -608,7 +608,7 @@
         .terminal-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 16px;
         }
         .terminal-dot {
