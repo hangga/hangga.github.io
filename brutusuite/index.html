@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrutuSuite — DevTools Security Extension</title>
+    <link rel="icon" href="images/icon-light-16.png" type="image/png" sizes="96x96"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <img src="images/logo-light.png" alt="BrutuSuite" />
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#contribute">Contribute</a></li>
+                <li><a href="#contribute" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">🔒 v1.0 · DevTools Extension</div>
+                <h1>
+                    Intercept · Inspect ·<br />
+                    <span class="highlight">Replay</span> with precision
+                </h1>
+                <p>
+                    BrutuSuite is a powerful Chrome DevTools extension that gives you
+                    deep visibility and control over HTTP/HTTPS traffic — right from
+                    your browser.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-github">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="#features" class="btn btn-primary">Learn more →</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="images/skrinsut-1.png" alt="BrutuSuite screenshot" />
+                <div class="floating-badge pos-1"><span class="icon">🔍</span> Inspect headers</div>
+                <div class="floating-badge pos-2"><span class="icon">✎</span> Modify &amp; replay</div>
+                <div class="floating-badge pos-3"><span class="icon">🔐</span> OAuth 2.0 ready</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO DEMO ===== -->
+    <section class="video-section" id="demo">
+        <div class="container">
+            <video controls>
+                <source src="https://github.com/user-attachments/assets/f1d04663-022e-4385-9243-9cd3e7988e11" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+    
+    <section class="video-section" id="demo">
+        <div class="container">
+
+            <video controls>
+                <source src="https://github.com/user-attachments/assets/b478c1f8-e430-4a6e-9c38-60d9ca2e7c7b" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <span class="section-label">⚡ Capabilities</span>
+            <h2 class="section-title">Built for <span class="highlight">developers &amp; testers</span></h2>
+            <p class="section-sub">
+                From quick debugging to security auditing — BrutuSuite puts the full
+                request lifecycle at your fingertips.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-wrap">📡</div>
+                    <h3>Intercept all requests</h3>
+                    <p>Automatically captures XHR &amp; Fetch requests from the current tab with full headers and body.</p>
+                    <span class="tag">real-time</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔧</div>
+                    <h3>Edit &amp; Replay</h3>
+                    <p>Modify URL, method, headers, body, query params, and auth — then resend instantly.</p>
+                    <span class="tag">flexible</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔐</div>
+                    <h3>Auth made easy</h3>
+                    <p>Built-in support for Basic Auth, Bearer Token, and OAuth 2.0 (Client Credentials &amp; Password).</p>
+                    <span class="tag">secure</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">📋</div>
+                    <h3>Copy as cURL</h3>
+                    <p>Export any request as a <code>curl</code> command with cookies preserved via <code>-b</code>.</p>
+                    <span class="tag">portable</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INSTALLATION ===== -->
+    <section class="install" id="install">
+        <div class="container">
+            <div class="install-content">
+                <span class="section-label">⬇ Get started</span>
+                <h2 class="section-title">Install in <span class="highlight">2 minutes</span></h2>
+                <p class="section-sub">
+                    BrutuSuite is open‑source and runs directly from source. No store
+                    required — just clone and load.
+                </p>
+                <div class="install-steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <div class="step-content">
+                            <h4>Clone the repo</h4>
+                            <p><code>git clone https://github.com/hangga/brutusuite.git</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <div class="step-content">
+                            <h4>Open Chrome Extensions</h4>
+                            <p>Navigate to <code>chrome://extensions/</code> and enable <strong>Developer mode</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <div class="step-content">
+                            <h4>Load unpacked</h4>
+                            <p>Click <strong>Load unpacked</strong> and select the folder containing <code>manifest.json</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="install-visual">
+                <div class="hero-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <div class="install-card">
+                        <div class="code-block">
+
+                            <div class="linetyping" style="--d:0s">
+                                <span class="cmd">$</span> git clone https://github.com/hangga/brutusuite.git
+                            </div>
+
+                            <div class="line" style="--d:1s">
+                                Cloning into 'brutusuite'...
+                            </div>
+
+                            <div class="line" style="--d:2s">
+                                remote: Enumerating objects: 138, done.
+                            </div>
+
+                            <div class="line" style="--d:3s">
+                                remote: Counting objects: 100% (138/138), done.
+                            </div>
+
+                            <div class="line" style="--d:4s">
+                                remote: Compressing objects: 100% (96/96), done.
+                            </div>
+
+                            <div class="line" style="--d:5s">
+                                remote: Total 138 (delta 68), reused 103 (delta 42), pack-reused 0 (from 0)
+                            </div>
+
+                            <div class="line" style="--d:6s">
+                                Receiving objects: 100% (138/138), 1.15 MiB | 4.58 MiB/s, done.
+                            </div>
+
+                            <div class="line cursor" style="--d:7s">
+                                Resolving deltas: 100% (68/68), done.
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="floating-badge pos-1">1. Clone repo</div>
+                <div class="floating-badge pos-3">2. Navigate to folder</div>
+                <div class="floating-badge pos-2">3. Load unpacked</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <span class="section-label">🧱 Under the hood</span>
+            <h2 class="section-title">Simple, <span class="highlight">modular architecture</span></h2>
+            <p class="section-sub">
+                Three components work together to give you seamless network visibility
+                inside Chrome DevTools.
+            </p>
+            <div class="arch-grid">
+                <div class="arch-item">
+                    <div class="emoji">⚙️</div>
+                    <h4>Background Service</h4>
+                    <p>Uses the Chrome debugger API to capture network events and store logs.</p>
+                    <span class="file">background.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🖥️</div>
+                    <h4>DevTools Panel</h4>
+                    <p>Displays requests, details, and the edit/replay interface. Communicates with the background script.</p>
+                    <span class="file">panel.html · panel.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🔌</div>
+                    <h4>DevTools Entry</h4>
+                    <p>Registers the BrutuSuite panel inside Chrome DevTools.</p>
+                    <span class="file">devtools.js</span>
+                </div>
+            </div>
+            <div class="arch-flow">
+                <span class="flow-item"><span class="dot"></span> Tab</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#7c5cfc;"></span> Debugger API</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff9f4a;"></span> storage.local</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#3ddc84;"></span> Panel UI</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff5e7a;"></span> fetch() replay</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTRIBUTE ===== -->
+    <section class="contribute" id="contribute">
+        <div class="container">
+            <div class="contribute-content">
+                <span class="section-label">🤝 Join the project</span>
+                <h2 class="section-title">Contributions <span class="highlight">welcome</span></h2>
+                <p class="section-sub">
+                    Found a bug? Have a feature idea? We'd love your help making BrutuSuite
+                    better for everyone.
+                </p>
+                <ul class="contrib-steps">
+                    <li><span class="num">1</span> Fork the repository</li>
+                    <li><span class="num">2</span> Create a feature branch: <code>feature/amazing-feature</code></li>
+                    <li><span class="num">3</span> Commit your changes with clear messages</li>
+                    <li><span class="num">4</span> Push and open a Pull Request</li>
+                </ul>
+                
+                <div class="contrib-cta">
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-github">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Open a Pull Request →
+                    </a>
+                    <!-- <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-primary">
+                        Open a Pull Request →
+                    </a> -->
+                </div>
+            </div>
+            <div class="contrib-visual">
+                <div class="contrib-card">
+                    <div class="big-icon">📄</div>
+                    <h3>MIT License</h3>
+                    <p>BrutuSuite is open source and free to use, modify, and distribute.</p>
+                    <span class="license-badge">✓ Open Source</span>
+                    <div style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
+                        <span>⭐ Star us on GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copy">
+                © 2026 BrutuSuite · MIT License
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/hangga/brutusuite" target="_blank">GitHub</a>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+            </div>
+            <div class="fun-fact">
+                💡 “Brutu” is Javanese for chicken tail — unexpectedly delicious. 😆
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
