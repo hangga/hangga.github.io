@@ -377,6 +377,7 @@ body {
     background: #0d0d0d;
 }
 .publikasi-header {
+    margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -393,6 +394,7 @@ body {
     background: #1f1f1f;
 }
 .publikasi-grid {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -403,7 +405,7 @@ body {
     gap: 0.75rem;
     border: 1px solid #262626;
     background: #0a0a0a;
-    padding: 0.6rem 1rem 0.6rem 0.6rem;
+    padding: 1rem;
     border-radius: 8px;
     transition: border-color 0.25s, background 0.2s;
     flex: 1 1 auto;
