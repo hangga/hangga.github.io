@@ -17,9 +17,10 @@
             --text-primary: #f0f0f5;
             --text-secondary: #a0a0b8;
             --text-muted: #6a6a82;
-            --accent: #6c5ce7;
+            /* --accent: #6c5ce7; */
+            --accent: #f92672;
             --accent-glow: rgba(108, 92, 231, 0.15);
-            --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-glow));
             --green: #3ddc84;
             --orange: #ff9f4a;
             --red: #ff5e7a;
@@ -518,6 +519,7 @@
 
         .install-card {
             background: var(--bg-card);
+            border-radius: 11px;
             /* height: 500px; */
         }
 
@@ -537,14 +539,13 @@
 
         .install-card .code-block {
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
             padding: 14px 18px 60px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-            /* margin-bottom: 16px; */
-            /* height: 360px; */
+            /* border: 1px solid var(--border-color); */
         }
 
         .install-card .code-block .cmd {
@@ -623,9 +624,11 @@
         .hero-terminal {
             margin-top: 20px;
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
+            /* border-radius: var(--radius-lg); */
             border: 1px solid var(--border-color);
-            padding: 10px 14px 14px 14px;
+            padding: 10px 0 0 0;
+            /* padding: 10px 14px 14px 14px; */
             width: 100%;
             max-width: 600px;
             box-shadow: var(--shadow);
@@ -639,10 +642,11 @@
         .terminal-header {
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 16px;
+            /* gap: 6px; */
+            margin-bottom: 10px;
         }
         .terminal-dot {
+            margin-left: 10px;
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -1220,18 +1224,20 @@
 
         /* ===== TERMINAL ANIMATIONS ===== */
         .line {
-            opacity: 0;
-            transform: translateY(6px);
-            animation: show .35s forwards;
-            animation-delay: var(--d);
             margin: 6px 0;
+            opacity: 0;
+            transform: scale(.96);
+            animation: show .5s ease forwards;
+            animation-delay: var(--d);
         }
+
+        
 
         .linetyping {
             width: 0;
             overflow: hidden;
             white-space: nowrap;
-            animation: typing 1.2s steps(60, end) forwards;
+            animation: typing 1s steps(20, end) forwards;
             animation-delay: var(--d);
         }
 
