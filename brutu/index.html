@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="icon" href="images/icon-light-16.png" type="image/png" sizes="96x96" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ============================================================
+     BrutuSuite SEO Meta Tags
+     ============================================================ -->
+
+    <title>BrutuSuite – Lightweight API Capture Tool for Chrome DevTools</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Primary Meta -->
+    <meta name="title" content="BrutuSuite – Lightweight API Capture Tool for Chrome DevTools" />
+
+    <meta name="description"
+        content="BrutuSuite is a free, open-source Chrome DevTools extension for API testing. Capture, inspect, edit, and replay HTTP/HTTPS requests without using an external proxy. A lightweight Burp Suite alternative focused on APIs." />
+
+    <meta name="keywords"
+        content="BrutuSuite, Burp Suite alternative, Chrome DevTools extension, API capture, HTTP capture, request replay, API testing, API debugger, REST API testing, REST client, OAuth 2.0 testing, Fetch capture, XHR capture, Chrome API debugger, DevTools extension, open source security tool, bug bounty, penetration testing" />
+
+    <meta name="author" content="Hangga Aji Sayekti" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="BrutuSuite" />
+    <meta name="apple-mobile-web-app-title" content="BrutuSuite" />
+    <meta name="theme-color" content="#0a0a0f" />
+
+    <link rel="canonical" href="https://hangga.web.id/brutusuite/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BrutuSuite" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta property="og:url"
+        content="https://hangga.web.id/brutusuite/" />
+
+    <meta property="og:title"
+        content="BrutuSuite – Lightweight API Capture Tool for Chrome DevTools" />
+
+    <meta property="og:description"
+        content="Capture, inspect, edit, and replay HTTP requests directly from Chrome DevTools. A lightweight open-source alternative to Burp Suite for API debugging and security testing." />
+
+    <meta property="og:image"
+        content="https://hangga.web.id/brutusuite/images/og-image.png" />
+
+    <meta property="og:image:width"
+        content="1200" />
+
+    <meta property="og:image:height"
+        content="630" />
+
+    <meta property="og:image:alt"
+        content="BrutuSuite Chrome DevTools API Capture Tool" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title"
+        content="BrutuSuite – Open-Source API Capture Tool" />
+
+    <meta name="twitter:description"
+        content="Capture, inspect, edit, and replay API requests directly inside Chrome DevTools." />
+
+    <meta name="twitter:image"
+        content="https://hangga.web.id/brutusuite/images/og-image.png" />
+
+    <meta name="twitter:creator" content="@hangga" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BrutuSuite",
+    "url": "https://hangga.web.id/brutusuite/",
+    "description": "BrutuSuite is a free, open-source Chrome DevTools extension for capturing, inspecting, editing, and replaying HTTP/HTTPS API requests. Designed for developers, bug bounty hunters, penetration testers, and security researchers who need a lightweight Burp Suite alternative focused on APIs instead of full web traffic.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome, Chromium",
+    "browserRequirements": "Google Chrome or Chromium-based browser",
+    "license": "MIT",
+    "author": {
+        "@type": "Person",
+        "name": "Hangga Aji Sayekti"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    },
+    "featureList": [
+        "Capture Fetch API requests",
+        "Capture XHR requests",
+        "Edit and replay HTTP requests",
+        "Modify headers",
+        "Modify query parameters",
+        "Modify request body",
+        "OAuth 2.0 authentication",
+        "Basic Authentication",
+        "Bearer Token authentication",
+        "Copy request as cURL",
+        "Built directly into Chrome DevTools",
+        "Open source"
+    ],
+    "softwareVersion": "1.0",
+    "codeRepository": "https://github.com/hangga/brutusuite"
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <img src="images/icon-light-128.png" alt="BrutuSuite" />
+                <span class="logo">
+                    <span class="bold">Brutu</span><span class="light">Suite</span>
+                </span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#contribute">Contribute</a></li>
+                <li><a href="#contribute" class="nav-cta">Get Started</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">🔒 v1.4 · DevTools Extension</div>
+                <h1 class="hero-title">
+                    <!-- BrutuSuite -->
+                    <span>
+                        The Lightweight
+                    </span>
+                    <span class="highlight">Burp Suite Alternative</span><br>
+                    <span class="subtitle">
+                        Built for Chrome DevTools
+                    </span>
+                </h1>
+
+                <p>
+                    BrutuSuite is a free, open-source Chrome DevTools extension that makes API testing a lot less painful.
+                    Capture, inspect, tweak, and replay HTTP/HTTPS requests right where you're already working—no proxy setup, no browser gymnastics, just the APIs you actually care about. Your HTML can stay out of this one.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#install" target="_blank" class="btn btn-primary">
+                        Install Now →
+                    </a>
+                    <a href="#features" class="btn">Learn more →</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="images/brutusuite-demo-optimum.png" alt="BrutuSuite screenshot" />
+                <div class="floating-badge pos-1"><span class="icon">🔍</span> Inspect headers</div>
+                <div class="floating-badge pos-2"><span class="icon">✎</span> Modify &amp; replay</div>
+                <div class="floating-badge pos-3"><span class="icon">🔐</span> OAuth 2.0 ready</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO DEMO — ENHANCED & LARGER ===== -->
+    <section class="video-section" id="demo">
+        <div class="container">
+            <span class="section-label">🎬 See it in action</span>
+            <h2 class="section-title">Watch <span class="highlight">BrutuSuite</span> at work</h2>
+            <p class="section-sub">
+                Watch a request get captured, tweaked, and replayed in seconds. No context switching, no magic tricks—just Chrome DevTools quietly showing off.
+            </p>
+
+            <div class="video-grid">
+                <!-- Video 1: Capture & Inspect -->
+                <!-- <div class="video-wrapper" data-video="1">
+                    <video autoplay muted loop playsinline preload="metadata">
+                        <source src="https://github.com/user-attachments/assets/f1d04663-022e-4385-9243-9cd3e7988e11"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <span class="video-badge">📡 Capture</span>
+                    <div class="video-caption">Capture &amp; inspect requests in real‑time</div>
+                    <span class="play-indicator is-playing"></span>
+                </div> -->
+
+                <!-- Video 2: Edit & Replay -->
+                <div class="video-wrapper" data-video="2">
+                    <!-- <span class="video-badge">✎ Replay</span> -->
+                    <!-- <div class="video-caption">Edit headers, body &amp; auth — then replay instantly</div> -->
+                    <video controls autoplay muted loop playsinline preload="metadata">
+                        <source src="https://github.com/user-attachments/assets/ed3c7c29-96d2-4f76-9002-273b80564f0c"
+                            type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <span class="play-indicator is-playing"></span>
+                </div>
+
+                <p style="text-align: center; margin-top: 100px;">
+                    <a href="#install" target="_blank" class="btn btn-primary">
+                        Install Now →
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <span class="section-label">⚡ Capabilities</span>
+            <h2 class="section-title">Built for <span class="highlight">developers &amp; testers</span></h2>
+            <p class="section-sub">
+                Whether you're debugging an API, hunting bugs, or wondering what an endpoint is actually doing, BrutuSuite keeps everything within easy reach.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-wrap">📡</div>
+                    <h3>Capture all requests</h3>
+                    <p>Automatically captures XHR &amp; Fetch requests from the active tab, complete with headers, bodies, and everything worth inspecting.
+                    </p>
+                    <span class="tag">real-time</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔧</div>
+                    <h3>Edit &amp; Replay</h3>
+                    <p>Change headers, body, query parameters, or authentication, then replay the request with a single click. No copy-paste marathon required. Your Ctrl+C key deserves a break.</p>
+                    <span class="tag">flexible</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">🔐</div>
+                    <h3>Auth made easy</h3>
+                    <p>OAuth 2.0, Bearer Tokens, or Basic Auth—we've already handled the boring authentication bits.
+                    </p>
+                    <span class="tag">secure</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-wrap">📋</div>
+                    <h3>Copy as cURL</h3>
+                    <p>Need it elsewhere? Copy the request as <code>curl</code> and keep your cookies intact.</p>
+                    <span class="tag">portable</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 100px;">
+                <a href="#install" target="_blank" class="btn btn-primary">
+                    Install Now →
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== INSTALLATION ===== -->
+    <section class="install" id="install">
+        <div class="container">
+            <div class="install-content">
+                <span class="section-label">⬇ Get started</span>
+                <h2 class="section-title">Install in <span class="highlight">2 minutes</span></h2>
+                <p class="section-sub">
+                    BrutuSuite is open source and runs straight from the source. No Chrome Web Store (yet)—just clone it, load it, and you're good to go.
+                </p>
+                <div class="install-steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <div class="step-content">
+                            <h4>Clone the repo</h4>
+                            <p><code>git clone https://github.com/hangga/brutusuite.git</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <div class="step-content">
+                            <h4>Open Chrome Extensions</h4>
+                            <p>Navigate to <code>chrome://extensions/</code> and enable <strong>Developer mode</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <div class="step-content">
+                            <h4>Load unpacked</h4>
+                            <p>Click <strong>Load unpacked</strong> and select the folder containing
+                                <code>manifest.json</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="install-visual">
+                <div class="hero-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">Terminal ➝ Cloning BrutuSuite</span>
+                    </div>
+                    <div class="install-card">
+                        <div class="code-block">
+
+                            <div class="linetyping" style="--d:0s">
+                                <span class="cmd">$</span> git clone https://github.com/hangga/brutusuite.git
+                            </div>
+
+                            <div class="line" style="--d:1s">
+                                Cloning into 'brutusuite'...
+                            </div>
+
+                            <div class="line" style="--d:2s">
+                                remote: Enumerating objects: 138, done.
+                            </div>
+
+                            <div class="line" style="--d:3s">
+                                remote: Counting objects: 100% (138/138), done.
+                            </div>
+
+                            <div class="line" style="--d:4s">
+                                remote: Compressing objects: 100% (96/96), done.
+                            </div>
+
+                            <div class="line" style="--d:5s">
+                                remote: Total 138 (delta 68), reused 103 (delta 42), pack-reused 0 (from 0)
+                            </div>
+
+                            <div class="line" style="--d:6s">
+                                Receiving objects: 100% (138/138), 1.15 MiB | 4.58 MiB/s, done.
+                            </div>
+
+                            <div class="line cursor" style="--d:7s">
+                                Resolving deltas: 100% (68/68), done.
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <div class="floating-badge pos-1">1. Clone repo</div>
+            <div class="floating-badge pos-3">2. → Navigate to chrome://extensions/ <br/> → enable developer mode</div>
+            <div class="floating-badge pos-2" style="margin-left: -20px;">3. Click Load unpacked <br/>  →  select the folder <br/>containing manifest.json</div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <span class="section-label">🧱 Under the hood</span>
+            <h2 class="section-title">Simple, <span class="highlight">modular architecture</span></h2>
+            <p class="section-sub">
+                BrutuSuite keeps things intentionally simple. Three small pieces working together to capture, store, and replay requests.
+            </p>
+            <div class="arch-grid">
+                <div class="arch-item">
+                    <div class="emoji">⚙️</div>
+                    <h4>Background Service</h4>
+                    <p>Uses the Chrome debugger API to capture network events and store logs.</p>
+                    <span class="file">background.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🖥️</div>
+                    <h4>DevTools Panel</h4>
+                    <p>Displays requests, details, and the edit/replay interface. Communicates with the background
+                        script.</p>
+                    <span class="file">panel.html · panel.js</span>
+                </div>
+                <div class="arch-item">
+                    <div class="emoji">🔌</div>
+                    <h4>DevTools Entry</h4>
+                    <p>Registers the BrutuSuite panel inside Chrome DevTools.</p>
+                    <span class="file">devtools.js</span>
+                </div>
+            </div>
+            <div class="arch-flow">
+                <span class="flow-item"><span class="dot"></span> Tab</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#7c5cfc;"></span> Debugger API</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff9f4a;"></span> storage.local</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#3ddc84;"></span> Panel UI</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-item"><span class="dot" style="background:#ff5e7a;"></span> fetch() replay</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTRIBUTE ===== -->
+    <section class="contribute" id="contribute">
+        <div class="container">
+            <div class="contribute-content">
+                <span class="section-label">🤝 Join the project</span>
+                <h2 class="section-title">Contributions <span class="highlight">welcome</span></h2>
+                <p class="section-sub">
+                    Found something annoying? Have a cool idea? Open an issue, send a PR, or surprise us. Every contribution makes BrutuSuite a little better.
+                </p>
+                <ul class="contrib-steps">
+                    <li><span class="num">1</span> Fork the repository</li>
+                    <li><span class="num">2</span> Create a feature branch: <code>feature/amazing-feature</code></li>
+                    <li><span class="num">3</span> Commit your changes with clear messages</li>
+                    <li><span class="num">4</span> Push and open a Pull Request</li>
+                </ul>
+
+                <div class="contrib-cta">
+                    <a href="https://github.com/hangga/brutusuite" target="_blank" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                        </svg>
+                        Open a Pull Request →
+                    </a>
+                </div>
+            </div>
+            <div class="contrib-visual">
+                <div class="contrib-card">
+                    <div class="big-icon">📄</div>
+                    <h3>MIT License</h3>
+                    <p>Free forever. Fork it, improve it, break it (preferably not on Friday), then fix it—we're all here to build better tools.</p>
+                    <span class="license-badge">✓ Open Source</span>
+                    <div style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
+                        <span>⭐ Star us on GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copy">
+                © 2026 BrutuSuite · MIT License
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/hangga/brutusuite" target="_blank">GitHub</a>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+            </div>
+            <div class="fun-fact">
+                💡 Fun fact: "Brutu" is Javanese for chicken tail. Not the first thing you expect from a security tool... but it definitely starts conversations. 😄
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
