@@ -1208,6 +1208,8 @@
             .terminal-body {
                 font-size: 0.65rem;
                 padding: 12px;
+                word-break: break-all;
+                text-align: left;
             }
             .video-grid {
                 gap: 18px;
