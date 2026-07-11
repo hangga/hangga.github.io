@@ -135,8 +135,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#demo">Demo</a></li>
+                <li><a href="#workflow">Workflow</a></li>   <!-- Tambahkan ini -->
                 <li><a href="#install">Install</a></li>
-                <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#contribute">Contribute</a></li>
                 <li><a href="#contribute" class="nav-cta">Get Started</a></li>
             </ul>
@@ -223,6 +223,80 @@
                     </a>
                 </p>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WORKFLOW COMPARISON ===== -->
+    <section class="workflow" id="workflow">
+        <div class="container">
+            <span class="section-label">⚡ Shorter Workflow</span>
+            <h2 class="section-title">From <span class="highlight">browser</span> to replay in seconds</h2>
+            <p class="section-sub">
+                BrutuSuite eliminates the copy-paste dance. See how it stacks up against traditional tools.
+            </p>
+
+            <div class="workflow-table-wrapper">
+                <table class="workflow-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Postman</th>
+                            <th>Burp Suite</th>
+                            <th>🚀 BrutuSuite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Open browser</td>
+                            <td>Open browser</td>
+                            <td>Open browser</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Inspect → XHR/Fetch</td>
+                            <td>Open Burp Suite</td>
+                            <td><strong>Inspect → BrutuSuite</strong></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Copy request data</td>
+                            <td>Capture / intercept</td>
+                            <td><strong>Edit request</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Open Postman</td>
+                            <td>Edit request</td>
+                            <td><strong>Send request</strong></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Build / import</td>
+                            <td>Send request</td>
+                            <td><span class="done-badge">✅ Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Edit request</td>
+                            <td class="empty-cell">—</td>
+                            <td class="empty-cell">—</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Send request</td>
+                            <td class="empty-cell">—</td>
+                            <td class="empty-cell">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="workflow-note">
+                <span class="workflow-highlight">
+                    ⏱️ BrutuSuite keeps the workflow where the request already happens: <strong>inside your browser</strong>.
+                </span>
             </div>
         </div>
     </section>
@@ -356,49 +430,6 @@
                 <!-- <div class="floating-badge pos-1">1. Clone repo</div>
             <div class="floating-badge pos-3">2. → Navigate to chrome://extensions/ <br/> → enable developer mode</div>
             <div class="floating-badge pos-2" style="margin-left: -20px;">3. Click Load unpacked <br/>  →  select the folder <br/>containing manifest.json</div> -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ARCHITECTURE ===== -->
-    <section class="architecture" id="architecture">
-        <div class="container">
-            <span class="section-label">🧱 Under the hood</span>
-            <h2 class="section-title">Simple, <span class="highlight">modular architecture</span></h2>
-            <p class="section-sub">
-                BrutuSuite keeps things intentionally simple. Three small pieces working together to capture, store, and replay requests.
-            </p>
-            <div class="arch-grid">
-                <div class="arch-item">
-                    <div class="emoji">⚙️</div>
-                    <h4>Background Service</h4>
-                    <p>Uses the Chrome debugger API to capture network events and store logs.</p>
-                    <span class="file">background.js</span>
-                </div>
-                <div class="arch-item">
-                    <div class="emoji">🖥️</div>
-                    <h4>DevTools Panel</h4>
-                    <p>Displays requests, details, and the edit/replay interface. Communicates with the background
-                        script.</p>
-                    <span class="file">panel.html · panel.js</span>
-                </div>
-                <div class="arch-item">
-                    <div class="emoji">🔌</div>
-                    <h4>DevTools Entry</h4>
-                    <p>Registers the BrutuSuite panel inside Chrome DevTools.</p>
-                    <span class="file">devtools.js</span>
-                </div>
-            </div>
-            <div class="arch-flow">
-                <span class="flow-item"><span class="dot"></span> Tab</span>
-                <span class="flow-arrow">→</span>
-                <span class="flow-item"><span class="dot" style="background:#7c5cfc;"></span> Debugger API</span>
-                <span class="flow-arrow">→</span>
-                <span class="flow-item"><span class="dot" style="background:#ff9f4a;"></span> storage.local</span>
-                <span class="flow-arrow">→</span>
-                <span class="flow-item"><span class="dot" style="background:#3ddc84;"></span> Panel UI</span>
-                <span class="flow-arrow">→</span>
-                <span class="flow-item"><span class="dot" style="background:#ff5e7a;"></span> fetch() replay</span>
             </div>
         </div>
     </section>
