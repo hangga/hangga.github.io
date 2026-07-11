@@ -361,11 +361,11 @@
         }
 
         .hero-visual img {
-            max-width: 100%;
-            border-radius: var(--radius-lg);
+            max-width: 120%;
+            /* border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: var(--transition); */
         }
 
         .hero-visual img:hover {
