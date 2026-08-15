@@ -337,13 +337,13 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.55rem;
+    font-size: 0.70rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 0.04em; */
     padding: 0.15rem 0.6rem 0.15rem 0.5rem;
     border-radius: 20px;
-    background: #1a1a1a;
+    background: #000;
     /* border: 1px solid #2a2a2a; */
     border: 1px solid rgba(96, 165, 250, 0.3);
     color: #a3a3a3;
@@ -353,13 +353,16 @@ body {
     transition: border-color 0.2s;
 }
 .card .body .publisher img {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     border-radius: 4px;
+    margin-right: 10px;
+    margin-left: 4px;
     object-fit: contain;
     background: #0d0d0d;
     flex-shrink: 0;
     display: block;
+    /* border: 1px solid rgba(96, 165, 250, 0.3); */
 }
 .card .body .publisher.cyber {
     border-color: rgba(74, 222, 128, 0.3);
@@ -406,7 +409,7 @@ body {
     border: 1px solid #262626;
     background: #0a0a0a;
     padding: 1rem;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     transition: border-color 0.25s, background 0.2s;
     flex: 1 1 auto;
     min-width: 200px;
@@ -441,6 +444,12 @@ body {
 }
 .pub-card .pub-name {
     font-size: 0.7rem;
+    font-weight: 400;
+    color: #6b6b6b;
+    letter-spacing: -0.01em;
+}
+.pub-card .pub-title {
+    font-size: 0.8rem;
     font-weight: 700;
     color: #e5e5e5;
     letter-spacing: -0.01em;
