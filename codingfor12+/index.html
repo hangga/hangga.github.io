@@ -4,193 +4,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding for 12+ | Belajar Coding Tanpa Ribet</title>
+    <meta name="theme-color" content="#101d35">
+    <meta name="description"
+        content="Coding for 12+ adalah buku belajar Python untuk pemula usia 12 tahun ke atas. Belajar coding dengan kode Python sungguhan, penjelasan sederhana, dan visualisasi konsep.">
+    <title>Coding for 12+ — Belajar Python dengan Cara yang Lebih Mudah Dipahami</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-
-    <!-- HEADER -->
-    <header>
+    <header class="site-header">
         <div class="container nav-content">
-            <a href="#" class="logo-brand">
-                <!-- Ikon Python -->
-                <div class="logo-icon-python">
-                    <svg viewBox="0 0 24 24" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+            <a href="#" class="logo-brand" aria-label="Coding for 12+">
+                <span class="logo-icon-python" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M11.9 1c-2.4 0-4.4 1.9-4.4 4.3v2.4h-2c-1.7 0-3.1 1.4-3.1 3.1v2.5c0 1.7 1.4 3.1 3.1 3.1h2c.5 0 .9-.1 1.3-.3v-4.5c0-2.4 1.9-4.3 4.3-4.3h2.8c.5 0 .9-.1 1.3-.3v-2c0-1.7-1.4-3.1-3.1-3.1h-2.2c-1.8 0-3.3-1.5-3.3-3.3z"
                             fill="#3776AB" />
                         <path
-                            d="M12.1 23c2.4 0 4.4-1.9 4.4-4.3v-2.4h2c1.7 0 3.1-1.4 3.1-3.1v-2.5c0-1.7-1.4-3.1-3.1-3.1h-2c-.5 0-.9.1-1.3.3v4.5c0 2.4-1.9 4.3-4.3 4.3H8.1c-.5 0-.9.1-1.3.3v2c0 1.7 1.4 3.1 3.1 3.1h2.2c1.8 0 3.3 1.5 3.3 3.3z"
+                            d="M12.1 23c2.4 0 4.4-1.9 4.4-4.3v-2.4h2c1.7 0 3.1-1.4 3.1-3.1v-2.5c0-1.7-1.4-3.1-3.1-3.1h-2c-.5 0-.9.1-1.3.3v4.5c0 2.4-1.9 4.3-4.3 4.3H8.1c-.5 0-.9.1-1.3.3v2c0 1.7 1.4 3.1 3.1 3.1h2.2c1.8 0 3.3-1.5 3.3-3.3z"
                             fill="#FFD43B" />
-                        <path d="M9.2 5.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" fill="#fff" />
-                        <path d="M14.8 18.6a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" fill="#fff" />
+                        <circle cx="8" cy="5.4" r="1.2" fill="#fff" />
+                        <circle cx="13.6" cy="18.6" r="1.2" fill="#fff" />
                     </svg>
-                </div>
-
-                <!-- Teks Logo Mirip Cover -->
-                <div class="logo-typography">
+                </span>
+                <span class="logo-typography">
                     <span class="brand-coding">Coding</span>
-                    <div class="brand-badge">
-                        <span class="brand-for">for</span>
-                        <span class="brand-12">12+</span>
-                    </div>
-                </div>
+                    <span class="brand-badge"><span>for</span><strong>12+</strong></span>
+                </span>
             </a>
-            <a href="#pricing" class="btn-primary">Beli Sekarang</a>
+            <nav class="desktop-nav" aria-label="Navigasi utama">
+                <a href="#tentang">Tentang Buku</a>
+                <a href="#materi">Materi</a>
+                <a href="#pricing">Harga</a>
+            </nav>
+            <a href="#pricing" class="btn btn-small">Dapatkan Buku <span aria-hidden="true">↗</span></a>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero container">
-        <div class="hero-text">
-            <h1>Apakah perlu mengajarkan coding pada anak sejak dini?</h1>
-            <p>Menurut saya jawabnya <strong class="tidak">tidak.</strong><br>Kecuali dia sendiri yang pengen.</p>
-            <a href="#pricing" class="btn-primary" style="padding: 15px 35px; font-size: 1.1rem;">Lihat Paket Buku</a>
-        </div>
-        <div class="hero-image">
-            <!-- Ganti src dengan file gambar cover buku Anda -->
-            <img src="images/cover-depan-small.png" alt="Cover Buku Coding for 12+">
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <span class="eyebrow"><span class="eyebrow-dot"></span> BUKU BELAJAR PYTHON UNTUK PEMULA</span>
+                    <!-- <h1>Belajar coding itu bukan cuma <span class="highlight">drag and drop.</span></h1>
+          <p class="hero-lead">Ajak anak mengenal pemrograman lewat kode Python sungguhan. Mulai dari konsep paling dasar, dengan penjelasan sederhana dan visualisasi yang dekat dengan kehidupan sehari-hari.</p>
+           -->
+                    <h1>
+                        Apakah perlu mengajarkan coding sejak dini?
+                    </h1>
 
-    <!-- STORY SECTION -->
-    <section class="story">
-        <div class="container story-content">
-            <h2>Kenapa Buku Ini Dibuat?</h2>
-            <p>Banyak kursus coding untuk anak menggunakan Scratch, konsepnya sangat bagus. Tapi tidak semua anak cocok
-                dengan metodenya. <strong>Contohnya anak saya.</strong></p>
-            <blockquote>
-                "Main Scratch malah bingung. Ekspektasinya, coding itu ya ngetik kode, ky ayah."
-            </blockquote>
-            <p>Masalahnya, gimana memahamkan konsep pemrograman pada anak? Akhirnya saya bikin visualisasi. Misalkan
-                logika percabangan seperti mengambil keputusan *"bawa payung ndak ya?"*.</p>
-            <p>Metode ini awalnya saya buat khusus untuk anak saya sendiri, dan sekarang saya bagikan untuk Anda dalam
-                buku <strong>Coding for 12+</strong>.</p>
-        </div>
-    </section>
+                    <p class="hero-highlight">
+                        Menurut saya, <strong class="tidak">JANGAN.</strong>
+                    </p>
 
+                    <p class="hero-subtitle">
+                        Kecuali anaknya sendiri yang <strong class="tidak">pengen</strong>.😁
+                    </p>
 
+                    <p class="hero-description">
+                        Kalau anak memang tertarik dengan coding, kenapa tidak mulai
+                        mengenalkannya lewat kode Python sungguhan?
+                    </p>
 
-    <!-- PREVIEW SECTION -->
-    <section class="preview">
-        <div class="container">
-            <div class="preview-header">
-                <h2>Belajar Konsep Coding Lewat Visualisasi</h2>
-                <p>Analogi sederhana yang membuat anak langsung paham tanpa pusing.</p>
-            </div>
-            <div class="preview-grid">
-                <!-- Gambar 1: Tipe Data -->
-                <div class="preview-item">
-                    <!-- Ganti "tipe-data.jpg" dengan nama file gambar Anda -->
-                    <img src="images/Data Types Explained with Colorful Boxes.png"
-                        alt="Visualisasi Tipe Data seperti Kotak">
-                    <div class="preview-caption">
-                        <h3>Tipe Data</h3>
-                        <p>Memahami Tipe Data seperti mengenal isi kotak buku, mainan, dan pakaian.</p>
+                    <div class="hero-actions">
+                        <a href="#pricing" class="btn">Lihat Pilihan Buku <span aria-hidden="true">→</span></a>
+                        <a href="#materi" class="text-link">Intip isi bukunya <span aria-hidden="true">↓</span></a>
+                    </div>
+                    <div class="hero-meta">
+                        <span><strong>12+</strong> tahun</span>
+                        <span class="meta-divider"></span>
+                        <span><strong>Python</strong> dari dasar</span>
+                        <span class="meta-divider"></span>
+                        <span><strong>101</strong> halaman</span>
                     </div>
                 </div>
-
-                <!-- Gambar 2: List & Looping -->
-                <div class="preview-item">
-                    <!-- Ganti "list-looping.jpg" dengan nama file gambar Anda -->
-                    <img src="images/Kid-Friendly List Looping Infographic.png"
-                        alt="Visualisasi List dan Looping dengan Buah">
-                    <div class="preview-caption">
-                        <h3>List & Looping</h3>
-                        <p>Konsep menyimpan banyak data dan mengulanginya semudah menghitung buah.</p>
+                <div class="hero-visual">
+                    <div class="hero-glow"></div>
+                    <div class="hero-book">
+                        <img src="images/hero.png"
+                            alt="Cover buku Coding for 12+, buku belajar Python untuk pemula">
                     </div>
-                </div>
-
-                <!-- Gambar 3: If-Else -->
-                <div class="preview-item">
-                    <!-- Ganti "if-else.jpg" dengan nama file gambar Anda -->
-                    <img src="images/If-Else_ Hujan atau Cerah_.png" alt="Visualisasi If-Else seperti Bawa Payung">
-                    <div class="preview-caption">
-                        <h3>Logika If-Else</h3>
-                        <p>Pengambilan keputusan di coding, persis seperti memikirkan mau bawa payung atau tidak.</p>
+                    <div class="floating-note note-code"><span class="note-icon">⌘</span><span><strong>Write real
+                                code</strong><small>Belajar Python langsung</small></span></div>
+                    <div class="floating-note note-age"><strong>12<span>+</span></strong><small>Untuk pemula</small>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PRICING SECTION -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="pricing-header">
-                <h2>Pilih Format Bukumu</h2>
-                <p>Dapatkan akses materi coding yang menyenangkan.</p>
+        <section class="quick-points" aria-label="Keunggulan buku">
+            <div class="container quick-points-grid">
+                <div><span class="point-icon">01</span><span><strong>Mulai dari dasar</strong><small>Tak perlu
+                            pengalaman coding</small></span></div>
+                <div><span class="point-icon">02</span><span><strong>Kode Python sungguhan</strong><small>Bukan sekadar
+                            blok visual</small></span></div>
+                <div><span class="point-icon">03</span><span><strong>Belajar sambil praktik</strong><small>Contoh dan
+                            latihan bertahap</small></span></div>
             </div>
+        </section>
 
-            <div class="mockup-showcase">
-                <!-- Ganti "mockup-buku.jpg" dengan nama file gambar mockup Anda -->
-                <img src="images/Coding for 12+ Study Desk.png" alt="Buku Coding for 12+ Cetak">
+        <section class="story section" id="tentang">
+            <div class="container story-layout">
+                <div class="section-kicker">CERITA DI BALIK BUKU</div>
+                <div class="story-main">
+                    <h2>Awalnya, buku ini cuma saya buat untuk <span>anak sendiri.</span></h2>
+                    <p>Anak saya pernah mencoba kursus coding anak yang menggunakan Scratch. Metodenya bagus, tetapi
+                        ternyata bukan itu yang ia bayangkan.</p>
+                    <blockquote>
+                        “Kok kayak gini? Nggak kayak Ayah coding.”
+                    </blockquote>
+                    <p>Ia berharap bisa menulis kode seperti yang biasa ia lihat ketika saya bekerja. Dari situ saya
+                        mulai menyusun materi Python sendiri. Tantangannya ternyata bukan sekadar membuat program,
+                        tetapi bagaimana menjelaskan konsep pemrograman agar mudah dipahami anak.</p>
+                    <p>Saya lalu mencoba menggunakan analogi dan visualisasi sederhana. Misalnya, memahami
+                        <em>if-else</em> lewat keputusan membawa payung saat hujan, atau mengenal tipe data lewat
+                        benda-benda yang akrab di sekitar kita.
+                    </p>
+                    <p class="story-ending">Materi yang awalnya saya susun untuk anak sendiri itu kemudian saya rangkum
+                        menjadi <strong>Coding for 12+</strong>. Siapa tahu bisa membantu anak lain yang ingin belajar
+                        coding dengan cara serupa.</p>
+                    <a href="https://hangga.web.id/" style="text-decoration: none;"><div class="author-sign">Hangga Aji Sayekti <span>Software Engineer & penulis</span></div></a>
+                </div>
             </div>
+        </section>
 
-            <div class="pricing-grid">
-
-                <!-- Paket PDF -->
-                <div class="price-card">
-                    <h3>E-Book (PDF)</h3>
-                    <div class="price">99K <span>/ saja</span></div>
-                    <ul class="features">
-                        <li>Akses Buku Format PDF</li>
-                        <li>Bisa dibaca di HP, Tablet, PC</li>
-                        <li>Akses Instan</li>
-                    </ul>
-                    <a href="https://lynk.id/hanggaajisayekti/4457l9vk17wo" class="btn-buy">Beli PDF</a>
+        <section class="learning section" id="materi">
+            <div class="container">
+                <div class="section-heading">
+                    <div class="section-kicker">BELAJAR LEWAT CONTOH</div>
+                    <h2>Konsep coding dijelaskan dengan cara yang lebih dekat.</h2>
+                    <p>Bukan hanya membaca istilah teknis. Anak diajak memahami ide di balik kode lewat ilustrasi dan
+                        contoh sederhana.</p>
                 </div>
-
-                <!-- Paket Grade A -->
-                <div class="price-card popular">
-                    <div class="badge">PALING LARIS</div>
-                    <h3>Cetak Grade A (Warna)</h3>
-                    <div class="price">138K <span>/ buku</span></div>
-                    <ul class="features">
-                        <li>Cover: Full Color</li>
-                        <li>Isi Buku: Full Color</li>
-                        <li>Kertas: Bookpaper 57,5 gr</li>
-                        <li>Ukuran: B5 (18x25 cm)</li>
-                        <li>101 Halaman | Softcover</li>
-                        <li><em>Termasuk Ongkos Cetak 39K</em></li>
-                    </ul>
-                    <a href="#" class="btn-buy">Beli Versi Cetak A</a>
+                <div class="preview-grid">
+                    <article class="preview-card">
+                        <div class="preview-image"><img src="images/data-types-transparent.png"
+                                alt="Ilustrasi tipe data menggunakan kotak-kotak berisi benda"></div>
+                        <div class="preview-caption"><span class="card-number">01 / FUNDAMENTAL</span>
+                            <h3>Tipe Data</h3>
+                            <p>Mengenal jenis data dengan analogi kotak yang punya isi dan fungsi berbeda.</p>
+                        </div>
+                    </article>
+                    <article class="preview-card">
+                        <div class="preview-image"><img src="images/list-looping-transparent.png"
+                                alt="Ilustrasi list dan looping menggunakan buah"></div>
+                        <div class="preview-caption"><span class="card-number">02 / DATA & LOOP</span>
+                            <h3>List & Looping</h3>
+                            <p>Memahami cara menyimpan banyak data dan mengulang instruksi dengan contoh buah.</p>
+                        </div>
+                    </article>
+                    <article class="preview-card">
+                        <div class="preview-image"><img src="images/if-else-transparent.png"
+                                alt="Ilustrasi logika if else dengan keputusan membawa payung"></div>
+                        <div class="preview-caption"><span class="card-number">03 / LOGIC</span>
+                            <h3>Logika If-Else</h3>
+                            <p>Belajar bagaimana program mengambil keputusan, seperti menentukan perlu membawa payung
+                                atau tidak.</p>
+                        </div>
+                    </article>
                 </div>
-
-                <!-- Paket Grade B -->
-                <div class="price-card">
-                    <h3>Cetak Grade B (B&W)</h3>
-                    <div class="price">129K <span>/ buku</span></div>
-                    <ul class="features">
-                        <li>Cover: Full Color</li>
-                        <li>Isi Buku: Hitam Putih</li>
-                        <li>Kertas: Bookpaper 57,5 gr</li>
-                        <li>Ukuran: B5 (18x25 cm)</li>
-                        <li>101 Halaman | Softcover</li>
-                        <li><em>Termasuk Ongkos Cetak 30K</em></li>
-                    </ul>
-                    <a href="#" class="btn-buy">Beli Versi Cetak B</a>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            &copy; 2023 Coding for 12+ | Ditulis oleh Hangga Aji Sayekti. All rights reserved.
+        <section class="curriculum section">
+            <div class="container curriculum-layout">
+                <div class="curriculum-copy">
+                    <div class="section-kicker">APA YANG AKAN DIPELAJARI?</div>
+                    <h2>Pelan-pelan kenalan dengan dasar pemrograman.</h2>
+                    <p>Materi disusun untuk membantu pemula mengenal cara berpikir komputasional, lalu mencoba
+                        menerapkannya dalam kode Python.</p>
+                    <div class="curriculum-list">
+                        <div><span>✓</span> Variabel, tipe data, dan operator</div>
+                        <div><span>✓</span> Percabangan dan perulangan</div>
+                        <div><span>✓</span> Fungsi dan modul</div>
+                        <div><span>✓</span> Mengenal library Python</div>
+                        <div><span>✓</span> Membuat gambar sederhana dengan Turtle</div>
+                    </div>
+                    <p class="curriculum-footnote">Belajar dari nol. Tidak perlu punya pengalaman pemrograman
+                        sebelumnya.</p>
+                </div>
+                <div class="editor-card">
+                    <div class="editor-top">
+                        <div class="window-dots"><i></i><i></i><i></i></div><span>hello_world.py</span><span
+                            class="python-label">PYTHON</span>
+                    </div>
+                    <pre><code><span class="code-muted"># Program pertamamu</span>
+nama = <span class="code-string">"Dunia Coding"</span>
+
+print(<span class="code-string">"Halo,"</span>, nama)
+
+<span class="code-muted"># Saatnya mencoba sendiri!</span></code></pre>
+                    <div class="editor-bottom"><span class="terminal-mark">›_</span><span>Mulai dari satu baris
+                            kode.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="editor-note">
+            <div class="container editor-note-inner">
+                <div class="editor-note-icon">⌨</div>
+                <div>
+                    <h3>Belajar pakai code editor yang sederhana.</h3>
+                    <p>Buku ini menggunakan <strong>Mu Editor</strong>, editor Python yang ringan dan relatif mudah
+                        digunakan pemula. Jadi, anak bisa lebih fokus memahami coding tanpa terlalu banyak pengaturan di
+                        awal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing section" id="pricing">
+            <div class="container">
+                <div class="section-heading">
+                    <div class="section-kicker">PILIH FORMAT BUKU</div>
+                    <h2>Mulai perjalanan coding dari sini.</h2>
+                    <p>Pilih format yang paling nyaman untuk belajar.</p>
+                </div>
+                <div class="book-showcase">
+                    <img src="images/book-on-desk.png"
+                        alt="Mockup buku fisik Coding for 12+ di atas meja belajar">
+                </div>
+                <div class="pricing-grid">
+                    <article class="price-card">
+                        <div class="plan-label">DIGITAL</div>
+                        <h3>E-Book PDF</h3>
+                        <div class="price">Rp99.000</div>
+                        <p class="price-description">Praktis dibaca dari perangkat yang sudah dimiliki.</p>
+                        <ul class="features">
+                            <li>File buku format PDF</li>
+                            <li>Bisa dibaca di HP, tablet, dan komputer</li>
+                            <li>Akses digital setelah pembelian</li>
+                        </ul>
+                        <a href="https://lynk.id/hanggaajisayekti/4457l9vk17wo" class="btn btn-outline" target="_blank"
+                            rel="noopener">Beli E-Book <span>↗</span></a>
+                    </article>
+
+                    <article class="price-card featured">
+                        <div class="popular-label">FULL COLOR</div>
+                        <div class="plan-label">BUKU FISIK</div>
+                        <h3>Cetak Grade A</h3>
+                        <div class="price">Rp138.000</div>
+                        <span>(PREORDER | Dicetak dalam 4–5 hari kerja)</span>
+                        <p class="price-description">Pengalaman membaca dengan ilustrasi berwarna.</p>
+                        <ul class="features">
+                            <li>Cover full color</li>
+                            <li>Isi buku full color</li>
+                            <li>Bookpaper 57,5 gsm</li>
+                            <li>Ukuran B5 (18 × 25 cm)</li>
+                            <li>101 halaman, softcover</li>
+                            <li><strong>Termasuk ongkos cetak Rp39.000</strong></li>
+                        </ul>
+                        <a href="https://wa.me/62895411654062?text=Buku%20Coding%20for%2012%2B%20Grade%20A" class="btn"
+                            target="_blank" rel="noopener noreferrer" aria-label="Pesan Buku Coding for 12+ Grade A">
+                            Beli Buku Cetak <span>→</span>
+                        </a>
+                    </article>
+
+                    <article class="price-card">
+                        <div class="plan-label">BUKU FISIK</div>
+                        <h3>Cetak Grade B</h3>
+                        <div class="price">Rp129.000</div>
+                        <span>(PREORDER | Dicetak dalam 4–5 hari kerja)</span>
+                        <p class="price-description">Pilihan cetak dengan isi hitam putih.</p>
+                        <ul class="features">
+                            <li>Cover full color</li>
+                            <li>Isi buku hitam putih</li>
+                            <li>Bookpaper 57,5 gsm</li>
+                            <li>Ukuran B5 (18 × 25 cm)</li>
+                            <li>101 halaman, softcover</li>
+                            <li><strong>Termasuk ongkos cetak Rp30.000</strong></li>
+                        </ul>
+                        <a href="https://wa.me/62895411654062?text=Buku%20Coding%20for%2012%2B%20Grade%20B" class="btn"
+                            target="_blank" rel="noopener noreferrer" aria-label="Pesan Buku Coding for 12+ Grade B">
+                            Beli Buku Cetak <span>→</span>
+                        </a>
+                    </article>
+                </div>
+                <p class="pricing-note">Harga buku cetak sudah termasuk ongkos cetak sesuai rincian paket.</p>
+            </div>
+        </section>
+
+        <section class="closing-cta">
+            <div class="container closing-inner">
+                <div>
+                    <div class="section-kicker">CODING FOR 12+</div>
+                    <h2>Mulai dari penasaran. Lanjutkan dengan mencoba.</h2>
+                    <p>Satu baris kode pertama bisa jadi awal dari banyak hal menarik.</p>
+                </div>
+                <a href="#pricing" class="btn btn-light">Pilih Bukumu <span>↑</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a href="#" class="footer-brand">Coding <span>for 12+</span></a>
+            <p>© 2026 Coding for 12+. Ditulis oleh Hangga Aji Sayekti.</p>
         </div>
     </footer>
-
 </body>
 
 </html>
