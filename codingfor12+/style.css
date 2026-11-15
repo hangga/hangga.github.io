@@ -831,6 +831,71 @@ a {
     min-height: 49px;
 }
 
+
+.checkout-options {
+    display: grid;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.checkout-options .btn {
+    width: 100%;
+    min-height: 49px;
+}
+
+.checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    text-align: left;
+}
+
+.checkout-brand-icon {
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+}
+
+.lynk-icon {
+    color: #fff;
+}
+
+.leanpub-icon {
+    color: #f26a3d;
+}
+
+.checkout-btn-label {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    line-height: 1.25;
+}
+
+.checkout-btn-label strong {
+    font-size: .92rem;
+    font-weight: 800;
+}
+
+.checkout-btn-label small {
+    font-size: .92rem;
+    font-weight: 500;
+    opacity: .82;
+}
+
+.checkout-arrow {
+    margin-left: auto;
+    font-size: 1rem;
+}
+
+.checkout-hint {
+    margin-top: 10px;
+    color: #545961;
+    font-size: .72rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
 .btn-outline {
     border-color: #dce2eb;
     background: #fff;
@@ -852,6 +917,19 @@ a {
     border-radius: 7px;
     background: var(--yellow);
     color: var(--navy);
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .8px;
+}
+
+.hemat-label {
+    position: absolute;
+    top: -13px;
+    right: 22px;
+    padding: 4px 10px;
+    border-radius: 7px;
+    background: #a3a8b1;
+    color: var(--white);
     font-size: .64rem;
     font-weight: 800;
     letter-spacing: .8px;
