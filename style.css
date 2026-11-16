@@ -887,7 +887,7 @@ body::after {
 .book-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 9 / 11.5;
+    aspect-ratio: 9 / 12;
     border-radius: 0.25rem;
     overflow: hidden;
 }
