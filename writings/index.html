@@ -1,598 +1,1136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Hangga Aji Sayekti | Modern Technical Content for DevTools & Security</title>
-<link rel="icon" href="/icon.png" type="image/png" sizes="96x96"/>
-<!-- Google Fonts + modern system font fallback -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Articles and technical explorations by Hangga Aji Sayekti across mathematics, computer science, software engineering, application security, cloud infrastructure, and developer tooling.">
+  <title>Publications — Hangga Aji Sayekti</title>
+  <link rel="icon" href="../icon.png" type="image/png" sizes="96x96">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pub-bg: #09090b;
+      --pub-surface: #121826;
+      --pub-border: #242f47;
+      --pub-text: #f8fafc;
+      --pub-muted: #a1a1aa;
+      --pub-soft: #d4d4d8;
+      --pub-accent: #ec4899;
+      --pub-indigo: #6366f1;
+    }
 
-<link rel="stylesheet" href="cta-style.css">
+    * {
+      box-sizing: border-box;
+    }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--pub-bg);
+      color: var(--pub-text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: linear-gradient(#242f47 1px, transparent 1px),
+        linear-gradient(90deg, #242f47 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .13;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .pub-layout {
+      position: relative;
+      z-index: 1;
+      width: min(1280px, calc(100% - 48px));
+      margin: 0 auto;
+      display: block;
+      max-width: 900px;
+    }
+
+    .pub-main {
+      min-width: 0;
+      padding: 76px 0 90px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--pub-accent);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .page-title {
+      margin: 0;
+      color: #fafafa;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -.055em;
+    }
+
+    .page-intro {
+      max-width: 690px;
+      margin: 20px 0 0;
+      color: var(--pub-muted);
+      font-size: .98rem;
+      line-height: 1.85;
+    }
+
+    .pub-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 34px 0 46px;
+      padding: 20px 0;
+      border-top: 1px solid var(--pub-border);
+      border-bottom: 1px solid var(--pub-border);
+    }
+
+    .stat {
+      display: grid;
+      gap: 2px;
+    }
+
+    .stat strong {
+      color: #fafafa;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .stat span {
+      color: var(--pub-muted);
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .publisher-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 20px;
+      color: #f4f4f5;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 700;
+    }
+
+    .publisher-heading::before {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--pub-muted));
+    }
+
+    .publisher-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 54px;
+    }
+
+    .publisher-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--pub-border);
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: var(--pub-soft);
+      background: rgba(18, 24, 38, .58);
+      font-size: .76rem;
+      text-decoration: none;
+      transition: border-color .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .publisher-pill:hover {
+      color: #fff;
+      border-color: var(--pub-indigo);
+      transform: translateY(-2px);
+    }
+
+    .publisher-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pub-accent);
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    .search-wrap {
+      flex: 1;
+    }
+
+    .search-input,
+    .filter-select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--pub-border);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(18, 24, 38, .8);
+      color: var(--pub-text);
+      padding: 0 13px;
+      font: inherit;
+      font-size: .8rem;
+    }
+
+    .search-input:focus,
+    .filter-select:focus {
+      border-color: var(--pub-indigo);
+    }
+
+    .filter-select {
+      width: 180px;
+      cursor: pointer;
+    }
+
+    .result-count {
+      margin: 0 0 20px;
+      color: var(--pub-muted);
+      font-size: .72rem;
+    }
+
+    .publication-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .publication {
+      display: grid;
+      grid-template-columns: 156px minmax(0, 1fr);
+      gap: 22px;
+      padding: 22px 18px;
+      margin: 0 -18px;
+      border-radius: 10px;
+      transition: background .2s ease;
+    }
+
+    .publication:hover {
+      background: rgba(94, 234, 212, .045);
+    }
+
+    .publication[hidden] {
+      display: none;
+    }
+
+    .publication-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(148, 163, 184, .22);
+      border-radius: 5px;
+      background: #18181b;
+    }
+
+    .publication-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 8px;
+      color: var(--pub-muted);
+      font-size: .67rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .publication-type {
+      color: #f9a8d4;
+      border: 1px solid rgba(236, 72, 153, .25);
+      background: rgba(236, 72, 153, .08);
+      border-radius: 999px;
+      padding: 2px 8px;
+      letter-spacing: .04em;
+    }
+
+    .publication-title {
+      margin: 0 0 9px;
+      color: #f4f4f5;
+      font-size: 1.02rem;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .publication-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .publication-title a:hover {
+      color: #f9a8d4;
+    }
+
+    .publication-description {
+      margin: 0 0 13px;
+      color: var(--pub-muted);
+      font-size: .82rem;
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      color: #67e8f9;
+      background: rgba(34, 211, 238, .08);
+      font-size: .66rem;
+      font-weight: 500;
+    }
+
+    .publication-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 13px;
+      color: #d4d4d8;
+      font-size: .72rem;
+      text-decoration: none;
+    }
+
+    .publication-source:hover {
+      color: var(--pub-accent);
+    }
+
+    .publication-source::after {
+      content: "↗";
+      font-size: .85rem;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 34px 0;
+      color: var(--pub-muted);
+      font-size: .85rem;
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .contribution-note {
+      margin-top: 58px;
+      padding: 22px;
+      border: 1px solid var(--pub-border);
+      border-radius: 10px;
+      background: rgba(18, 24, 38, .52);
+    }
+
+    .contribution-note h2 {
+      margin: 0 0 8px;
+      color: #f4f4f5;
+      font-size: .95rem;
+    }
+
+    .contribution-note p {
+      margin: 0;
+      color: var(--pub-muted);
+      font-size: .82rem;
+      line-height: 1.75;
+    }
+
+    .contribution-note a {
+      color: #f9a8d4;
+      text-decoration: none;
+    }
+
+    .page-footer {
+      margin-top: 60px;
+      padding-top: 18px;
+      border-top: 1px solid var(--pub-border);
+      color: #71717a;
+      font-size: .7rem;
+    }
+
+    @media (max-width: 900px) {
+      .pub-layout {
+        width: min(760px, calc(100% - 40px));
+      }
+
+      .pub-main {
+        padding: 46px 0 70px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .pub-layout {
+        width: min(100% - 32px, 480px);
+      }
+
+      .pub-main {
+        padding-top: 36px;
+      }
+
+      .pub-stats {
+        gap: 18px 24px;
+        margin: 28px 0 38px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .filter-select {
+        width: 100%;
+      }
+
+      .publication {
+        grid-template-columns: 104px minmax(0, 1fr);
+        gap: 14px;
+        padding: 18px 8px;
+        margin: 0 -8px;
+      }
+
+      .publication-title {
+        font-size: .9rem;
+      }
+
+      .publication-description {
+        font-size: .76rem;
+      }
+
+      .publication-meta {
+        font-size: .6rem;
+      }
+
+      .tag {
+        font-size: .6rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<nav>
-    <div class="container nav-inner">
-        <div class="logo no-bg">
-            <a href="#home">Hangga Aji Sayekti
-            <span class="logo-sub">Engineering-Grade Technical Content</span>
-            </a>
-        </div>
-        <div class="menu">
-            <a href="#home">Home</a>
-            <a href="#work">Work</a>
-            <!-- <a href="#services">Services</a> -->
-            <a href="#services">Typical Engagements</a>
-            <a href="#order">How Engagements Work</a>
-            <a href="archives.html">Archive</a>
-            
-            <!-- <a href="#contact">Contact</a> -->
-        </div>
-    </div>
-</nav>
-
-<section class="hero" id="home">
-    <div class="container">
-        <div class="badge">
-            ✦ SOFTWARE ENGINEER • TECHNICAL WRITER • SECURITY RESEARCHER ✦
-        </div>
-        <h1>
-            Engineering, Security, and <span class="gradient-text">Technical Content</span> — Built on Real-World Experience
-        </h1>
-
-        <p class="hero-description lead">
-        Software engineer since 2008.
-        Technical writer since 2011.
-        Lead engineer from 2015–2025.
-        Security researcher since 2024.
+  <div class="pub-layout">
+    <main class="pub-main">
+      <header class="page-header">
+        <p class="eyebrow">Writing & Contributions</p>
+        <h2 class="page-title">Publications</h2>
+        <p class="page-intro">
+          A collection of articles, tutorials, and technical explorations covering software engineering, application
+          security, mathematics, computer science, and the technologies that power modern software.
         </p>
+      </header>
 
-        <p class="hero-description">
-        I write about software engineering, cloud infrastructure,
-        application security, and real-world development practices.
-        </p>
+      <div class="pub-stats" aria-label="Publication overview">
+        <div class="stat"><strong>5</strong><span>Featured articles</span></div>
+        <div class="stat"><strong>29</strong><span>Selected contributions</span></div>
+        <div class="stat"><strong>2022–2026</strong><span>Selected work</span></div>
+      </div>
 
-        <div class="hero-actions">
-            <a href="#work" class="btn btn-secondary">
-                View Selected Work
-            </a>
-
-            <a href="#order" class="btn btn-primary">
-                Discuss Your Project →
-            </a>
+      <section aria-labelledby="publishers-title">
+        <h2 class="publisher-heading" id="publishers-title">Find my work on</h2>
+        <div class="publisher-list">
+          <a class="publisher-pill" href="https://www.baeldung.com/author/hanggaajisayekti" target="_blank"
+            rel="noopener noreferrer"><span class="publisher-dot"></span>Baeldung ↗</a>
+          <a class="publisher-pill" href="https://circleci.com/blog/author/hangga-aji-sayekti/" target="_blank"
+            rel="noopener noreferrer"><span class="publisher-dot"></span>CircleCI ↗</a>
+          <a class="publisher-pill" href="https://docs.vultr.com/author/hangga-aji-sayekti" target="_blank"
+            rel="noopener noreferrer"><span class="publisher-dot"></span>Vultr ↗</a>
+          <a class="publisher-pill" href="https://linuxhandbook.com/author/hangga/" target="_blank"
+            rel="noopener noreferrer"><span class="publisher-dot"></span>Linux Handbook ↗</a>
+          <a class="publisher-pill" href="https://www.theresearchcode.com/authors/db2a6c033db7bda4719f94ab180edb9c"
+            target="_blank" rel="noopener noreferrer"><span class="publisher-dot"></span>The Research Code ↗</a>
+          <a class="publisher-pill" href="https://hangga.web.id/security-writeups/" target="_blank"
+            rel="noopener noreferrer"><span class="publisher-dot"></span>Security Write-ups ↗</a>
         </div>
-    </div>
+      </section>
 
-    <div class="container brand-strip">
-        <p class="social-proof-title">I’ve written for developer and security-focused platforms</p>
-        <div class="social-proof-logos">
-            <div class="brand-logo">
-                <img src="images/circleci.png" alt="CircleCI">
-            </div>
+      <section id="all-publications" aria-labelledby="all-publications-title">
+        <h2 class="publisher-heading" id="all-publications-title">Selected articles</h2>
 
-            <div class="brand-logo">
-                <img src="images/digitalOcean.png" alt="DigitalOcean">
-            </div>
-
-            <div class="brand-logo">
-                <img src="images/Vultr-logo.png" alt="Vultr">
-            </div>
-
-            <div class="brand-logo">
-                <img src="images/baeldung-logo.svg" alt="Baeldung">
-            </div>
-
-            <div class="brand-logo">
-                <img src="images/itsfoss-logo.webp" alt="It's FOSS">
-            </div>
-
-            <div class="brand-logo">
-                <img src="images/cswp.png" alt="cybersecuritywriteups">
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="why-hire">
-    <div class="container">
-        <div class="section-header center">
-            <span class="section-tag">Why partner with us</span>
-            <h2>Why Developer-Focused Companies Hire Me</h2>
-        </div>
-        <div class="grid grid-4">
-            <div class="card reason-card">
-                <div class="reason-icon">⚙️</div>
-                <h3>Engineering Depth</h3>
-                <p>17+ years of hands-on software engineering experience, from application development to system architecture and technical leadership.</p>
-            </div>
-            <div class="card reason-card">
-                <div class="reason-icon">✍️</div>
-                <h3>Real-World Content</h3>
-                <p>Articles and tutorials built from practical experience, not rewritten documentation or generic AI-generated content.</p>
-            </div>
-            <div class="card reason-card">
-                <div class="reason-icon">📰</div>
-                <h3>Published Technical Writer</h3>
-                <p>Published on platforms including Baeldung, CircleCI, Vultr, and DigitalOcean, reaching developer audiences worldwide.</p>
-            </div>
-            <div class="card reason-card">
-                <div class="reason-icon">🛡️</div>
-                <h3>Security Perspective</h3>
-                <p>Active in penetration testing, bug hunting, and secure coding, bringing a security-first mindset to technical content.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section id="work">
-    <div class="container">
-        <div class="section-header center">
-            <span class="tag">Selected work</span>
-            <h2>Published technical content</h2>
-            <p class="sub">Tutorials, security research, and engineering guides from 2023–2025</p>
-        </div>
-        <div class="grid two-col">
-
-            <!-- Baeldung -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/baeldung-logo.svg" alt="Baeldung">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Kotlin Tutorial</span>
-                    </div>
-                </div>
-                <h3>Configure Kotlin's Bytecode Version with Gradle</h3>
-                <p>Step-by-step guide to controlling JVM bytecode versions in Kotlin projects, ensuring compatibility and leveraging newer runtime features.</p>
-                <a href="https://www.baeldung.com/kotlin/gradle-kotlin-bytecode-version" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- Linux Handbook -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/itsfoss-logo.webp" alt="Linux Handbook">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Penetration Testing</span>
-                    </div>
-                </div>
-                <h3>Automating XSS Hunting with Dalfox</h3>
-                <p>Hands-on tutorial for XSS detection using Dalfox on Kali Linux — installation, core commands, and automated scanning techniques.</p>
-                <a href="https://linuxhandbook.com/xss-hunting-dalfox/" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- CircleCI #1 -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/circleci.png" alt="CircleCI">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">API Security · CI/CD</span>
-                    </div>
-                </div>
-                <h3>Automating API Security Tests in CI/CD for Java</h3>
-                <p>Integrating OWASP ZAP, REST-Assured, and other tools into CircleCI pipelines to catch vulnerabilities early without slowing development.</p>
-                <a href="https://circleci.com/blog/automating-api-security-tests-in-ci-cd-for-java-applications/" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- CircleCI #2 -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/circleci.png" alt="CircleCI">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Supply Chain Security</span>
-                    </div>
-                </div>
-                <h3>Vulnerability Scanning for Gradle Dependencies</h3>
-                <p>Automating detection of vulnerable dependencies (Log4Shell, CVE-2017-5638) in CI/CD pipelines to prevent supply chain attacks.</p>
-                <a href="https://circleci.com/blog/automating-vulnerability-scanning-for-gradle-dependencies/" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- Vultr -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/Vultr-logo.png" alt="Vultr">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Serverless · Kotlin</span>
-                    </div>
-                </div>
-                <h3>Build Serverless APIs with Kotlin Ktor & Coroutines</h3>
-                <p>Complete guide to building efficient, coroutine-driven serverless APIs — from project setup to CRUD implementation and cloud deployment.</p>
-                <a href="https://docs.vultr.com/how-to-build-serverless-apis-with-kotlin-ktor-and-coroutines" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- Cybersecurity Writeups -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <!-- Tidak ada logo khusus, gunakan placeholder atau hidden -->
-                        <img src="images/cswp.png" alt="Writeup">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Bug Bounty · IDOR</span>
-                    </div>
-                </div>
-                <h3>From a Simple Profile Endpoint to a 100k+ User IDOR</h3>
-                <p>How a casual recon session uncovered an IDOR vulnerability affecting 100k+ users on HackerRank — methodology, impact, and fixes.</p>
-                <a href="https://cybersecuritywriteups.com/from-a-simple-profile-endpoint-to-a-100k-user-idor-on-hackerrank-6f9b6e6fe746" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- Baeldung -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/baeldung-logo.svg" alt="Baeldung">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Gradle Tutorial</span>
-                    </div>
-                </div>
-                <h3>Excluding Transitive Dependencies in Gradle</h3>
-                <p>In this tutorial, we’ll specifically discuss several ways to exclude transitive dependencies in Gradle.</p>
-                <a href="https://www.baeldung.com/gradle-exclude-transitive-dependencies" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-            <!-- DigitalOcean Ripple Writers -->
-            <div class="card work-card">
-                <div class="work-header">
-                    <div class="brand-logo">
-                        <img src="images/digitalOcean.png" alt="DigitalOcean">
-                    </div>
-                    <div class="work-meta">
-                        <span class="work-cat">Ripple Writers Program</span>
-                    </div>
-                </div>
-                <h3>Reducing Cold Starts for a Kotlin API</h3>
-                <p>Optimizing startup latency for Kotlin Ktor APIs on DigitalOcean App Platform — dependency trimming, engine switching, and runtime config.</p>
-                <a href="https://hangga.web.id/blog/Reducing-Cold-Starts-for-a-Kotlin-API-Running-on-DigitalOcean-App-Platform" class="work-link" target="_blank" rel="noopener noreferrer">Read article →</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- <section id="services">
-    <div class="container">
-    <div class="section-header center">
-        <span class="section-tag">What I Do</span>
-        <h2>Areas of Focus</h2>
-        <p class="sub">
-            I help developer-focused companies communicate complex technical topics with clarity, accuracy, and real-world engineering context.
-        </p>
-    </div>
-
-    <div class="grid grid-3">
-
-        <div class="card service-card">
-            <div class="card-icon">📘</div>
-            <h3>Technical Content</h3>
-            <p>
-                Tutorials, engineering deep-dives, cloud infrastructure guides,
-                DevOps content, architecture articles, and developer education resources.
-            </p>
+        <div class="toolbar">
+          <div class="search-wrap">
+            <label for="publication-search" class="visually-hidden" style="position:absolute;left:-9999px;">Search
+              publications</label>
+            <input class="search-input" id="publication-search" type="search"
+              placeholder="Search title, topic, or technology…">
+          </div>
+          <label for="publisher-filter" style="position:absolute;left:-9999px;">Filter by publisher</label>
+          <select class="filter-select" id="publisher-filter">
+            <option value="all">All publications</option>
+            <option value="baeldung">Baeldung</option>
+            <option value="circleci">CircleCI</option>
+            <option value="linux-handbook">Linux Handbook</option>
+            <option value="vultr">Vultr</option>
+            <option value="digitalocean">DigitalOcean Ripple Writers</option>
+            <option value="research-code">The Research Code</option>
+          </select>
         </div>
 
-        <div class="card service-card">
-            <div class="card-icon">🛡️</div>
-            <h3>Security Content</h3>
-            <p>
-                Secure coding guides, vulnerability analysis,
-                bug bounty write-ups, application security content,
-                and security-focused technical education.
-            </p>
-        </div>
+        <p class="result-count" id="result-count" aria-live="polite">Showing 6 selected publications</p>
 
-        <div class="card service-card">
-            <div class="card-icon">🔍</div>
-            <h3>Technical Review</h3>
-            <p>
-                Technical editing, code validation,
-                fact-checking, and content reviews
-                to improve accuracy and developer trust.
-            </p>
-        </div>
+        <ul class="publication-list" id="publication-list">
+          <!-- THE RESEARCH CODE -->
+          <li class="publication" data-publisher="research-code"
+            data-search="mathematics detecting live human face open mouth detection face liveness presentation attack detection pad computer vision geometry facial contours euclidean distance">
+            <div>
+              <img class="publication-image"
+                src="https://res.cloudinary.com/duxofm9lz/image/upload/v1791131573/blog-articles/abxx6d4ahf04vuz5ydlv.png"
+                alt="Open-mouth detection using facial landmarks and geometric measurement" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>The Research Code</span><span>·</span><span>Mathematics & Computer
+                  Science</span></p>
+              <h3 class="publication-title"><a
+                  href="https://www.theresearchcode.com/articles/mathematics-open-mouth-detection" target="_blank"
+                  rel="noopener noreferrer">The Mathematics Behind Detecting a Live Human Face ↗</a></h3>
+              <p class="publication-description">An exploration of how facial landmarks and Euclidean distance can turn
+                mouth movement into a measurable signal, and how that signal fits into a broader face liveness and
+                presentation-attack-detection workflow.</p>
+              <div class="tags"><span class="tag">Computer Vision</span><span class="tag">Mathematics</span><span
+                  class="tag">Face Liveness</span><span class="tag">PAD</span><span class="tag">Biometrics</span></div>
+            </div>
+          </li>
 
-    </div>
+          <!-- HANGGA WEB ID -->
+          <li class="publication" data-publisher="digitalocean"
+            data-search="kotlin ktor cold start jvm digitalocean app platform performance optimization jar size netty cio">
+            <div>
+              <img class="publication-image"
+                src="https://hangga.web.id/blog//wp-content/uploads/2026/04/digitalocean/image8.png"
+                alt="Kotlin Ktor cold start optimization illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>DigitalOcean Ripple Writers</span><span>·</span><span>Performance & Cloud</span></p>
+              <h3 class="publication-title"><a
+                  href="https://hangga.web.id/blog/Reducing-Cold-Starts-for-a-Kotlin-API-Running-on-DigitalOcean-App-Platform/"
+                  target="_blank" rel="noopener noreferrer">Reducing Cold Starts for a Kotlin API Running on
+                  DigitalOcean App Platform ↗</a></h3>
+              <p class="publication-description">A practical investigation into reducing JVM cold start latency for a
+                Kotlin Ktor API deployed on DigitalOcean App Platform, covering JAR size reduction, server engine
+                switching from Netty to CIO, and runtime configuration optimizations.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Ktor</span><span class="tag">Cold
+                  Start</span><span class="tag">DigitalOcean</span><span class="tag">JVM</span><span
+                  class="tag">Performance</span></div>
+            </div>
+          </li>
 
-    <div class="services-footer">
+          <!-- CIRCLECI -->
+          <li class="publication" data-publisher="circleci"
+            data-search="benchmarking password hashing algorithms circleci build matrix java gradle jmh security performance">
+            <div>
+              <img class="publication-image"
+                src="https://images.ctfassets.net/il1yandlcjgk/3BCGQWZ82HqX3Fb80MICvr/343c5ce6f8fd52d7fa68474505983a37/Tutorial-Intermediate-B.jpg?w=874&fm=webp&q=60"
+                alt="CircleCI technical tutorial illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>CircleCI Blog</span><span>·</span><span>Performance & Security</span>
+              </p>
+              <h3 class="publication-title"><a
+                  href="https://circleci.com/blog/benchmarking-password-hashing-algorithms-using-circleci-build-matrix/"
+                  target="_blank" rel="noopener noreferrer">Benchmarking Password Hashing Algorithms Using CircleCI
+                  Build Matrix ↗</a></h3>
+              <p class="publication-description">Using a CircleCI build matrix to benchmark password-hashing algorithms
+                and compare their performance in a repeatable CI environment.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">Gradle</span><span
+                  class="tag">JMH</span><span class="tag">Security</span><span class="tag">Benchmarking</span></div>
+            </div>
+          </li>
 
+          <li class="publication" data-publisher="circleci"
+            data-search="matrix builds time zone aware testing java ci cd circleci">
+            <div>
+              <img class="publication-image"
+                src="https://images.ctfassets.net/il1yandlcjgk/3BCGQWZ82HqX3Fb80MICvr/343c5ce6f8fd52d7fa68474505983a37/Tutorial-Intermediate-B.jpg?w=874&fm=webp&q=60"
+                alt="CircleCI matrix builds illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>CircleCI Blog</span><span>·</span><span>Testing & CI/CD</span></p>
+              <h3 class="publication-title"><a
+                  href="https://circleci.com/blog/matrix-builds-for-time-zone-testing-in-java/" target="_blank"
+                  rel="noopener noreferrer">Matrix Builds for Robust Time Zone-Aware Testing in Java ↗</a></h3>
+              <p class="publication-description">Using CircleCI matrix builds to run Java tests across multiple time
+                zones and catch time-zone-related bugs early.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">CircleCI</span><span
+                  class="tag">Testing</span><span class="tag">CI/CD</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="circleci"
+            data-search="automating vulnerability scanning gradle dependencies circleci security">
+            <div>
+              <img class="publication-image"
+                src="https://images.ctfassets.net/il1yandlcjgk/5yx4R4xvrT9DA6C142jlfI/920f0f0b727ad0971ce311d693d33e66/Tutorial-Beginner-C.jpg?w=874&fm=webp&q=60"
+                alt="CircleCI vulnerability scanning illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>CircleCI Blog</span><span>·</span><span>Security & CI/CD</span></p>
+              <h3 class="publication-title"><a
+                  href="https://circleci.com/blog/automating-vulnerability-scanning-for-gradle-dependencies/"
+                  target="_blank" rel="noopener noreferrer">Automating Vulnerability Scanning for Gradle Dependencies
+                  with CircleCI ↗</a></h3>
+              <p class="publication-description">Automating dependency vulnerability scanning for Gradle projects in a
+                CircleCI pipeline to catch security issues early.</p>
+              <div class="tags"><span class="tag">Gradle</span><span class="tag">CircleCI</span><span
+                  class="tag">Security</span><span class="tag">Dependencies</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="circleci"
+            data-search="benchmarking kotlin coroutines performance circleci">
+            <div>
+              <img class="publication-image"
+                src="https://images.ctfassets.net/il1yandlcjgk/2jhAmaQbvDE5e0JAcZfVVy/a0596040a4eb4d0137b47105e975627a/Tutorial-Intermediate-D.jpg?w=874&fm=webp&q=60"
+                alt="CircleCI Kotlin coroutines benchmarking illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>CircleCI Blog</span><span>·</span><span>Performance & Kotlin</span></p>
+              <h3 class="publication-title"><a
+                  href="https://circleci.com/blog/benchmarking-kotlin-coroutines-performance-with-circleci/"
+                  target="_blank" rel="noopener noreferrer">Benchmarking Kotlin Coroutines Performance with CircleCI
+                  ↗</a></h3>
+              <p class="publication-description">Benchmarking Kotlin coroutines performance in CI using CircleCI to
+                measure concurrency behavior reliably.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Coroutines</span><span
+                  class="tag">Benchmarking</span><span class="tag">CircleCI</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="circleci"
+            data-search="automating api security tests ci cd java applications">
+            <div>
+              <img class="publication-image"
+                src="https://images.ctfassets.net/il1yandlcjgk/3FPR2tmaqQeWPvKBQWQjTb/17ead46fd065f2f4c0fdf9447f2e3325/Tutorial-Intermediate-A.jpg?w=874&fm=webp&q=60"
+                alt="CircleCI API security testing illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>CircleCI Blog</span><span>·</span><span>Security & CI/CD</span></p>
+              <h3 class="publication-title"><a
+                  href="https://circleci.com/blog/automating-api-security-tests-in-ci-cd-for-java-applications/"
+                  target="_blank" rel="noopener noreferrer">Automating API Security Tests in CI/CD for Java Applications
+                  ↗</a></h3>
+              <p class="publication-description">Integrating automated API security tests into a CI/CD pipeline for
+                Java applications to catch vulnerabilities before deployment.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">API Security</span><span
+                  class="tag">CI/CD</span><span class="tag">Testing</span></div>
+            </div>
+          </li>
+
+
+          <!-- BAELDUNG -->
+          <li class="publication" data-publisher="baeldung"
+            data-search="gradle exclude transitive dependencies java dependency management build">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/2022/05/baeldung-home-java-series.jpg"
+                alt="Gradle dependency management illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/gradle-exclude-transitive-dependencies"
+                  target="_blank" rel="noopener noreferrer">Excluding Transitive Dependencies in Gradle ↗</a></h3>
+              <p class="publication-description">Learn several ways to exclude transitive dependencies in Gradle, from
+                excluding by group and specific modules to configuration-level exclusions.</p>
+              <div class="tags"><span class="tag">Gradle</span><span class="tag">Java</span><span
+                  class="tag">Dependencies</span><span class="tag">Build</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="java securerandom generate positive long random number security">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/2022/05/baeldung-home-java-series.jpg"
+                alt="Java SecureRandom illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/java-securerandom-generate-positive-long"
+                  target="_blank" rel="noopener noreferrer">Generate a Positive Long Using SecureRandom in Java ↗</a>
+              </h3>
+              <p class="publication-description">How to generate positive long values in Java using SecureRandom, with
+                attention to randomness and avoiding negative values.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">SecureRandom</span><span
+                  class="tag">Security</span><span class="tag">Random</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="java uuid unique long generation identifier random">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/2022/05/baeldung-home-java-series.jpg"
+                alt="Java UUID illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/java-uuid-unique-long-generation"
+                  target="_blank" rel="noopener noreferrer">Generate a Unique Long from a UUID in Java ↗</a></h3>
+              <p class="publication-description">Techniques for deriving a unique long value from a UUID in Java,
+                including hashing and bit manipulation approaches.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">UUID</span><span
+                  class="tag">Identifiers</span><span class="tag">Random</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin gradle bytecode version jvm target compiler">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin Gradle bytecode version illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/gradle-kotlin-bytecode-version"
+                  target="_blank" rel="noopener noreferrer">Setting the Kotlin Bytecode Version in Gradle ↗</a></h3>
+              <p class="publication-description">How to configure the Kotlin bytecode version and JVM target in a
+                Gradle build for compatibility across environments.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Gradle</span><span
+                  class="tag">Bytecode</span><span class="tag">JVM</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin extension fields properties custom getter">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin extension fields illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/extension-fields" target="_blank"
+                  rel="noopener noreferrer">Extension Fields in Kotlin ↗</a></h3>
+              <p class="publication-description">An overview of how extension properties and fields work in Kotlin and
+                how to use custom getters effectively.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Extension Functions</span><span
+                  class="tag">Properties</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin coroutine continuation suspend function internals">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin coroutine continuation illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/coroutine-continuation"
+                  target="_blank" rel="noopener noreferrer">Coroutine Continuation in Kotlin ↗</a></h3>
+              <p class="publication-description">Understanding the Continuation interface and how it underpins
+                suspension and resumption in Kotlin coroutines.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Coroutines</span><span
+                  class="tag">Concurrency</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin rxjava single coroutine deferred reactive conversion">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin RxJava Single and Deferred illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/rxjava-single-coroutine-deferred"
+                  target="_blank" rel="noopener noreferrer">Convert RxJava Single to Coroutine Deferred in Kotlin ↗</a>
+              </h3>
+              <p class="publication-description">How to bridge RxJava Single and Kotlin coroutine Deferred, including
+                conversion patterns and error handling.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">RxJava</span><span
+                  class="tag">Coroutines</span><span class="tag">Reactive</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin parallel operations collections coroutines async">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin parallel collection operations illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/collections-parallel-operations"
+                  target="_blank" rel="noopener noreferrer">Parallel Operations on Collections in Kotlin ↗</a></h3>
+              <p class="publication-description">Applying parallel operations to collections in Kotlin using
+                coroutines, async, and awaitAll for better performance.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Coroutines</span><span
+                  class="tag">Collections</span><span class="tag">Performance</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="variable shadowing kotlin oop variable scope lambda extension functions">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin programming illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/variable-shadowing" target="_blank"
+                  rel="noopener noreferrer">Variable Shadowing in Kotlin ↗</a></h3>
+              <p class="publication-description">A practical explanation of variable shadowing in Kotlin, including how
+                scopes, lambdas, and extension functions affect name resolution.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">OOP</span><span class="tag">Variable
+                  Scope</span><span class="tag">Lambda</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin this keyword qualified implicit receiver scope">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin qualified and implicit this illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/this-keyword-qualified-vs-implicit"
+                  target="_blank" rel="noopener noreferrer">Qualified vs Implicit this in Kotlin ↗</a></h3>
+              <p class="publication-description">Clarifying the difference between qualified and implicit this
+                references, and how receivers resolve in nested scopes.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">OOP</span><span
+                  class="tag">Scope</span><span class="tag">Lambda</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin schedule repeating task timer coroutines">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin repeating task scheduling illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/schedule-repeating-task"
+                  target="_blank" rel="noopener noreferrer">Scheduling a Repeating Task in Kotlin ↗</a></h3>
+              <p class="publication-description">Different approaches to scheduling repeating tasks in Kotlin, from
+                Timer to coroutine-based loops.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Scheduling</span><span
+                  class="tag">Coroutines</span><span class="tag">Timer</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung" data-search="kotlin clone object copy deep clone">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin object cloning illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Baeldung</span><span>·</span><span>Software Engineering</span></p>
+              <h3 class="publication-title"><a href="https://www.baeldung.com/kotlin/clone-object" target="_blank"
+                  rel="noopener noreferrer">Cloning an Object in Kotlin ↗</a></h3>
+              <p class="publication-description">How to clone objects in Kotlin, covering data class copy, shallow vs
+                deep cloning, and practical caveats.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">OOP</span><span
+                  class="tag">Cloning</span><span class="tag">Data Classes</span></div>
+            </div>
+          </li>
+
+          <!-- VULTR -->
+          <li class="publication" data-publisher="vultr"
+            data-search="serverless apis kotlin ktor coroutines java gradle rest api cloud">
+            <div>
+              <img class="publication-image"
+                src="https://lhr1.vultrobjects.com/docs-main-doc-assets-1/2407/96e9ff31-bf65-48a2-a883-73a092fb6eed.webp"
+                alt="Vultr tutorial illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Vultr Docs</span><span>·</span><span>Cloud & Backend</span></p>
+              <h3 class="publication-title"><a
+                  href="https://docs.vultr.com/how-to-build-serverless-apis-with-kotlin-ktor-and-coroutines"
+                  target="_blank" rel="noopener noreferrer">How to Build Serverless APIs with Kotlin Ktor and Coroutines
+                  ↗</a></h3>
+              <p class="publication-description">A hands-on guide to building serverless REST APIs with Kotlin, Ktor,
+                and coroutines.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Ktor</span><span
+                  class="tag">Coroutines</span><span class="tag">REST API</span><span class="tag">Serverless</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- LINUX HANDBOOK -->
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="kali linux wordlists brute force password cracking">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/12/kali-linux-brute-force.png"
+                alt="Kali Linux wordlists illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/kali-linux-wordlists-brute-force/"
+                  target="_blank" rel="noopener noreferrer">Using Wordlists for Brute Force in Kali Linux ↗</a></h3>
+              <p class="publication-description">A guide to locating and using wordlists for brute-force attacks in
+                Kali Linux, with practical tooling examples.</p>
+              <div class="tags"><span class="tag">Kali Linux</span><span class="tag">Brute Force</span><span
+                  class="tag">Wordlists</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="dnsrecon enumerate dns records reconnaissance enumeration">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/12/dnsrecon.png"
+                alt="DNSRecon illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/enumerate-dns-records-dnsrecon/"
+                  target="_blank" rel="noopener noreferrer">Enumerate DNS Records with DNSRecon ↗</a></h3>
+              <p class="publication-description">Using DNSRecon for DNS reconnaissance and enumeration during security
+                assessments.</p>
+              <div class="tags"><span class="tag">DNSRecon</span><span class="tag">DNS</span><span
+                  class="tag">Reconnaissance</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="owasp amass attack surface mapping reconnaissance">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/11/OWASP-Amass.png"
+                alt="OWASP Amass illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/owasp-amass/" target="_blank"
+                  rel="noopener noreferrer">OWASP Amass for Attack Surface Mapping ↗</a></h3>
+              <p class="publication-description">Using OWASP Amass to map an organization's external attack surface
+                through DNS and network reconnaissance.</p>
+              <div class="tags"><span class="tag">OWASP Amass</span><span class="tag">Reconnaissance</span><span
+                  class="tag">Attack Surface</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="sql injection testing sqlmap database security">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/11/sql-injection-with-sqlmap.png"
+                alt="sqlmap SQL injection illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/sql-injection-test-sqlmap/"
+                  target="_blank" rel="noopener noreferrer">Testing SQL Injection with sqlmap ↗</a></h3>
+              <p class="publication-description">Detecting and exploiting SQL injection vulnerabilities with sqlmap in
+                authorized security testing.</p>
+              <div class="tags"><span class="tag">sqlmap</span><span class="tag">SQL Injection</span><span
+                  class="tag">Security</span><span class="tag">Testing</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="dalfox xss hunting cross site scripting scanner">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/10/xss-simulation.png"
+                alt="Dalfox XSS scanner illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/xss-hunting-dalfox/" target="_blank"
+                  rel="noopener noreferrer">XSS Hunting with Dalfox ↗</a></h3>
+              <p class="publication-description">Using Dalfox to hunt for cross-site scripting (XSS) vulnerabilities
+                in web applications.</p>
+              <div class="tags"><span class="tag">Dalfox</span><span class="tag">XSS</span><span
+                  class="tag">Security</span><span class="tag">Web</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="pentesting 101 theharvester osint reconnaissance kali linux pgp">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w2400/format/avif/2025/10/theharvester-osint.png"
+                alt="TheHarvester OSINT tool illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/using-theharvester/" target="_blank"
+                  rel="noopener noreferrer">PenTesting 101: Using TheHarvester for OSINT and Reconnaissance ↗</a></h3>
+              <p class="publication-description">An introduction to using TheHarvester for open-source intelligence
+                gathering and reconnaissance during penetration testing.</p>
+              <div class="tags"><span class="tag">theHarvester</span><span class="tag">Kali Linux</span><span
+                  class="tag">OSINT</span><span class="tag">Reconnaissance</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="whatweb fingerprint websites web technology reconnaissance">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/10/whatweb-fingerprint.png"
+                alt="WhatWeb technology fingerprinting illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/whatweb-fingerprint-websites/"
+                  target="_blank" rel="noopener noreferrer">Fingerprint Websites with WhatWeb ↗</a></h3>
+              <p class="publication-description">Identifying web technologies, servers, and frameworks with WhatWeb
+                during reconnaissance.</p>
+              <div class="tags"><span class="tag">WhatWeb</span><span class="tag">Fingerprinting</span><span
+                  class="tag">Reconnaissance</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="clamav malware detection antivirus linux detecting malware attacks">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/09/linux-malware-detection.png"
+                alt="ClamAV malware detection illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/detecting-malware-attacks-clamav/"
+                  target="_blank" rel="noopener noreferrer">Detecting Malware Attacks with ClamAV ↗</a></h3>
+              <p class="publication-description">Installing and using ClamAV to detect malware on Linux systems, with
+                scanning and update workflows.</p>
+              <div class="tags"><span class="tag">ClamAV</span><span class="tag">Malware</span><span
+                  class="tag">Linux</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="subfinder subdomain enumeration reconnaissance finding subdomains">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/09/subfinder-subdomain-checker.png"
+                alt="Subfinder subdomain enumeration illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/finding-subdomains-subfinder/"
+                  target="_blank" rel="noopener noreferrer">Finding Subdomains with Subfinder ↗</a></h3>
+              <p class="publication-description">Discovering subdomains with Subfinder as part of a reconnaissance
+                workflow.</p>
+              <div class="tags"><span class="tag">Subfinder</span><span class="tag">Subdomains</span><span
+                  class="tag">Reconnaissance</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="linux-handbook"
+            data-search="tcpdump http traffic analysis packet capture">
+            <div>
+              <img class="publication-image"
+                src="https://linuxhandbook.com/content/images/size/w800/format/avif/2025/09/tcpdump-network-monitoring.png"
+                alt="tcpdump HTTP traffic illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta"><span>Linux Handbook</span><span>·</span><span>Security</span></p>
+              <h3 class="publication-title"><a href="https://linuxhandbook.com/tcpdump-http-traffic-analysis/"
+                  target="_blank" rel="noopener noreferrer">Analyzing HTTP Traffic with tcpdump ↗</a></h3>
+              <p class="publication-description">Capturing and analyzing HTTP traffic with tcpdump for
+                network-level inspection and troubleshooting.</p>
+              <div class="tags"><span class="tag">tcpdump</span><span class="tag">HTTP</span><span
+                  class="tag">Networking</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+        </ul>
+
+        <p class="empty-state" id="empty-state">No publications match your search.</p>
+      </section>
+
+      <aside class="contribution-note">
+        <h2>More writing and research</h2>
         <p>
-            Looking for project scope, engagement models, or pricing guidance?
+          I also publish security write-ups and research notes outside these developer publications.
+          You can find more of that work in my <a href="https://hangga.web.id/security-writeups/" target="_blank"
+            rel="noopener noreferrer">security write-up collection</a>.
+          This page focuses on selected articles with confirmed publication links; additional outlets and articles can
+          be added as the portfolio grows.
         </p>
-
-        <a href="services.html" class="btn btn-primary">
-            Explore Engagement Options →
-        </a>
-
-    </div>
-
-</div>
-
-</section> -->
-
-<section id="services">
-    <div class="container">
-
-
-    <div class="section-header center">
-        <span class="section-tag">Typical engagements</span>
-        <h2>Ways We Can Work Together</h2>
-
-        <p class="subhead">
-            Whether you need a single tutorial or an ongoing content program,
-            engagements are tailored to your product, audience, and goals.
-        </p>
-    </div>
-
-    <div class="grid grid-2">
-
-        <div class="card service-card">
-
-            <h3>Technical Tutorials</h3>
-
-            <p>
-                Hands-on tutorials that help developers solve real problems
-                while showcasing your platform, tools, or infrastructure.
-            </p>
-
-            <ul>
-                <li>Kotlin & Java</li>
-                <li>Spring Boot</li>
-                <li>Docker & Kubernetes</li>
-                <li>Cloud Platforms</li>
-                <li>CI/CD & DevOps</li>
-            </ul>
-
-        </div>
-
-        <div class="card service-card">
-
-            <h3>Security Deep Dives</h3>
-
-            <p>
-                Security-focused content grounded in real attack scenarios,
-                defensive techniques, and secure engineering practices.
-            </p>
-
-            <ul>
-                <li>Secure Coding</li>
-                <li>OWASP Topics</li>
-                <li>Application Security</li>
-                <li>Threat Analysis</li>
-                <li>Bug Bounty Write-Ups</li>
-            </ul>
-
-        </div>
-
-        <div class="card service-card">
-
-            <h3>Architecture & Engineering Guides</h3>
-
-            <p>
-                Long-form technical content explaining system design,
-                scalability, trade-offs, and implementation decisions.
-            </p>
-
-            <ul>
-                <li>Distributed Systems</li>
-                <li>Microservices</li>
-                <li>Platform Engineering</li>
-                <li>Cloud Architecture</li>
-                <li>Performance Optimization</li>
-            </ul>
-
-        </div>
-
-        <div class="card service-card">
-
-            <h3>Technical Review</h3>
-
-            <p>
-                Independent review of technical content before publication,
-                helping ensure accuracy and credibility.
-            </p>
-
-            <ul>
-                <li>Technical Fact Checking</li>
-                <li>Code Review</li>
-                <li>Security Validation</li>
-                <li>Documentation Review</li>
-                <li>Technical Editing</li>
-            </ul>
-
-        </div>
-
-        <div class="card service-card">
-
-            <h3>Developer Education Content</h3>
-
-            <p>
-                Content designed to help developers adopt your product
-                faster and reduce onboarding friction.
-            </p>
-
-            <ul>
-                <li>API Tutorials</li>
-                <li>Quickstart Guides</li>
-                <li>Integration Walkthroughs</li>
-                <li>Demo Applications</li>
-                <li>Developer Documentation</li>
-            </ul>
-
-        </div>
-
-        <div class="card service-card">
-
-            <h3>Content Programs</h3>
-
-            <p>
-                Ongoing collaboration for teams publishing technical content
-                regularly and building long-term developer trust.
-            </p>
-
-            <ul>
-                <li>Monthly Content Production</li>
-                <li>Developer Blog Programs</li>
-                <li>Editorial Planning</li>
-                <li>Technical Research</li>
-                <li>Content Strategy Support</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    <div class="services-footer">
-
-        <p>
-            Every engagement is scoped individually based on technical depth,
-            research requirements, code examples, and review cycles.
-        </p>
-
-        <a href="#order" class="btn btn-primary">
-            Discuss Your Project →
-        </a>
-
-    </div>
-
-</div>
-
-
-</section>
-
-
-<section class="engagement-process" id="order">
-
-    <div class="container">
-
-        <div class="section-header center">
-            <span class="section-tag">How Engagements Work</span>
-            <h2>From Idea to Delivery</h2>
-            <p class="subhead">
-                A straightforward process designed to keep projects focused,
-                predictable, and technically accurate.
-            </p>
-        </div>
-
-        <div class="modern-process">
-
-            <div class="step-card">
-                <div class="step-number">01</div>
-                <h3>Discovery</h3>
-                <p>
-                    Tell me about your product, audience,
-                    and content goals through the project inquiry form.
-                </p>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">02</div>
-                <h3>Scope & Proposal</h3>
-                <p>
-                    We define deliverables, timeline,
-                    technical requirements, and project scope.
-                </p>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">03</div>
-                <h3>Research & Production</h3>
-                <p>
-                    Technical research, implementation,
-                    validation, and content creation.
-                </p>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">04</div>
-                <h3>Review & Refinement</h3>
-                <p>
-                    Draft delivery followed by feedback
-                    and agreed revision rounds.
-                </p>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">05</div>
-                <h3>Final Delivery</h3>
-                <p>
-                    Publication-ready content,
-                    source files, and supporting assets.
-                </p>
-            </div>
-
-        </div>
-
-        <div class="services-footer">
-            <p>
-                Most projects start with a short discussion to determine scope,
-                timeline, and the best engagement model.
-            </p>
-
-            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeenF5uzyzxqzz8wrR3QLArY6pGDidb1g3LOvCjjuB8Gqa-0A/viewform" class="btn btn-primary">
-                Discuss Your Project
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- <section class="process-section">
-    <div class="container">
-        <div class="section-header center">
-            <span class="section-tag">Our approach</span>
-            <h2>How We Work</h2>
-        </div>
-        <div class="process modern-process">
-            <div class="step-card">
-                <div class="step-number">01</div>
-                <h3>Discovery</h3>
-                <p>Understand product and audience.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">02</div>
-                <h3>Research</h3>
-                <p>Technical investigation and planning.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">03</div>
-                <h3>Production</h3>
-                <p>Writing, coding, validation.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">04</div>
-                <h3>Review</h3>
-                <p>Technical and editorial review.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">05</div>
-                <h3>Delivery</h3>
-                <p>Publication-ready assets.</p>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<footer>
-    <div class="container footer-inner">
-        <div class="footer-brand">Hangga Aji Sayekti</div>
-        <div class="footer-tagline">Technical Content • Security Content • Technical Review</div>
-        <div class="footer-copyright">© 2025 — Engineering-grade technical content</div>
-    </div>
-</footer>
-
+      </aside>
+
+      <footer class="page-footer">
+        © <span id="year"></span> Hangga Aji Sayekti. All articles remain the property of their respective publishers.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const search = document.getElementById("publication-search");
+      const filter = document.getElementById("publisher-filter");
+      const items = [...document.querySelectorAll(".publication")];
+      const count = document.getElementById("result-count");
+      const empty = document.getElementById("empty-state");
+
+      function updatePublications() {
+        const query = search.value.trim().toLowerCase();
+        const publisher = filter.value;
+        let visible = 0;
+
+        items.forEach((item) => {
+          const matchesPublisher = publisher === "all" || item.dataset.publisher === publisher;
+          const haystack = `${item.dataset.search} ${item.textContent}`.toLowerCase();
+          const matchesQuery = !query || haystack.includes(query);
+          const show = matchesPublisher && matchesQuery;
+          item.hidden = !show;
+          if (show) visible++;
+        });
+
+        count.textContent = `Showing ${visible} ${visible === 1 ? "result" : "results"}`;
+        empty.classList.toggle("visible", visible === 0);
+      }
+
+      search.addEventListener("input", updatePublications);
+      filter.addEventListener("change", updatePublications);
+      document.getElementById("year").textContent = new Date().getFullYear();
+      updatePublications();
+    })();
+  </script>
 </body>
+
 </html>
