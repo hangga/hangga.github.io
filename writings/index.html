@@ -367,6 +367,14 @@
       line-height: 1.7;
     }
 
+    .level-8 {
+      margin: 0 0 13px;
+      color: var(--pub-muted);
+      font-size: .81rem;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -545,7 +553,7 @@
 
       <div class="pub-stats" aria-label="Publication overview">
         <div class="stat"><strong>5</strong><span>Featured articles</span></div>
-        <div class="stat"><strong>29</strong><span>Selected contributions</span></div>
+        <div class="stat"><strong>34</strong><span>Selected contributions</span></div>
         <div class="stat"><strong>2022–2026</strong><span>Selected work</span></div>
       </div>
 
@@ -626,7 +634,8 @@
                 alt="Kotlin Ktor cold start optimization illustration" loading="lazy">
             </div>
             <div>
-              <p class="publication-meta"><span>DigitalOcean Ripple Writers</span><span>·</span><span>Performance & Cloud</span></p>
+              <p class="publication-meta"><span>DigitalOcean Ripple Writers</span><span>·</span><span>Performance &
+                  Cloud</span></p>
               <h3 class="publication-title"><a
                   href="https://hangga.web.id/blog/Reducing-Cold-Starts-for-a-Kotlin-API-Running-on-DigitalOcean-App-Platform/"
                   target="_blank" rel="noopener noreferrer">Reducing Cold Starts for a Kotlin API Running on
@@ -740,6 +749,7 @@
                   class="tag">CI/CD</span><span class="tag">Testing</span></div>
             </div>
           </li>
+
 
 
           <!-- BAELDUNG -->
@@ -1160,6 +1170,137 @@
                 network-level inspection and troubleshooting.</p>
               <div class="tags"><span class="tag">tcpdump</span><span class="tag">HTTP</span><span
                   class="tag">Networking</span><span class="tag">Security</span></div>
+            </div>
+          </li>
+
+          <!-- BAELDUNG: Software Engineering -->
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="java detect end of file EOF FileInputStream BufferedReader Scanner FileChannel">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/2022/05/baeldung-home-java-series.jpg"
+                alt="Java file handling illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta">
+                <span>Baeldung</span><span>·</span>
+                <span>Software Engineering</span>
+              </p>
+              <p class="level-8">These articles were written during my Level 8 contributor period and published under the Baeldung byline.</p>
+              <h3 class="publication-title">
+                <a href="https://www.baeldung.com/java-file-detect-end-of-file" target="_blank"
+                  rel="noopener noreferrer">
+                  Detect EOF in Java ↗
+                </a>
+              </h3>
+              <p class="publication-description">
+                Exploring different approaches to detecting the end of a file
+                in Java using FileInputStream, BufferedReader, Scanner, and
+                FileChannel with ByteBuffer.
+              </p>
+              <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">File I/O</span>
+                <span class="tag">Java NIO</span>
+                <span class="tag">File Handling</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="java CompletableFuture timeout completeOnTimeout orTimeout asynchronous programming">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/2022/05/baeldung-home-java-series.jpg"
+                alt="Java CompletableFuture illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta">
+                <span>Baeldung</span><span>·</span>
+                <span>Software Engineering</span>
+              </p>
+              <p class="level-8">These articles were written during my Level 8 contributor period and published under the Baeldung byline.</p>
+              <h3 class="publication-title">
+                <a href="https://www.baeldung.com/java-completablefuture-timeout" target="_blank"
+                  rel="noopener noreferrer">
+                  How To Manage Timeout for CompletableFuture ↗
+                </a>
+              </h3>
+              <p class="publication-description">
+                Exploring different ways to handle timeouts in Java CompletableFuture,
+                including completeOnTimeout(), orTimeout(), and completeExceptionally().
+              </p>
+              <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">CompletableFuture</span>
+                <span class="tag">Concurrency</span>
+                <span class="tag">Asynchronous Programming</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin sort string alphabetically sorted sortedWith extension functions">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin string sorting illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta">
+                <span>Baeldung</span><span>·</span>
+                <span>Software Engineering</span>
+              </p>
+              <p class="level-8">These articles were written during my Level 8 contributor period and published under the Baeldung byline.</p>
+              <h3 class="publication-title">
+                <a href="https://www.baeldung.com/kotlin/string-sort" target="_blank" rel="noopener noreferrer">
+                  Sorting a String Alphabetically in Kotlin ↗
+                </a>
+              </h3>
+              <p class="publication-description">
+                Exploring different ways to sort strings alphabetically in Kotlin
+                using sorted(), sortedWith(), distinct(), and extension functions.
+              </p>
+              <div class="tags">
+                <span class="tag">Kotlin</span>
+                <span class="tag">String</span>
+                <span class="tag">Sorting</span>
+                <span class="tag">Extension Functions</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication" data-publisher="baeldung"
+            data-search="kotlin pass by value pass by reference function parameters object references">
+            <div>
+              <img class="publication-image"
+                src="https://www.baeldung.com/wp-content/uploads/sites/5/2022/11/kotlin-mainpage-kotlin-collection.png"
+                alt="Kotlin parameter passing illustration" loading="lazy">
+            </div>
+            <div>
+              <p class="publication-meta">
+                <span>Baeldung</span><span>·</span>
+                <span>Software Engineering</span>
+              </p>
+              <p class="level-8">These articles were written during my Level 8 contributor period and published under the Baeldung byline.</p>
+              <h3 class="publication-title">
+                <a href="https://www.baeldung.com/kotlin/parameters-pass-value-reference" target="_blank"
+                  rel="noopener noreferrer">
+                  Is Kotlin Pass-By-Value or Pass-By-Reference? ↗
+                </a>
+              </h3>
+              <p class="publication-description">
+                Examining how Kotlin handles function arguments, comparing
+                pass-by-value and pass-by-reference concepts, including how
+                object references behave when passed to functions.
+              </p>
+              <div class="tags">
+                <span class="tag">Kotlin</span>
+                <span class="tag">Memory Model</span>
+                <span class="tag">Functions</span>
+                <span class="tag">References</span>
+              </div>
             </div>
           </li>
         </ul>
