@@ -144,43 +144,79 @@
       background: linear-gradient(to right, transparent, var(--pub-muted));
     }
 
-    .publisher-list {
+    /* ── Publisher logos = filter buttons ── */
+    .publisher-subtitle {
+      margin: -8px 0 20px;
+      color: var(--pub-muted);
+      font-size: .8rem;
+      line-height: 1.6;
+    }
+
+    .publisher-logos {
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 10px;
       margin: 0 0 54px;
     }
 
-    .publisher-pill {
+    .publisher-logo {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      height: 54px;
+      padding: 0 20px;
       border: 1px solid var(--pub-border);
-      border-radius: 999px;
-      padding: 8px 13px;
-      color: var(--pub-soft);
+      border-radius: 10px;
       background: rgba(18, 24, 38, .58);
-      font-size: .76rem;
-      text-decoration: none;
-      transition: border-color .2s ease, color .2s ease, transform .2s ease;
+      cursor: pointer;
+      font: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
     }
 
-    .publisher-pill:hover {
-      color: #fff;
+    .publisher-logo:hover {
       border-color: var(--pub-indigo);
+      background: rgba(18, 24, 38, .92);
       transform: translateY(-2px);
     }
 
-    .publisher-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--pub-accent);
+    .publisher-logo:focus-visible {
+      outline: 2px solid var(--pub-indigo);
+      outline-offset: 2px;
     }
 
+    .publisher-logo img {
+      display: block;
+      max-height: 22px;
+      max-width: 110px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: .55;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+
+    .publisher-logo:hover img {
+      opacity: 1;
+    }
+
+    .publisher-logo.is-active {
+      border-color: var(--pub-indigo);
+      background: rgba(99, 102, 241, .12);
+      box-shadow: 0 0 0 1px var(--pub-indigo);
+    }
+
+    .publisher-logo.is-active img {
+      opacity: 1;
+    }
+
+    /* ── Toolbar (search + clear filter) ── */
     .toolbar {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       gap: 12px;
       margin: 0 0 18px;
     }
@@ -189,8 +225,7 @@
       flex: 1;
     }
 
-    .search-input,
-    .filter-select {
+    .search-input {
       width: 100%;
       min-height: 44px;
       border: 1px solid var(--pub-border);
@@ -203,14 +238,47 @@
       font-size: .8rem;
     }
 
-    .search-input:focus,
-    .filter-select:focus {
+    .search-input:focus {
       border-color: var(--pub-indigo);
     }
 
-    .filter-select {
-      width: 180px;
+    .clear-filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
+      padding: 0 15px;
+      border: 1px solid var(--pub-border);
+      border-radius: 8px;
+      background: rgba(18, 24, 38, .8);
+      color: var(--pub-soft);
+      font: inherit;
+      font-size: .75rem;
+      font-weight: 500;
       cursor: pointer;
+      white-space: nowrap;
+      transition: border-color .2s ease, color .2s ease, background .2s ease;
+    }
+
+    .clear-filter:hover {
+      border-color: var(--pub-accent);
+      color: #fff;
+      background: rgba(18, 24, 38, .95);
+    }
+
+    .clear-filter:focus-visible {
+      outline: 2px solid var(--pub-indigo);
+      outline-offset: 2px;
+    }
+
+    .clear-filter[hidden] {
+      display: none;
+    }
+
+    .clear-filter .clear-icon {
+      font-size: 1.05rem;
+      line-height: 1;
+      opacity: .85;
     }
 
     .result-count {
@@ -402,13 +470,28 @@
         margin: 28px 0 38px;
       }
 
+      .publisher-logos {
+        gap: 8px;
+        margin-bottom: 42px;
+      }
+
+      .publisher-logo {
+        height: 46px;
+        padding: 0 14px;
+        flex: 1 1 calc(50% - 8px);
+      }
+
+      .publisher-logo img {
+        max-height: 18px;
+        max-width: 92px;
+      }
+
       .toolbar {
-        align-items: stretch;
         flex-direction: column;
       }
 
-      .filter-select {
-        width: 100%;
+      .clear-filter {
+        justify-content: center;
       }
 
       .publication {
@@ -456,8 +539,7 @@
         <p class="eyebrow">Writing & Contributions</p>
         <h2 class="page-title">Publications</h2>
         <p class="page-intro">
-          A collection of articles, tutorials, and technical explorations covering software engineering, application
-          security, mathematics, computer science, and the technologies that power modern software.
+          Exploring software, security, and mathematics through technical writing, research, and hands-on engineering.
         </p>
       </header>
 
@@ -469,19 +551,29 @@
 
       <section aria-labelledby="publishers-title">
         <h2 class="publisher-heading" id="publishers-title">Find my work on</h2>
-        <div class="publisher-list">
-          <a class="publisher-pill" href="https://www.baeldung.com/author/hanggaajisayekti" target="_blank"
-            rel="noopener noreferrer"><span class="publisher-dot"></span>Baeldung ↗</a>
-          <a class="publisher-pill" href="https://circleci.com/blog/author/hangga-aji-sayekti/" target="_blank"
-            rel="noopener noreferrer"><span class="publisher-dot"></span>CircleCI ↗</a>
-          <a class="publisher-pill" href="https://docs.vultr.com/author/hangga-aji-sayekti" target="_blank"
-            rel="noopener noreferrer"><span class="publisher-dot"></span>Vultr ↗</a>
-          <a class="publisher-pill" href="https://linuxhandbook.com/author/hangga/" target="_blank"
-            rel="noopener noreferrer"><span class="publisher-dot"></span>Linux Handbook ↗</a>
-          <a class="publisher-pill" href="https://www.theresearchcode.com/authors/db2a6c033db7bda4719f94ab180edb9c"
-            target="_blank" rel="noopener noreferrer"><span class="publisher-dot"></span>The Research Code ↗</a>
-          <a class="publisher-pill" href="https://hangga.web.id/security-writeups/" target="_blank"
-            rel="noopener noreferrer"><span class="publisher-dot"></span>Security Write-ups ↗</a>
+        <p class="publisher-subtitle" id="publisher-filter-hint">
+          I’ve written for developer and security-focused platforms — select one to filter the list, select again to
+          reset.
+        </p>
+        <div class="publisher-logos" role="group" aria-labelledby="publisher-filter-hint">
+          <button type="button" class="publisher-logo" data-publisher="circleci" aria-pressed="false">
+            <img src="images/circleci.png" alt="CircleCI" loading="lazy">
+          </button>
+          <button type="button" class="publisher-logo" data-publisher="vultr" aria-pressed="false">
+            <img src="images/Vultr-logo.png" alt="Vultr" loading="lazy">
+          </button>
+          <button type="button" class="publisher-logo" data-publisher="baeldung" aria-pressed="false">
+            <img src="images/baeldung-logo.svg" alt="Baeldung" loading="lazy">
+          </button>
+          <button type="button" class="publisher-logo" data-publisher="linux-handbook" aria-pressed="false">
+            <img src="images/itsfoss-logo.webp" alt="Linux Handbook" loading="lazy">
+          </button>
+          <button type="button" class="publisher-logo" data-publisher="digitalocean" aria-pressed="false">
+            <img src="images/digitalOcean.png" alt="DigitalOcean" loading="lazy">
+          </button>
+          <button type="button" class="publisher-logo" data-publisher="research-code" aria-pressed="false">
+            <img src="images/the-research-code-logo.png" alt="The Research Code" loading="lazy">
+          </button>
         </div>
       </section>
 
@@ -495,19 +587,12 @@
             <input class="search-input" id="publication-search" type="search"
               placeholder="Search title, topic, or technology…">
           </div>
-          <label for="publisher-filter" style="position:absolute;left:-9999px;">Filter by publisher</label>
-          <select class="filter-select" id="publisher-filter">
-            <option value="all">All publications</option>
-            <option value="baeldung">Baeldung</option>
-            <option value="circleci">CircleCI</option>
-            <option value="linux-handbook">Linux Handbook</option>
-            <option value="vultr">Vultr</option>
-            <option value="digitalocean">DigitalOcean Ripple Writers</option>
-            <option value="research-code">The Research Code</option>
-          </select>
+          <button type="button" class="clear-filter" id="clear-filter" hidden>
+            <span class="clear-icon" aria-hidden="true">×</span> Clear filter
+          </button>
         </div>
 
-        <p class="result-count" id="result-count" aria-live="polite">Showing 6 selected publications</p>
+        <p class="result-count" id="result-count" aria-live="polite">Showing 23 selected publications</p>
 
         <ul class="publication-list" id="publication-list">
           <!-- THE RESEARCH CODE -->
@@ -1102,18 +1187,20 @@
   <script>
     (() => {
       const search = document.getElementById("publication-search");
-      const filter = document.getElementById("publisher-filter");
       const items = [...document.querySelectorAll(".publication")];
+      const filterButtons = [...document.querySelectorAll(".publisher-logo")];
+      const clearBtn = document.getElementById("clear-filter");
       const count = document.getElementById("result-count");
       const empty = document.getElementById("empty-state");
 
+      let activePublisher = "all";
+
       function updatePublications() {
         const query = search.value.trim().toLowerCase();
-        const publisher = filter.value;
         let visible = 0;
 
         items.forEach((item) => {
-          const matchesPublisher = publisher === "all" || item.dataset.publisher === publisher;
+          const matchesPublisher = activePublisher === "all" || item.dataset.publisher === activePublisher;
           const haystack = `${item.dataset.search} ${item.textContent}`.toLowerCase();
           const matchesQuery = !query || haystack.includes(query);
           const show = matchesPublisher && matchesQuery;
@@ -1121,12 +1208,42 @@
           if (show) visible++;
         });
 
-        count.textContent = `Showing ${visible} ${visible === 1 ? "result" : "results"}`;
+        // Sync active state on the logo buttons
+        let activeLabel = "";
+        filterButtons.forEach((btn) => {
+          const isActive = btn.dataset.publisher === activePublisher;
+          btn.classList.toggle("is-active", isActive);
+          btn.setAttribute("aria-pressed", String(isActive));
+          if (isActive) activeLabel = btn.querySelector("img").alt;
+        });
+
+        // Show/hide the clear-filter button
+        clearBtn.hidden = activePublisher === "all";
+
+        const noun = visible === 1 ? "result" : "results";
+        count.textContent = activePublisher === "all"
+          ? `Showing ${visible} ${noun}`
+          : `Showing ${visible} ${noun} from ${activeLabel}`;
+
         empty.classList.toggle("visible", visible === 0);
       }
 
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const value = btn.dataset.publisher;
+          activePublisher = activePublisher === value ? "all" : value;
+          updatePublications();
+        });
+      });
+
+      clearBtn.addEventListener("click", () => {
+        activePublisher = "all";
+        updatePublications();
+        // Keep focus on the button after it hides for keyboard users
+        clearBtn.blur();
+      });
+
       search.addEventListener("input", updatePublications);
-      filter.addEventListener("change", updatePublications);
       document.getElementById("year").textContent = new Date().getFullYear();
       updatePublications();
     })();
