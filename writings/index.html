@@ -72,6 +72,30 @@
       padding: 76px 0 90px;
     }
 
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 32px;
+      color: var(--pub-muted);
+      font-size: .82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .back-home:hover,
+    .back-home:focus-visible {
+      color: var(--pub-text);
+    }
+
+    .back-home:focus-visible {
+      outline: 2px solid var(--pub-indigo);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
     .eyebrow {
       margin: 0 0 12px;
       color: var(--pub-accent);
@@ -543,6 +567,11 @@
 <body>
   <div class="pub-layout">
     <main class="pub-main">
+      <a class="back-home" href="https://hangga.web.id/" aria-label="Back to Hangga Aji Sayekti homepage">
+        <span aria-hidden="true">←</span>
+        <span>Back to hangga.web.id</span>
+      </a>
+
       <header class="page-header">
         <p class="eyebrow">Writing & Contributions</p>
         <h2 class="page-title">Publications</h2>
